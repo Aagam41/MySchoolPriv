@@ -7,3 +7,5 @@ def test(request):
 
 def test123(request):
     return 1
+def test678(request):
+    return 67
