@@ -8,4 +8,7 @@ def test(request):
 def test123(request):
     return 1
 def test678(request):
-    return 67
+    return 3
+
+def test1234567():
+    return 234
