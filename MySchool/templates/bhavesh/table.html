@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstarp.min">
+</head>
+<body>
+     <table Class="table table-hover">
+         <thead>
+             <tr>
+			    {% for h in header %}
+                <th scope="col">{{h}}</th>
+				{% endfor %}
+             </tr>
+         </thead>
+         <tbody>
+             {% for st in stu %}
+             <tr>
+                 <th scope="row">  {{st.Grno}} </th>
+                 <td> {{st.Name}} </td>
+                 <td> {{st.Group}} </td>
+                 <td> {{st.Last marks}} </td>
+                 <td>  {{st.Predicted}} </td>
+             </tr>
+             {% endfor %}
+         </tbody>
+         </table>
+</body>
+</html>
