@@ -1,0 +1,18 @@
+import json
+from StudentPerformance.models import Person
+from StudentPerformance.models iport Student
+
+with open('JsonData\Person.json') as f:
+    person = json.load(f)
+
+with open('JsonData\student.json') as f:
+    s = json.load(f)
+
+for p in person:
+    p = Person(name=p['name'],phone_no=p['phone_no'],email_id=['email_id'],password=p['password'],salt=['salt'])
+    p.save()
+
+for s in student:
+    s = Student(person=Person.objects.get(pk=s['person']), class_field=TblClass.objects.get(pk=s['class_field']))
+    s.save()
+
