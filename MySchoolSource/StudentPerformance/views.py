@@ -10,3 +10,10 @@ def index(request):
     else:
         form = StudentForm()
     return render(request, 'StudentPerformance/Registration.html', {'form': form})
+def test(request):
+    context = {
+        'cardTitle': "Lowest Performance",
+        'cardSubtitle': "Based on the Formative Assessment",
+        'cardText': "Hello"
+    }
+    return render(request, 'Aagam/chart.html', context)
