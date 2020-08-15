@@ -1,0 +1,10 @@
+[
+  {
+    "role_id": "1",
+    "role_desc": "Student"
+  },
+  {
+    "role_id": "2",
+    "role_desc": "Teacher"
+  }
+]
