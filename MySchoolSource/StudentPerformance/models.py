@@ -39,10 +39,21 @@ class FeedbackQuestion(models.Model):
     feedback_question_id = models.AutoField(primary_key=True)
     question_text = models.TextField()
     feedback_question_credit = models.IntegerField()
+    question_group = models.ForeignKey('FeedbackQuestionGroup', models.DO_NOTHING)
 
     class Meta:
         managed = False
         db_table = 'feedback_question'
+
+
+class FeedbackQuestionGroup(models.Model):
+    feedback_question_group_id = models.AutoField(primary_key=True)
+    question_group = models.CharField()
+    description = models.CharField()
+
+    class Meta:
+        managed = False
+        db_table = 'feedback_question_group'
 
 
 class MapTeacherSubject(models.Model):
