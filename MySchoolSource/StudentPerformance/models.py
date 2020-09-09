@@ -1,5 +1,7 @@
 from django.db import models
 
+
+#TODO: Add Cascade delete
 # Create your models here.
 class ChapterTopic(models.Model):
     chapter_topic_id = models.AutoField(primary_key=True)
@@ -65,23 +67,12 @@ class MapTeacherSubject(models.Model):
         db_table = 'map_teacher_subject'
 
 
-class MarksObtained(models.Model):
-    marks_id = models.AutoField(primary_key=True)
-    marks_gained = models.IntegerField()
-    chapter_topic = models.ForeignKey(ChapterTopic, models.DO_NOTHING)
-    student = models.ForeignKey('Student', models.DO_NOTHING)
-    marks_type = models.ForeignKey('MarksType', models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'marks_obtained'
-
-
 class PaperPatternEntry(models.Model):
     paper_pattern_entry_id = models.AutoField(primary_key=True)
     paper_pattern_name = models.CharField(max_length=100)
     total_marks = models.IntegerField()
     subject = models.ForeignKey('Tblsubject', models.DO_NOTHING)
+    marks_type = models.ForeignKey('MarksType', models.DO_NOTHING)
 
     class Meta:
         managed = False
@@ -91,7 +82,7 @@ class PaperPatternEntry(models.Model):
 class PaperPatternQuestion(models.Model):
     paper_pattern_question_id = models.AutoField(primary_key=True)
     paper_pattern_entry_id = models.ForeignKey('PaperPatternEntry', models.DO_NOTHING)
-    paper_pattern_question_id = models.IntegerField()
+    paper_pattern_question_text_id = models.IntegerField() #TODO: Unique constraint with paperpatternid
     paper_pattern_question_text = models.TextField()
     rau_type = models.IntegerField()
     total_marks = models.IntegerField()
@@ -100,6 +91,16 @@ class PaperPatternQuestion(models.Model):
     class Meta:
         managed = False
         db_table = 'paper_pattern_question'
+
+
+class MapStudentPaperPatternQuestion(models.Model):
+    student = models.ForeignKey('Student',models.DO_NOTHING)
+    paper_pattern_question = models.ForeignKey('PaperPatternQuestion', models.DO_NOTHING)
+    mark_obtained = models.IntegerField() #TODO: Validation PaperPatternQuestion totalmarks <= this
+
+    class Meta:
+        managed = False
+        db_table = ""
 
 
 class MarksType(models.Model):
