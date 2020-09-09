@@ -39,11 +39,21 @@ class FeedbackQuestion(models.Model):
     feedback_question_id = models.AutoField(primary_key=True)
     question_text = models.TextField()
     feedback_question_credit = models.IntegerField()
+    question_group = models.ForeignKey('FeedbackQuestionGroup', models.DO_NOTHING)
 
     class Meta:
         managed = False
         db_table = 'feedback_question'
 
+
+class FeedbackQuestionGroup(models.Model):
+    feedback_question_group_id = models.AutoField(primary_key=True)
+    question_group = models.TextField()
+    description = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'feedback_question_group'
 
 class MapTeacherSubject(models.Model):
     map_teacher_subject_id = models.AutoField(primary_key=True)
@@ -65,6 +75,31 @@ class MarksObtained(models.Model):
     class Meta:
         managed = False
         db_table = 'marks_obtained'
+
+
+class PaperPatternEntry(models.Model):
+    paper_pattern_entry_id = models.AutoField(primary_key=True)
+    paper_pattern_name = models.CharField(max_length=100)
+    total_marks = models.IntegerField()
+    subject = models.ForeignKey('Tblsubject', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'paper_pattern_entry'
+
+
+class PaperPatternQuestion(models.Model):
+    paper_pattern_question_id = models.AutoField(primary_key=True)
+    paper_pattern_entry_id = models.ForeignKey('PaperPatternEntry', models.DO_NOTHING)
+    paper_pattern_question_id = models.IntegerField()
+    paper_pattern_question_text = models.TextField()
+    rau_type = models.IntegerField()
+    total_marks = models.IntegerField()
+    chapter_topic = models.ForeignKey('ChapterTopic', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'paper_pattern_question'
 
 
 class MarksType(models.Model):
