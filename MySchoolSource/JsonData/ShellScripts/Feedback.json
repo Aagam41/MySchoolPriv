@@ -1,0 +1,34 @@
+[
+  {
+    "student": 1,
+    "map_teacher_subject": 1,
+    "feedback_rating": 4,
+    "feedback_comments": "Good teaching",
+    "feedback_question": 1,
+    "feedback_date": "12-08-2020"
+  },
+  {
+    "student": 2,
+    "map_teacher_subject": 2,
+    "feedback_rating": 5,
+    "feedback_comments": "Excellent teaching.",
+    "feedback_question": 2,
+    "feedback_date": "12-08-2020"
+  },
+   {
+    "student": 3,
+    "map_teacher_subject": 3,
+    "feedback_rating": 2,
+    "feedback_comments": "Not an interactive lecture.",
+    "feedback_question": 3,
+    "feedback_date": "12-08-2020"
+  },
+   {
+    "student": 4,
+    "map_teacher_subject": 4,
+    "feedback_rating": 3,
+    "feedback_comments": "I do not like the teaching method",
+    "feedback_question": 4,
+    "feedback_date": "12-08-2020"
+  }
+]
