@@ -1,8 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-
-#TODO: Add Cascade delete
-# Create your models here.
+#TODO: Cascade Delete
 class ChapterTopic(models.Model):
     chapter_topic_id = models.AutoField(primary_key=True)
     subject_chapter = models.ForeignKey('SubjectChapter', models.DO_NOTHING)
@@ -10,7 +9,7 @@ class ChapterTopic(models.Model):
     topic_name = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'chapter_topic'
 
 
@@ -19,13 +18,13 @@ class TblClass(models.Model):
     describe = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'class'
 
 
 class Feedback(models.Model):
     feedback_id = models.AutoField(primary_key=True)
-    student = models.ForeignKey('Student', models.DO_NOTHING)
+    student = models.ForeignKey('MySchoolUser', models.DO_NOTHING)
     map_teacher_subject = models.ForeignKey('MapTeacherSubject', models.DO_NOTHING)
     feedback_rating = models.IntegerField()
     feedback_comments = models.TextField()
@@ -33,7 +32,7 @@ class Feedback(models.Model):
     feedback_date = models.DateTimeField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'feedback'
 
 
@@ -44,7 +43,7 @@ class FeedbackQuestion(models.Model):
     question_group = models.ForeignKey('FeedbackQuestionGroup', models.DO_NOTHING)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'feedback_question'
 
 
@@ -54,17 +53,17 @@ class FeedbackQuestionGroup(models.Model):
     description = models.TextField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'feedback_question_group'
 
 class MapTeacherSubject(models.Model):
     map_teacher_subject_id = models.AutoField(primary_key=True)
-    teacher = models.ForeignKey('Teacher', models.DO_NOTHING)
+    teacher = models.ForeignKey('MySchoolUser', models.DO_NOTHING)
     subject = models.ForeignKey('Tblsubject', models.DO_NOTHING)
 
     class Meta:
-        managed = False
-        db_table = 'map_teacher_subject'
+        managed = True
+        db_table = 'map_myschool_user_subject'
 
 
 class PaperPatternEntry(models.Model):
@@ -75,7 +74,7 @@ class PaperPatternEntry(models.Model):
     marks_type = models.ForeignKey('MarksType', models.DO_NOTHING)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'paper_pattern_entry'
 
 
@@ -89,18 +88,18 @@ class PaperPatternQuestion(models.Model):
     chapter_topic = models.ForeignKey('ChapterTopic', models.DO_NOTHING)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'paper_pattern_question'
 
 
 class MapStudentPaperPatternQuestion(models.Model):
-    student = models.ForeignKey('Student',models.DO_NOTHING)
+    student = models.ForeignKey('MySchoolUser',models.DO_NOTHING)
     paper_pattern_question = models.ForeignKey('PaperPatternQuestion', models.DO_NOTHING)
     mark_obtained = models.IntegerField() #TODO: Validation PaperPatternQuestion totalmarks <= this
 
     class Meta:
-        managed = False
-        db_table = ""
+        managed = True
+        db_table = "map_myschool_user_paper_pattern_question"
 
 
 class MarksType(models.Model):
@@ -109,43 +108,28 @@ class MarksType(models.Model):
     out_of = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'marks_type'
 
 
-class Person(models.Model):
-    person_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    phone_no = models.BigIntegerField()
-    email_id = models.CharField(max_length=100)
-    password = models.TextField()
-    salt = models.TextField()
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        managed = False
-        db_table = 'person'
-
-
-class Staff(models.Model):
-    staff_id = models.AutoField(primary_key=True)
-    person = models.ForeignKey(Person, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'staff'
-
-
-class Student(models.Model):
-    student_id = models.AutoField(primary_key=True)
-    person = models.ForeignKey(Person, models.DO_NOTHING)
+class MySchoolUser(models.Model):
+    myschool_user_id = models.AutoField(primary_key=True)
+    auth_user = models.OneToOneField(User, on_delete=models.CASCADE)
     class_field = models.ForeignKey(TblClass, models.DO_NOTHING, db_column='class')  # Field renamed because it was a Python reserved word.
+    role = models.ForeignKey('TblRole',models.DO_NOTHING)
 
     class Meta:
-        managed = False
-        db_table = 'student'
+        managed = True
+        db_table = 'myschool_user'
+
+
+class TblRole(models.Model):
+    role_id = models.AutoField(primary_key=True)
+    description = models.CharField(max_length=50, null=True)
+
+    class Meta:
+        managed = True
+        db_table ='tbl_role'
 
 
 class StudentEfficacy(models.Model):
@@ -161,10 +145,10 @@ class StudentEfficacy(models.Model):
     absences = models.IntegerField()
     class_engagement = models.IntegerField()
     health = models.IntegerField()
-    student = models.ForeignKey(Student, models.DO_NOTHING)
+    student = models.ForeignKey('MySchoolUser', models.DO_NOTHING)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'student_efficacy'
 
 
@@ -179,17 +163,8 @@ class SubjectChapter(models.Model):
     chapter_credit = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'subject_chapter'
-
-
-class Tblrole(models.Model):
-    role_id = models.AutoField(primary_key=True)
-    role_type = models.CharField(max_length=10)
-
-    class Meta:
-        managed = False
-        db_table = 'tblrole'
 
 
 class Tblsubject(models.Model):
@@ -202,14 +177,5 @@ class Tblsubject(models.Model):
     subject_credit = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'tblsubject'
-
-
-class Teacher(models.Model):
-    teacher_id = models.AutoField(primary_key=True)
-    person = models.ForeignKey(Person, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'teacher'
