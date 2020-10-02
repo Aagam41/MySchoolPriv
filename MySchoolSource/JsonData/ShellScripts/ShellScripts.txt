@@ -1,6 +1,6 @@
 import json
 from StudentPerformance.models import Person
-from StudentPerformance.models iport Student
+from StudentPerformance.models import Student
 
 with open('JsonData\Person.json') as f:
     person = json.load(f)
