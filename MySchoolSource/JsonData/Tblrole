@@ -1,0 +1,14 @@
+[
+  {
+    "role_type" : "Teacher"
+  },
+  {
+    "role_type" : "Student"
+  },
+  {
+    "role_type" : "Principle"
+  },
+  {
+    "role_type" : "Staff"
+  }
+]
