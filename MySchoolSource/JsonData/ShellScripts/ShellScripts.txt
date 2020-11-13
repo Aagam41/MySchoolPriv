@@ -6,7 +6,7 @@ with open('JsonData\Person.json') as f:
     person = json.load(f)
 
 with open('JsonData\student.json') as f:
-    s = json.load(f)
+    student = json.load(f)
 
 for p in person:
     p = Person(name=p['name'],phone_no=p['phone_no'],email_id=['email_id'],password=p['password'],salt=['salt'])
