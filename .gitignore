@@ -127,4 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# added by Aagam Sheth
 /test.txt
+/Docs/
+env.json

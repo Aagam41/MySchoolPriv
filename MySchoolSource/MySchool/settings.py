@@ -11,19 +11,22 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+with open('MySchool/env.json') as JSONFile:
+    environ = json.load(JSONFile)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 't_&$kk#m&rz_v!@&*8it&f&lu88(t2gpqp@cp4blwr)a2cnwo!'
+SECRET_KEY = environ['MYSCHOOL_SETTINGS_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(environ['MYSCHOOL_SETTINGS_DEBUG'] == "True")
 
 ALLOWED_HOSTS = []
 
@@ -34,6 +37,7 @@ INSTALLED_APPS = [
     'StudentPerformancePrediction.apps.StudentperformancepredictionConfig',
     'StudentPerformance.apps.StudentperformanceConfig',
     'StudentFeedback.apps.StudentfeedbackConfig',
+    'MySchoolHome.apps.MyschoolhomeConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -80,11 +84,11 @@ WSGI_APPLICATION = 'MySchool.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'my_school',
-        'USER': 'MySchool',
-        'PASSWORD': 'MySchool@123456',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': str(environ['MYSCHOOL_SETTINGS_DATABASE_NAME']),
+        'USER': str(environ['MYSCHOOL_SETTINGS_DATABASE_USER']),
+        'PASSWORD': str(environ['MYSCHOOL_SETTINGS_DATABASE_PASSWORD']),
+        'HOST': environ['MYSCHOOL_SETTINGS_DATABASE_HOST'],
+        'PORT': environ['MYSCHOOL_SETTINGS_DATABASE_PORT'],
     }
 }
 
