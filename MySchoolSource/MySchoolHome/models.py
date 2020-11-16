@@ -12,6 +12,9 @@ class MySchoolUser(models.Model):
     class Meta:
         managed = True
         db_table = 'myschool_user'
+        constraints = [
+            models.UniqueConstraint(fields=['auth_user'], name='unique_auth_user_for_myschool_user')
+        ]
 
     def __str__(self):
         return f'{self.auth_user} : {self.role}'

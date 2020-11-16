@@ -19,8 +19,8 @@ class ChapterTopic(models.Model):
 
 
 class TblClass(models.Model):
-    class_id = models.AutoField(primary_key=True)
-    standard = models.IntegerField()  # Field renamed because it was a Python reserved word. # noqa
+    class_id = models.AutoField(primary_key=True)  # Field renamed because it was a Python reserved word. # noqa
+    standard = models.IntegerField()
     section = models.CharField(max_length=1)
 
     class Meta:
@@ -29,6 +29,7 @@ class TblClass(models.Model):
 
     def __str__(self):
         return f'{self.standard} {self.section}'
+
 
 class MapTeacherSubject(models.Model):
     map_teacher_subject_id = models.AutoField(primary_key=True)
@@ -99,7 +100,7 @@ class MapMySchoolUserClass(models.Model):
         db_table = "map_myschool_user_class"
 
     def __str__(self):
-        return self.map_my_school_user_class_id
+        return str(self.map_my_school_user_class_id)
 
 
 class MarksType(models.Model):
