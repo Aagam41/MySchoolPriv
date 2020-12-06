@@ -2,6 +2,7 @@ from django.db import models
 from StudentPerformance.models import MapTeacherSubject
 from MySchoolHome.models import MySchoolUser
 
+
 # Create your models here.
 
 
@@ -19,8 +20,8 @@ class Feedback(models.Model):
         db_table = 'feedback'
         constraints = [
             models.UniqueConstraint(fields=['student', 'map_teacher_subject', 'feedback_question', 'feedback_date'],
-                                    name='unique_for_student_feedback_on_subject_teacher')
-        ]
+                                    name='unique_for_student_feedback_on_subject_teacher'),
+            ]
 
     def __str__(self):
         return self.feedback_id

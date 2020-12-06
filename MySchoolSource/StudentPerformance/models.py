@@ -18,14 +18,25 @@ class ChapterTopic(models.Model):
         return f'{self.topic_id}. {self.topic_name}'
 
 
-class TblClass(models.Model):
-    class_id = models.AutoField(primary_key=True)  # Field renamed because it was a Python reserved word. # noqa
-    standard = models.IntegerField()
+class Standard(models.Model):
+    standard = models.IntegerField(primary_key=True)
+
+    class Meta:
+        managed = True
+        db_table = 'standard'
+
+    def __str__(self):
+        return str(self.standard)
+
+
+class StandardSection(models.Model):
+    standard_section_id = models.AutoField(primary_key=True)
+    standard = models.ForeignKey(Standard, models.DO_NOTHING)
     section = models.CharField(max_length=1)
 
     class Meta:
         managed = True
-        db_table = 'class'
+        db_table = 'standard_section'
 
     def __str__(self):
         return f'{self.standard} {self.section}'
@@ -90,17 +101,17 @@ class MapStudentPaperPatternQuestion(models.Model):
         return self.map_student_paper_pattern_question_id
 
 
-class MapMySchoolUserClass(models.Model):
-    map_my_school_user_class_id = models.AutoField(primary_key=True)
+class MapMySchoolUserStandardSection(models.Model):
+    map_my_school_user_standard_section = models.AutoField(primary_key=True)
     myschool_user = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
-    class_field = models.ForeignKey('TblClass', models.DO_NOTHING)
+    standard_section = models.ForeignKey(StandardSection, models.DO_NOTHING)
 
     class Meta:
         managed = True
-        db_table = "map_myschool_user_class"
+        db_table = "map_myschool_user_standard_section"
 
     def __str__(self):
-        return str(self.map_my_school_user_class_id)
+        return f'{self.standard_section} {self.myschool_user}'
 
 
 class MarksType(models.Model):
@@ -137,15 +148,15 @@ class SubjectChapter(models.Model):
 class Tblsubject(models.Model):
     subject_id = models.AutoField(primary_key=True)
     subject_name = models.CharField(max_length=20)
-    class_field = models.ForeignKey(TblClass, models.DO_NOTHING, db_column='class')  # Field renamed because it was a Python reserved word. # noqa
-    remembrance_credit = models.IntegerField()
-    applied_knowledge_credit = models.IntegerField()
-    understanding_credit = models.IntegerField()
-    subject_credit = models.IntegerField()
+    standard = models.ForeignKey(Standard, models.DO_NOTHING)
+    remembrance_credit = models.IntegerField(default=40)
+    applied_knowledge_credit = models.IntegerField(default=30)
+    understanding_credit = models.IntegerField(default=30)
+    subject_credit = models.IntegerField(default=100)
 
     class Meta:
         managed = True
         db_table = 'tblsubject'
 
     def __str__(self):
-        return f'{self.subject_name} of class : {self.class_field}'
+        return f'{self.subject_name} : {self.standard}'

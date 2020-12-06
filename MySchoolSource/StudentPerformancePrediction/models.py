@@ -24,4 +24,4 @@ class StudentEfficacy(models.Model):
         db_table = 'student_efficacy'
 
     def __str__(self):
-        return self.student
+        return str(self.student)
