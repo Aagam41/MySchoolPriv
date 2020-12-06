@@ -1,10 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from aagam_packages.django_model_extensions import models as amdl
+
+
 # Create your models here.
 
 
-class MySchoolUser(models.Model):
+class MySchoolUser(amdl.AagamBaseModel):
     myschool_user_id = models.AutoField(primary_key=True)
     auth_user = models.OneToOneField(User, on_delete=models.CASCADE)
 

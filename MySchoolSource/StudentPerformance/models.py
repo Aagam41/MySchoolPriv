@@ -1,10 +1,15 @@
 from django.db import models
+
+from aagam_packages.django_model_extensions import models as amdl
+
 from MySchoolHome.models import MySchoolUser
 
+
 # TODO: Cascade Delete
+# Create your models here.
 
 
-class ChapterTopic(models.Model):
+class ChapterTopic(amdl.AagamBaseModel):
     chapter_topic_id = models.AutoField(primary_key=True)
     subject_chapter = models.ForeignKey('SubjectChapter', models.DO_NOTHING)
     topic_id = models.IntegerField()
@@ -18,7 +23,7 @@ class ChapterTopic(models.Model):
         return f'{self.topic_id}. {self.topic_name}'
 
 
-class Standard(models.Model):
+class Standard(amdl.AagamBaseModel):
     standard = models.IntegerField(primary_key=True)
 
     class Meta:
@@ -29,7 +34,7 @@ class Standard(models.Model):
         return str(self.standard)
 
 
-class StandardSection(models.Model):
+class StandardSection(amdl.AagamBaseModel):
     standard_section_id = models.AutoField(primary_key=True)
     standard = models.ForeignKey(Standard, models.DO_NOTHING)
     section = models.CharField(max_length=1)
@@ -42,7 +47,7 @@ class StandardSection(models.Model):
         return f'{self.standard} {self.section}'
 
 
-class MapTeacherSubject(models.Model):
+class MapTeacherSubject(amdl.AagamBaseModel):
     map_teacher_subject_id = models.AutoField(primary_key=True)
     teacher = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
     subject = models.ForeignKey('Tblsubject', models.DO_NOTHING)
@@ -55,7 +60,7 @@ class MapTeacherSubject(models.Model):
         return f'{self.subject} {self.teacher}'
 
 
-class PaperPatternEntry(models.Model):
+class PaperPatternEntry(amdl.AagamBaseModel):
     paper_pattern_entry_id = models.AutoField(primary_key=True)
     paper_pattern_name = models.CharField(max_length=100)
     total_marks = models.IntegerField()
@@ -70,7 +75,7 @@ class PaperPatternEntry(models.Model):
         return self.paper_pattern_name
 
 
-class PaperPatternQuestion(models.Model):
+class PaperPatternQuestion(amdl.AagamBaseModel):
     paper_pattern_question_id = models.AutoField(primary_key=True)
     paper_pattern_entry_id = models.ForeignKey('PaperPatternEntry', models.DO_NOTHING)
     paper_pattern_question_text_id = models.IntegerField()  # TODO: Unique constraint with paperpatternid
@@ -87,7 +92,7 @@ class PaperPatternQuestion(models.Model):
         return self.paper_pattern_question_text
 
 
-class MapStudentPaperPatternQuestion(models.Model):
+class MapStudentPaperPatternQuestion(amdl.AagamBaseModel):
     map_student_paper_pattern_question_id = models.AutoField(primary_key=True)
     student = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
     paper_pattern_question = models.ForeignKey('PaperPatternQuestion', models.DO_NOTHING)
@@ -98,10 +103,10 @@ class MapStudentPaperPatternQuestion(models.Model):
         db_table = "map_myschool_user_paper_pattern_question"
 
     def __str__(self):
-        return self.map_student_paper_pattern_question_id
+        return str(self.map_student_paper_pattern_question_id)
 
 
-class MapMySchoolUserStandardSection(models.Model):
+class MapMySchoolUserStandardSection(amdl.AagamBaseModel):
     map_my_school_user_standard_section = models.AutoField(primary_key=True)
     myschool_user = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
     standard_section = models.ForeignKey(StandardSection, models.DO_NOTHING)
@@ -114,7 +119,7 @@ class MapMySchoolUserStandardSection(models.Model):
         return f'{self.standard_section} {self.myschool_user}'
 
 
-class MarksType(models.Model):
+class MarksType(amdl.AagamBaseModel):
     marks_type_id = models.AutoField(primary_key=True)
     marks_type = models.CharField(max_length=100)
     out_of = models.IntegerField()
@@ -127,7 +132,7 @@ class MarksType(models.Model):
         return self.marks_type
 
 
-class SubjectChapter(models.Model):
+class SubjectChapter(amdl.AagamBaseModel):
     subject_chapter_id = models.AutoField(primary_key=True)
     subject = models.ForeignKey('Tblsubject', models.DO_NOTHING)
     chapter_id = models.IntegerField()
@@ -145,7 +150,7 @@ class SubjectChapter(models.Model):
         return f'{self.chapter_id} {self.chapter_name}'
 
 
-class Tblsubject(models.Model):
+class Tblsubject(amdl.AagamBaseModel):
     subject_id = models.AutoField(primary_key=True)
     subject_name = models.CharField(max_length=20)
     standard = models.ForeignKey(Standard, models.DO_NOTHING)

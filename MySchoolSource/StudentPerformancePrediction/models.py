@@ -1,10 +1,14 @@
 from django.db import models
+
+from aagam_packages.django_model_extensions import models as amdl
+
 from MySchoolHome.models import MySchoolUser
+
 
 # Create your models here.
 
 
-class StudentEfficacy(models.Model):
+class StudentEfficacy(amdl.AagamBaseModel):
     student_efficacy_id = models.AutoField(primary_key=True)
     father_education = models.IntegerField()
     mother_education = models.IntegerField()

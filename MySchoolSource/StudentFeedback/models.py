@@ -1,4 +1,7 @@
 from django.db import models
+
+from aagam_packages.django_model_extensions import models as amdl
+
 from StudentPerformance.models import MapTeacherSubject
 from MySchoolHome.models import MySchoolUser
 
@@ -6,7 +9,7 @@ from MySchoolHome.models import MySchoolUser
 # Create your models here.
 
 
-class Feedback(models.Model):
+class Feedback(amdl.AagamBaseModel):
     feedback_id = models.AutoField(primary_key=True)
     student = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
     map_teacher_subject = models.ForeignKey(MapTeacherSubject, models.DO_NOTHING)
@@ -27,7 +30,7 @@ class Feedback(models.Model):
         return self.feedback_id
 
 
-class FeedbackQuestion(models.Model):
+class FeedbackQuestion(amdl.AagamBaseModel):
     feedback_question_id = models.AutoField(primary_key=True)
     question_text = models.TextField()
     feedback_question_credit = models.IntegerField()
@@ -41,7 +44,7 @@ class FeedbackQuestion(models.Model):
         return f'{self.question_group} : {self.question_text}'
 
 
-class FeedbackQuestionGroup(models.Model):
+class FeedbackQuestionGroup(amdl.AagamBaseModel):
     feedback_question_group_id = models.AutoField(primary_key=True)
     question_group = models.TextField()
     description = models.TextField()
