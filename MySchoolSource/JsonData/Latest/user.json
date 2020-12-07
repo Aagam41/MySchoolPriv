@@ -1,10 +1,170 @@
 [
   {
-    "username": "",
-    "password": "",
-    "first_name":"",
-    "last_name": "",
-    "email": "",
+    "username": "Jay1",
+    "password": "UAs@123",
+    "first_name":"Jay",
+    "last_name": "Patel",
+    "email": "Jaypatel@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Bhavesh2233",
+    "password": "Patel@@1222",
+    "first_name":"Bhavesh",
+    "last_name": "Patel",
+    "email": "Bhavwh@email.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Priys12223",
+    "password": "Patel",
+    "first_name":"Priya",
+    "last_name": "Patel",
+    "email": "Priya@yahoo.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Guatam22",
+    "password": "Guhsfdi@@34441",
+    "first_name":"Gautam",
+    "last_name": "Patel",
+    "email": "guajsya@apple.com",
+    "groups": "learner"
+  },
+  {
+    "username": "gurav344",
+    "password": "SDffdfd@@333",
+    "first_name": "Gurav",
+    "last_name": "Sigh",
+    "email": "Gujars@gsd.com",
+    "groups": "learner"
+  },
+  {
+    "username": "chit",
+    "password": "Chit2@@@",
+    "first_name": "Chit",
+    "last_name": "Patel",
+    "email": "Chitsdsd@yaa.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Sumit",
+    "password": "Sumit$$121",
+    "first_name":"Sumit",
+    "last_name": "Patel",
+    "email": "Sumit@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "bansi",
+    "password": "Bansi#222",
+    "first_name":"bansi",
+    "last_name": "chitra",
+    "email": "bansi@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "sweety",
+    "password": "Sweey33@@",
+    "first_name":"Sweety",
+    "last_name": "Patel",
+    "email": "Sweety@gg.com",
+    "groups": "learner"
+  },
+  {
+    "username": "go123",
+    "password": "Gobye@111",
+    "first_name":"Gourng",
+    "last_name": "Soni",
+    "email": "GUrang@ggam,com",
+    "groups": "learner"
+  },
+  {
+    "username": "joy1212",
+    "password": "Joys@@333#",
+    "first_name":"Joy",
+    "last_name": "Shelja",
+    "email": "Jos@ccgmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Shruvi233",
+    "password": "Shruvi@2233333",
+    "first_name": "Shruvi",
+    "last_name": "Patel",
+    "email": "Shruvi222@hayoo.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Gopal323",
+    "password": "Gopa332@@",
+    "first_name":"Gopal",
+    "last_name": "Kachru",
+    "email": "Gopalsiii@@hhhd.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Shreya122",
+    "password": "Shreya222$$",
+    "first_name":"Shreya",
+    "last_name": "Patel",
+    "email": "Shreya@@ggmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Bhup2",
+    "password": "BUis@@@s1212",
+    "first_name":"Gur",
+    "last_name": "sigh",
+    "email": "Gujri@hmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "prit",
+    "password": "Prithsdy@e1212",
+    "first_name":"Prit",
+    "last_name": "Shah",
+    "email": "Pritsdsd@gmmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Govy1212",
+    "password": "Koysdh22@@d",
+    "first_name":"Gopi",
+    "last_name": "Patel",
+    "email": "gopyej1j22@@h.com",
+    "groups": "learner"
+  },
+  {
+    "username": "By1222",
+    "password": "Bysdni2@#$$33",
+    "first_name":"Gunjan",
+    "last_name": "govi",
+    "email": "Gunjajn234@gmai.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Maitri23",
+    "password": "Patel1@2331222",
+    "first_name":"Maitri",
+    "last_name": "Patel",
+    "email": "maitri@h3jna,com",
+    "groups": "learner"
+  },
+  {
+    "username": "bhsdb12",
+    "password": "yYas@baidg121",
+    "first_name":"Guaja",
+    "last_name": "sheth",
+    "email": "Ptsfue3h@mail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Yasiid122",
+    "password": "Siasn@1212",
+    "first_name":"Uarish",
+    "last_name": "Phasu",
+    "email": "Uarish2@gmail.com",
     "groups": "learner"
   }
 ]

@@ -1,7 +1,93 @@
 [
   {
-    "subject_name": "",
-    "standard": "",
+    "subject_name": "Maths_5",
+    "standard": "5",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },
+  {
+    "subject_name": "English_5",
+    "standard": "5",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },
+  {
+    "subject_name": "Science_5",
+    "standard": "5",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },
+  {
+    "subject_name": "Maths_6",
+    "standard": "6",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },
+  {
+    "subject_name": "Science_6",
+    "standard": "6",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },
+  {
+    "subject_name": "English_6",
+    "standard": "6",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },
+  {
+    "subject_name": "Maths_7",
+    "standard": "7",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },
+  {
+    "subject_name": "English_7",
+    "standard": "7",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },
+  {
+    "subject_name": "Science_7",
+    "standard": "7",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },
+  {
+    "subject_name": "Maths_8",
+    "standard": "8",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },{
+    "subject_name": "Science_8",
+    "standard": "8",
+    "remembrance_credit": "30",
+    "applied_knowledge_credit": "40",
+    "understanding_credit": "30",
+    "subject_credit":"100"
+  },{
+    "subject_name": "English_8",
+    "standard": "8",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
