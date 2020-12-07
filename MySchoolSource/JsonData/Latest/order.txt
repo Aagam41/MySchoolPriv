@@ -1,0 +1,6 @@
+user = 60 ,20
+teacher = 6, aagam
+subject = 36, 12
+subjectchapter = 10 for each subject, for your subject
+chaptertopic = 5 for each chapter, for your subject
+teachersubject = 6 subject to each teacher randomly, write your subject Aagam will add teacher
