@@ -9,6 +9,15 @@ from MySchoolHome.models import MySchoolUser
 # Create your models here.
 
 
+class FeedbackForm(amdl.AagamBaseModel):
+
+
+    class Meta:
+        db_table = 'feedback_form'
+
+    def __str__(self):
+        pass
+
 class Feedback(amdl.AagamBaseModel):
     feedback_id = models.AutoField(primary_key=True)
     student = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
@@ -17,6 +26,7 @@ class Feedback(amdl.AagamBaseModel):
     feedback_comments = models.TextField()
     feedback_question = models.ForeignKey('FeedbackQuestion', models.DO_NOTHING)
     feedback_date = models.DateTimeField()
+    feedback__state = models.BooleanField(default=True)
 
     class Meta:
         managed = True

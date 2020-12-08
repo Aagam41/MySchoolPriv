@@ -6,6 +6,7 @@ from MySchoolHome.models import MySchoolUser
 
 
 # TODO: Cascade Delete
+
 # Create your models here.
 
 
@@ -60,15 +61,26 @@ class MapTeacherSubject(amdl.AagamBaseModel):
         return f'{self.subject} {self.teacher}'
 
 
+class PaperState(amdl.AagamBaseModel):
+    paper_state_id = models.AutoField(primary_key=True)
+    paper_pattern_entry = models.ForeignKey('PaperPatternEntry', models.DO_NOTHING)
+    paper_state = models.BooleanField()
+    paper_pattern_year = models.DateField(auto_created=True)
+
+    class Meta:
+        db_table = "paper_state"
+
+    def __str__(self):
+        pass
+
+
 class PaperPatternEntry(amdl.AagamBaseModel):
     paper_pattern_entry_id = models.AutoField(primary_key=True)
     paper_pattern_name = models.CharField(max_length=100)
-    total_marks = models.IntegerField()
     subject = models.ForeignKey('Tblsubject', models.DO_NOTHING)
     marks_type = models.ForeignKey('MarksType', models.DO_NOTHING)
 
     class Meta:
-        managed = True
         db_table = 'paper_pattern_entry'
 
     def __str__(self):
@@ -77,15 +89,14 @@ class PaperPatternEntry(amdl.AagamBaseModel):
 
 class PaperPatternQuestion(amdl.AagamBaseModel):
     paper_pattern_question_id = models.AutoField(primary_key=True)
-    paper_pattern_entry_id = models.ForeignKey('PaperPatternEntry', models.DO_NOTHING)
+    paper_pattern_entry = models.ForeignKey('PaperPatternEntry', models.DO_NOTHING)
     paper_pattern_question_text_id = models.IntegerField()  # TODO: Unique constraint with paperpatternid
     paper_pattern_question_text = models.TextField()
-    rau_type = models.IntegerField()
+    rau_type = models.IntegerField()  # TODO: choice filed as it is fixed
     total_marks = models.IntegerField()
     chapter_topic = models.ForeignKey('ChapterTopic', models.DO_NOTHING)
 
     class Meta:
-        managed = True
         db_table = 'paper_pattern_question'
 
     def __str__(self):
@@ -99,24 +110,10 @@ class MapStudentPaperPatternQuestion(amdl.AagamBaseModel):
     marks_obtained = models.IntegerField()  # TODO: Validation PaperPatternQuestion totalmarks <= this
 
     class Meta:
-        managed = True
         db_table = "map_myschool_user_paper_pattern_question"
 
     def __str__(self):
         return str(self.map_student_paper_pattern_question_id)
-
-
-class MapMySchoolUserStandardSection(amdl.AagamBaseModel):
-    map_my_school_user_standard_section = models.AutoField(primary_key=True)
-    myschool_user = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
-    standard_section = models.ForeignKey(StandardSection, models.DO_NOTHING)
-
-    class Meta:
-        managed = True
-        db_table = "map_myschool_user_standard_section"
-
-    def __str__(self):
-        return f'{self.standard_section} {self.myschool_user}'
 
 
 class MarksType(amdl.AagamBaseModel):
@@ -130,6 +127,19 @@ class MarksType(amdl.AagamBaseModel):
 
     def __str__(self):
         return self.marks_type
+
+
+class MapMySchoolUserStandardSection(amdl.AagamBaseModel):
+    map_my_school_user_standard_section = models.AutoField(primary_key=True)
+    myschool_user = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
+    standard_section = models.ForeignKey(StandardSection, models.DO_NOTHING)
+
+    class Meta:
+        managed = True
+        db_table = "map_myschool_user_standard_section"
+
+    def __str__(self):
+        return f'{self.standard_section} {self.myschool_user}'
 
 
 class SubjectChapter(amdl.AagamBaseModel):

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 import pandas as pd
 
 from MySchoolHome import models as msh
+from StudentPerformance import models as sp
 
 
 def get_myschool_user(username: str):
@@ -23,8 +24,9 @@ def marks(user, paper_pattern_entry):
     :param paper_pattern_entry: PaperPatternEntry object
     :return: Returns a integer
     """
-    paper_pattern_entry = get_paper_pattern_entry(paper_pattern_entry)
-    paper_pattern_question = get_paper_pattern_question(paper_pattern_entry)
-    user_marks = get_map_student_question(user, paper_pattern_question)
-    sum = [x + x for x in user_marks.marks_obtained]
-    return sum
+    paper_pattern_question1 = sp.PaperPatternQuestion.objects.filter(paper_pattern_entry_id_id=paper_pattern_entry)
+    # paper_pattern_question = get_paper_pattern_question(paper_pattern_entry)
+    user_marks = sp.MapStudentPaperPatternQuestion.objects.filter()
+    # user_marks = get_map_student_question(user, paper_pattern_question)
+    sum1 = [x + x for x in user_marks.marks_obtained]
+    return sum1

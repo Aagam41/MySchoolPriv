@@ -5,4 +5,5 @@ class AagamBaseModel(models.Model):
     objects = models.Manager()
 
     class Meta:
+        managed = True
         abstract = True
