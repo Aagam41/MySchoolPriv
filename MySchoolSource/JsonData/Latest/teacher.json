@@ -1,8 +1,98 @@
-{
-    "username": "",
-    "password": "",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "groups": "Educator"
+[
+  {
+    "username":"John342",
+    "password":"mme1pn7k",
+    "first_name":"John",
+    "last_name":"Cole",
+    "email":"f.cole@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Tyler363",
+    "password":"vr7hzu9c",
+    "first_name":"Tyler",
+    "last_name":"Belwins",
+    "email":"t.bel@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Kim521",
+    "password":"s6ztvtwv",
+    "first_name":"Kim",
+    "last_name":"Gibson",
+    "email":"k.gibson@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Cas721",
+    "password":"156vm997",
+    "first_name":"Cas",
+    "last_name":"Casey",
+    "email":"c.casey@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Katie8105",
+    "password":"2kg8jgtl",
+    "first_name":"Katie",
+    "last_name":"Perry",
+    "email":"k.johnson@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Rebecca677",
+    "password":"o7xei8bq",
+    "first_name":"Rebecca",
+    "last_name":"Jones",
+    "email":"r.riley@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Julia12",
+    "password":"vxq1idjh",
+    "first_name":"Julia",
+    "last_name":"Me",
+    "email":"j.me@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Amy1079",
+    "password":"74ydur45",
+    "first_name":"Amy",
+    "last_name":"Mitchell",
+    "email":"a.mitchell@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Alfred685",
+    "password":"orjto686",
+    "first_name":"Alfred",
+    "last_name":"Man",
+    "email":"a.man@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Sienna258",
+    "password":"y3dk5hko",
+    "first_name":"Sienna",
+    "last_name":"Stark",
+    "email":"s.stark@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Adison1345",
+    "password":"kqclaizu",
+    "first_name":"Adison",
+    "last_name":"Rae",
+    "email":"a.rae@randatmail.com",
+    "groups":"Educator"
+  },
+  {
+    "username":"Deen1437",
+    "password":"bemg0f9g",
+    "first_name":"Deen",
+    "last_name":"Montgomery",
+    "email":"d.montgomery@randatmail.com",
+    "groups":"Educator"
   }
+]

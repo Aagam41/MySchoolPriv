@@ -35,7 +35,7 @@ def get_subject(standard_section):
     :param standard_section: It is a StandardSection object
     :return: Returns list of TblSubjects in a standard
     """
-    subject_list = sp.Tblsubject.objects.filter(standard=standard_section[0:1])
+    subject_list = sp.TblSubject.objects.filter(standard=standard_section[0:1])
     return subject_list
 
 
@@ -49,19 +49,5 @@ def get_prediction_data(user: msh.MySchoolUser):
         prediction_data = spp.StudentEfficacy.objects.get(student=user)
         return prediction_data
     except ObjectDoesNotExist:
-        print(yoda_saberize(YodaSaberColor.RED) + "")
-
-
-
-def marks(user, paper_pattern_entry):
-    """
-    Sums of the marks obtained field in the map_myschool_user_paper_pattern_question.
-    :param user: MySchoolUser object
-    :param paper_pattern_entry: PaperPatternEntry object
-    :return: Returns a integer
-    """
-    paper_pattern_entry = get_paper_pattern_entry(paper_pattern_entry)
-    paper_pattern_question = get_paper_pattern_question(paper_pattern_entry)
-    user_marks = get_map_student_question(user, paper_pattern_question)
-    sum = [x + x for x in user_marks.marks_obtained]
-    return sum
+        print(yoda_saberize_print("ObjectDoesNotExist: No rows found in the database.",
+                                  YodaSaberColor.WHITE, YodaSaberColor.RED))
