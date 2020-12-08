@@ -9,17 +9,41 @@ from MySchoolHome.models import MySchoolUser
 # Create your models here.
 
 
+class FeedbackForm(amdl.AagamBaseModel):
+    feedback_form_id = models.AutoField(primary_key=True)
+    subject_teacher = models.ForeignKey(MapTeacherSubject, models.DO_NOTHING)
+    date_created = models.DateField(auto_now_add=True)
+    form_status = models.BooleanField()
+
+    class Meta:
+        db_table = 'feedback_form'
+
+    def __str__(self):
+        pass
+
+
+class FeedbackFormQuestion(amdl.AagamBaseModel):
+    feedback_form_question = models.AutoField(primary_key=True)
+    feedback_form = models.ForeignKey('FeedbackForm', models.DO_NOTHING)
+    feedback_question = models.ForeignKey('FeedbackQuestion', models.DO_NOTHING)
+
+    class Meta:
+        db_table = 'feedback_form_question'
+
+    def __str__(self):
+        pass
+
+
 class Feedback(amdl.AagamBaseModel):
     feedback_id = models.AutoField(primary_key=True)
+    feedback_form_question = models.ForeignKey('FeedbackFormQuestion', models.DO_NOTHING)
     student = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
     map_teacher_subject = models.ForeignKey(MapTeacherSubject, models.DO_NOTHING)
     feedback_rating = models.IntegerField()
     feedback_comments = models.TextField()
-    feedback_question = models.ForeignKey('FeedbackQuestion', models.DO_NOTHING)
-    feedback_date = models.DateTimeField()
+    feedback_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        managed = True
         db_table = 'feedback'
         constraints = [
             models.UniqueConstraint(fields=['student', 'map_teacher_subject', 'feedback_question', 'feedback_date'],
@@ -37,7 +61,6 @@ class FeedbackQuestion(amdl.AagamBaseModel):
     question_group = models.ForeignKey('FeedbackQuestionGroup', models.DO_NOTHING)
 
     class Meta:
-        managed = True
         db_table = 'feedback_question'
 
     def __str__(self):
@@ -50,7 +73,6 @@ class FeedbackQuestionGroup(amdl.AagamBaseModel):
     description = models.TextField()
 
     class Meta:
-        managed = True
         db_table = 'feedback_question_group'
 
     def __str__(self):
