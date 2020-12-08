@@ -2,7 +2,7 @@ from django.db import models
 
 from aagam_packages.django_model_extensions import models as amdl
 
-from StudentPerformance.models import MapTeacherSubject
+from StudentPerformance.models import MapMySchoolUserSubject
 from MySchoolHome.models import MySchoolUser
 
 
@@ -11,7 +11,7 @@ from MySchoolHome.models import MySchoolUser
 
 class FeedbackForm(amdl.AagamBaseModel):
     feedback_form_id = models.AutoField(primary_key=True)
-    subject_teacher = models.ForeignKey(MapTeacherSubject, models.DO_NOTHING)
+    subject_teacher = models.ForeignKey(MapMySchoolUserSubject, models.DO_NOTHING)
     date_created = models.DateField(auto_now_add=True)
     form_status = models.BooleanField()
 
@@ -38,17 +38,12 @@ class Feedback(amdl.AagamBaseModel):
     feedback_id = models.AutoField(primary_key=True)
     feedback_form_question = models.ForeignKey('FeedbackFormQuestion', models.DO_NOTHING)
     student = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
-    map_teacher_subject = models.ForeignKey(MapTeacherSubject, models.DO_NOTHING)
     feedback_rating = models.IntegerField()
     feedback_comments = models.TextField()
     feedback_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'feedback'
-        constraints = [
-            models.UniqueConstraint(fields=['student', 'map_teacher_subject', 'feedback_question', 'feedback_date'],
-                                    name='unique_for_student_feedback_on_subject_teacher'),
-            ]
 
     def __str__(self):
         return self.feedback_id

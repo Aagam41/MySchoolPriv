@@ -28,9 +28,9 @@ class TblSubject(amdl.AagamBaseModel):
 
 class SubjectChapter(amdl.AagamBaseModel):
     subject_chapter_id = models.AutoField(primary_key=True)
-    subject = models.ForeignKey('Tblsubject', models.DO_NOTHING)
+    subject = models.ForeignKey('TblSubject', models.DO_NOTHING)
     chapter_id = models.IntegerField()
-    chapter_name = models.CharField(max_length=15)
+    chapter_name = models.CharField(max_length=150)
     remembrance_credit = models.IntegerField()
     applied_knowledge_credit = models.IntegerField()
     understanding_credit = models.IntegerField()
@@ -40,7 +40,7 @@ class SubjectChapter(amdl.AagamBaseModel):
         db_table = 'subject_chapter'
 
     def __str__(self):
-        return f'{self.chapter_id} {self.chapter_name}'
+        return f'{self.chapter_id} {self.chapter_name} : {self.subject}'
 
 
 class ChapterTopic(amdl.AagamBaseModel):
@@ -53,7 +53,7 @@ class ChapterTopic(amdl.AagamBaseModel):
         db_table = 'chapter_topic'
 
     def __str__(self):
-        return f'{self.topic_id}. {self.topic_name}'
+        return f'{self.topic_id}. {self.topic_name} : {self.subject_chapter}'
 
 
 class Standard(amdl.AagamBaseModel):
@@ -90,8 +90,8 @@ class MapMySchoolUserStandardSection(amdl.AagamBaseModel):
         return f'{self.standard_section} {self.myschool_user}'
 
 
-class MapTeacherSubject(amdl.AagamBaseModel):
-    map_teacher_subject_id = models.AutoField(primary_key=True)
+class MapMySchoolUserSubject(amdl.AagamBaseModel):
+    map_myschool_user_subject_id = models.AutoField(primary_key=True)
     myschool_user = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
     subject = models.ForeignKey('TblSubject', models.DO_NOTHING)
 
@@ -117,9 +117,8 @@ class PaperType(amdl.AagamBaseModel):
 class PaperEntry(amdl.AagamBaseModel):
     paper_entry_id = models.AutoField(primary_key=True)
     paper_name = models.CharField(max_length=100)
-    subject = models.ForeignKey('TblSubject', models.DO_NOTHING)
-    marks_type = models.ForeignKey('MarksType', models.DO_NOTHING)
-    paper_status = models.BooleanField()
+    paper_type = models.ForeignKey('PaperType', models.DO_NOTHING)
+    paper_status = models.BooleanField(default=True)
     paper_entry_date = models.DateField(auto_now_add=True)
 
     class Meta:
@@ -129,10 +128,23 @@ class PaperEntry(amdl.AagamBaseModel):
         return self.paper_name
 
 
+class MapPaperEntrySubjectChapter(amdl.AagamBaseModel):
+    map_paper_entry_subject_chapter = models.AutoField(primary_key=True)
+    paper_entry = models.ForeignKey('PaperEntry', models.DO_NOTHING)
+    subject_chapter = models.ForeignKey('SubjectChapter', models.DO_NOTHING)
+
+    class Meta:
+        db_table = 'map_paper_entry_subject_chapter'
+
+        def __str__(self):
+            return
+
+
 class PaperQuestion(amdl.AagamBaseModel):
     paper_question_id = models.AutoField(primary_key=True)
     paper_question_text = models.TextField()
-    rau_type = models.IntegerField()  # TODO: choice filed as it is fixed
+    rau = (('R', 'Remembrance'), ('A', 'Application'), ('U', 'Understanding'))
+    rau_type = models.CharField(max_length=1, choices=rau)
     total_marks = models.IntegerField()
     chapter_topic = models.ForeignKey('ChapterTopic', models.DO_NOTHING)
 
@@ -152,7 +164,7 @@ class PaperPatternEntry(amdl.AagamBaseModel):
         db_table = "paper_pattern_entry"
 
     def __str__(self):
-        pass
+        return str(self.paper_pattern_entry_id)
 
 
 class MapStudentPaperPatternEntry(amdl.AagamBaseModel):

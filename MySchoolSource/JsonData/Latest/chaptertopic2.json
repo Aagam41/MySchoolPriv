@@ -1,0 +1,588 @@
+[
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "1",
+    "topic_id": "1",
+    "topic_name": "Identify and Use Sets"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "1",
+    "topic_id": "2",
+    "topic_name": "Understand Notation of Venn Diagrams"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "1",
+    "topic_id": "3",
+    "topic_name": "Order quantities by magnitude"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "1",
+    "topic_id": "4",
+    "topic_name": "Understand and Use Indices"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "1",
+    "topic_id": "5",
+    "topic_name": "Demonstrate an Understanding of Ratio and Proportion"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "1",
+    "topic_id": "1",
+    "topic_name": "Identify and Use Sets"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "1",
+    "topic_id": "2",
+    "topic_name": "Understand Notation of Venn Diagrams"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "1",
+    "topic_id": "3",
+    "topic_name": "Order quantities by magnitude"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "1",
+    "topic_id": "4",
+    "topic_name": "Understand and Use Indices"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "1",
+    "topic_id": "5",
+    "topic_name": "Demonstrate an Understanding of Ratio and Proportion"
+  },
+
+
+
+
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "2",
+    "topic_id": "1",
+    "topic_name": "Use Letters to Express Generalized Numbers"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "2",
+    "topic_id": "2",
+    "topic_name": "Manipulate Directed Numbers"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "2",
+    "topic_id": "3",
+    "topic_name": "Use and Interpret Indices"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "2",
+    "topic_id": "4",
+    "topic_name": "Derive and Solve Simple Linear Equations"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "2",
+    "topic_id": "1",
+    "topic_name": "Represent Inequalities Graphically"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "2",
+    "topic_id": "2",
+    "topic_name": "Continue a given number sequence"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "2",
+    "topic_id": "3",
+    "topic_name": "Express direct and inverse proportion "
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "2",
+    "topic_id": "4",
+    "topic_name": "Use Function Notation"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "2",
+    "topic_id": "5",
+    "topic_name": "Estimate Gradients of Curves by Drawing Tangents"
+  },
+
+
+
+
+
+
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "3",
+    "topic_id": "1",
+    "topic_name": "Demonstrate Familiarity with Cartesian Coordinates"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "3",
+    "topic_id": "2",
+    "topic_name": "Find the Gradient of a Straight Line"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "3",
+    "topic_id": "3",
+    "topic_name": "Obtain the Equation of a Straight Line Graph"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "3",
+    "topic_id": "4",
+    "topic_name": "Find the Gradient of Parallel Line"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "3",
+    "topic_id": "5",
+    "topic_name": "Find the Gradient of Perpendicular Line"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "3",
+    "topic_id": "1",
+    "topic_name": "Demonstrate Familiarity with Cartesian Coordinates"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "3",
+    "topic_id": "2",
+    "topic_name": "Find the Gradient of a Straight Line"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "3",
+    "topic_id": "3",
+    "topic_name": "Obtain the Equation of a Straight Line Graph"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "3",
+    "topic_id": "4",
+    "topic_name": "Find the Gradient of Parallel Line"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "3",
+    "topic_id": "5",
+    "topic_name": "Find the Gradient of Perpendicular Line"
+  },
+
+
+
+
+
+
+
+
+
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "4",
+    "topic_id": "1",
+    "topic_name": "Use and Interpret Geometrical Terms"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "4",
+    "topic_id": "2",
+    "topic_name": "Measure and Draw Lines and Angles"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "4",
+    "topic_id": "3",
+    "topic_name": "Read and Make Scale Drawings"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "4",
+    "topic_id": "4",
+    "topic_name": "Recognize Congruent Shapes"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "4",
+    "topic_id": "5",
+    "topic_name": "Recognize Rational Line Symmetry"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "4",
+    "topic_id": "1",
+    "topic_name": "Use and Interpret Geometrical Terms"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "4",
+    "topic_id": "2",
+    "topic_name": "Measure and Draw Lines and Angles"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "4",
+    "topic_id": "3",
+    "topic_name": "Read and Make Scale Drawings"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "4",
+    "topic_id": "4",
+    "topic_name": "Recognize Congruent Shapes"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "4",
+    "topic_id": "5",
+    "topic_name": "Recognize Rational Line Symmetry"
+  },
+
+
+
+
+
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "5",
+    "topic_id": "1",
+    "topic_name": "Use SI Units"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter": "5",
+    "topic_id": "2",
+    "topic_name": "Carry Out Calculations on Shapes"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "5",
+    "topic_id": "1",
+    "topic_name": "Use SI Units"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter": "5",
+    "topic_id": "2",
+    "topic_name": "Carry Out Calculations on Shapes"
+  },
+
+
+
+
+
+
+
+
+  {
+    "subject": "Physics 8620",
+    "chapter": "1",
+    "topic_id": "1",
+    "topic_name": "Length and Time"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "1",
+    "topic_id": "2",
+    "topic_name": "Motion"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "1",
+    "topic_id": "4",
+    "topic_name": "Mass and Weight"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "1",
+    "topic_id": "4",
+    "topic_name": "Density"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "1",
+    "topic_id": "5",
+    "topic_name": "Forces"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "1",
+    "topic_id": "6",
+    "topic_name": "Momentum"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "1",
+    "topic_id": "7",
+    "topic_name": "Work, Energy and Power"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "1",
+    "topic_id": "8",
+    "topic_name": "Pressure"
+  },
+
+
+  {
+    "subject": "Physics 8620",
+    "chapter": "2",
+    "topic_id": "1",
+    "topic_name": "Simple Kinetic Molecular Model of Matter"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "2",
+    "topic_id": "2",
+    "topic_name": "Thermal Properties and Temperature"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "2",
+    "topic_id": "4",
+    "topic_name": "Thermal Processes"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "3",
+    "topic_id": "1",
+    "topic_name": "General Wave Properties"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "3",
+    "topic_id": "2",
+    "topic_name": "Light"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "3",
+    "topic_id": "3",
+    "topic_name": "Electromagnetism Spectrum"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "3",
+    "topic_id": "4",
+    "topic_name": "Sound"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "4",
+    "topic_id": "1",
+    "topic_name": "Simple Phenomena of Magnetism"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "4",
+    "topic_id": "2",
+    "topic_name": "Electrical Quantities"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "4",
+    "topic_id": "3",
+    "topic_name": "Electric Circuits"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "4",
+    "topic_id": "4",
+    "topic_name": "Digital Electronics"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "4",
+    "topic_id": "5",
+    "topic_name": "Dangers of Electricity"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "4",
+    "topic_id": "6",
+    "topic_name": "Electromagnetic Effects"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "5",
+    "topic_id": "1",
+    "topic_name": "The Nuclear Atom"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter": "5",
+    "topic_id": "2",
+    "topic_name": "Radioactivity"
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {
+    "subject": "Physics 8619",
+    "chapter": "1",
+    "topic_id": "1",
+    "topic_name": "Length and Time"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "1",
+    "topic_id": "2",
+    "topic_name": "Motion"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "1",
+    "topic_id": "4",
+    "topic_name": "Mass and Weight"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "1",
+    "topic_id": "4",
+    "topic_name": "Density"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "1",
+    "topic_id": "5",
+    "topic_name": "Forces"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "1",
+    "topic_id": "6",
+    "topic_name": "Momentum"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "1",
+    "topic_id": "7",
+    "topic_name": "Work, Energy and Power"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "1",
+    "topic_id": "8",
+    "topic_name": "Pressure"
+  },
+
+
+  {
+    "subject": "Physics 8619",
+    "chapter": "2",
+    "topic_id": "1",
+    "topic_name": "Simple Kinetic Molecular Model of Matter"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "2",
+    "topic_id": "2",
+    "topic_name": "Thermal Properties and Temperature"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "2",
+    "topic_id": "4",
+    "topic_name": "Thermal Processes"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "3",
+    "topic_id": "1",
+    "topic_name": "General Wave Properties"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "3",
+    "topic_id": "2",
+    "topic_name": "Light"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "3",
+    "topic_id": "3",
+    "topic_name": "Electromagnetism Spectrum"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "3",
+    "topic_id": "4",
+    "topic_name": "Sound"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "4",
+    "topic_id": "1",
+    "topic_name": "Simple Phenomena of Magnetism"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "4",
+    "topic_id": "2",
+    "topic_name": "Electrical Quantities"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "4",
+    "topic_id": "3",
+    "topic_name": "Electric Circuits"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "4",
+    "topic_id": "4",
+    "topic_name": "Digital Electronics"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "4",
+    "topic_id": "5",
+    "topic_name": "Dangers of Electricity"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "4",
+    "topic_id": "6",
+    "topic_name": "Electromagnetic Effects"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "5",
+    "topic_id": "1",
+    "topic_name": "The Nuclear Atom"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter": "5",
+    "topic_id": "2",
+    "topic_name": "Radioactivity"
+  }
+
+
+
+]

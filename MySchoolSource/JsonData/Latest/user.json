@@ -398,5 +398,178 @@
     "last_name":"Ross",
     "email":"a.ross@randatmail.com",
     "groups":"Learner"
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {
+    "username": "Aaron98",
+    "password": "xhjijKo@40",
+    "first_name":"Aaron",
+    "last_name": "Jhonson",
+    "email": "aaronjhonson32@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Draco98",
+    "password": "BkhjKo@80",
+    "first_name":"Draco",
+    "last_name": "Malfoy",
+    "email": "Draco90@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Johnn89",
+    "password": "XmlhjhK@47",
+    "first_name":"Johnny",
+    "last_name": "Deep",
+    "email": "Johnnydeep47@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Newt90",
+    "password": "jKmubqo@40",
+    "first_name":"Newt",
+    "last_name": "Scamander",
+    "email": "newtscm23@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Ricks89",
+    "password": "Opuhuiu@40",
+    "first_name":"Ricky",
+    "last_name": "Patel",
+    "email": "rickspatel@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Romny70",
+    "password": "puhiiR@40",
+    "first_name":"Rommy",
+    "last_name": "Jones",
+    "email": "jonesromy23@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Lily15",
+    "password": "buiuhH@89",
+    "first_name":"lily",
+    "last_name": "Potter",
+    "email": "Lilypotter@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "idavid",
+    "password": "jKobhj@o6",
+    "first_name":"David",
+    "last_name": "Jones",
+    "email": "Davidjones2@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Rupert",
+    "password": "jKobP@09",
+    "first_name":"Rupert",
+    "last_name": "Williams",
+    "email": "Rupertwilliams@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "iJoana",
+    "password": "iJop68@40",
+    "first_name":"Joana",
+    "last_name": "Bing",
+    "email": "Bingjoana@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Janice8",
+    "password": "xhpBjo@4",
+    "first_name":"Janice",
+    "last_name": "Geller",
+    "email": "Janicegeller@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Mike98",
+    "password": "Bjo@4po",
+    "first_name":"Mike",
+    "last_name": "Lopez",
+    "email": "mikeLopez99@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Rohit77",
+    "password": "Bjoyu@99",
+    "first_name":"Rohit",
+    "last_name": "Shah",
+    "email": "shahRohit77@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Mahendra33",
+    "password": "Uioguu@32",
+    "first_name":"mahendra",
+    "last_name": "Tomar",
+    "email": "tomarmahendra@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "July",
+    "password": "KopL@67",
+    "first_name":"July",
+    "last_name": "Becker",
+    "email": "peteBecker67@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Ram48",
+    "password": "Soapxvb@2",
+    "first_name":"Ram",
+    "last_name": "varma",
+    "email": "varmaRam@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Harry89",
+    "password": "Jojux@78",
+    "first_name":"Harry",
+    "last_name": "Potter",
+    "email": "harryPotter78@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Joy",
+    "password": "joKopx@4",
+    "first_name":"Joy",
+    "last_name": "Patel",
+    "email": "patelJoy@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Sahil95",
+    "password": "Sxbhh@81",
+    "first_name":"Sahil",
+    "last_name": "Roy",
+    "email": "sahilRoy@gmail.com",
+    "groups": "learner"
+  },
+  {
+    "username": "Jerry",
+    "password": "Jobhio@99",
+    "first_name":"Jerry",
+    "last_name": "Marley",
+    "email": "Jerrymarley@gmail.com",
+    "groups": "learner"
   }
 ]
