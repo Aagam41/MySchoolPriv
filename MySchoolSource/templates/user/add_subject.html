@@ -13,7 +13,9 @@
 <body>
 
 <center>
-    <div class="col-sm-4">
+<div class="col-sm-4">
+    <div class="card bg-light mb-3" style="max-width: 840px;">
+	<div class="card-body">
   <h4 class="text-center alert alert-info">Add new Subject</h4>
     <form  method="POST" action="/data/">
     {% csrf_token %}
@@ -31,7 +33,7 @@
         <a href="#" class="btn btn-primary" data-toggle="button" aria-pressed="false">
             +Add Subject
         </a>
-    </form>
+    </form></div></div>
  </div>
 </center>
 

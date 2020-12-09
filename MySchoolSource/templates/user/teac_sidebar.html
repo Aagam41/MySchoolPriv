@@ -26,7 +26,7 @@
                         <a href="#" class="nav__logo">Educator Panel</a>
                     </div>
                     <div class="nav__list">
-                        <a href="/teac_dashboard" class="nav__link active">
+                        <a href="/teac_dashboard" class="nav__link {% block dashboard %} {% endblock %}}">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Dashboard</span>
                         </a>
@@ -34,7 +34,7 @@
                             <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Student Performance</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="/teac_feedback" class="nav__link {% block feedback %} {% endblock %}">
                             <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Show Feedback</span>
                         </a>
@@ -52,7 +52,7 @@
                             </ul>
                         </div>
 
-                        <a href="#" class="nav__link">
+                        <a href="/teac_prediction" class="nav__link {% block prediction %} {% endblock %} ">
                             <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Student Prediction</span>
                         </a>
