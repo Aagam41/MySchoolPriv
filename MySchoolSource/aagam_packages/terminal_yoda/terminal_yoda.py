@@ -1,6 +1,7 @@
 from typing import Tuple
 
 from .sgr_parameters import *
+from .terminal_utils import *
 
 
 class YodaSaberColor:
@@ -147,7 +148,7 @@ class YodaSaberColor:
     BLACK = (0, 0, 0)
 
 
-def yoda_saberize_print(text: str, fg_code: Tuple[int, int, int], bg_code: Tuple[int, int, int] = (-1, -1, -1)) -> str:
+def yoda_saberize_print(text, fg_code, bg_code=(-1, -1, -1)):
     op = f'\033[38;2;{str(fg_code[0])};{str(fg_code[1])};{str(fg_code[2])}m'
     if bg_code != (-1, -1, -1):
         op += f'\033[48;2;{str(bg_code[0])};{str(bg_code[1])};{str(bg_code[2])}m'

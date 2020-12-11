@@ -7,3 +7,7 @@ def clear_terminal():
         os.system("cls")
     elif sys.platform.startswith("darwin") or sys.platform.startswith("linux"):
         os.system("clear")
+
+
+if __name__ != "main":
+    clear_terminal()

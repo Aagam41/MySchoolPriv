@@ -4,11 +4,14 @@ import random
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.contrib.auth.models import User, Group
+from django.core import serializers
 
 from MySchoolHome import models as msh
 from StudentPerformance import models as sp
 
+from aagam_packages.utils import utils
 from aagam_packages.terminal_yoda.terminal_yoda import *
+from aagam_packages.terminal_yoda import terminal_utils
 
 # Create your views here.
 
@@ -104,4 +107,9 @@ def test(request):
     #     stss.save()
     #
 
-    return HttpResponse('<h1>Done</h1>')
+    a = sp.PaperQuestion.objects.all()
+    serialized = serializers.serialize('json', a)
+    yoda_saberize_print(serialized, YodaSaberColor.BLACK, YodaSaberColor.CORNFLOWERBLUE)
+
+    output = f'<h1>Done. <br />Number of Lines in Python : {utils.count_lines("*.py")}</h1>'
+    return HttpResponse(output)

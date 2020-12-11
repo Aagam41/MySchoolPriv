@@ -116,16 +116,16 @@ class PaperType(amdl.AagamBaseModel):
 
 class PaperEntry(amdl.AagamBaseModel):
     paper_entry_id = models.AutoField(primary_key=True)
-    paper_name = models.CharField(max_length=100)
+    paper_entry_name = models.CharField(max_length=100)
     paper_type = models.ForeignKey('PaperType', models.DO_NOTHING)
-    paper_status = models.BooleanField(default=True)
-    paper_entry_date = models.DateField(auto_now_add=True)
+    paper_entry_status = models.BooleanField(default=True)
+    paper_entry_date = models.DateField()
 
     class Meta:
         db_table = 'paper_entry'
 
     def __str__(self):
-        return self.paper_name
+        return f'{self.paper_entry_name} : {self.paper_entry_date}'
 
 
 class MapPaperEntrySubjectChapter(amdl.AagamBaseModel):
@@ -136,8 +136,8 @@ class MapPaperEntrySubjectChapter(amdl.AagamBaseModel):
     class Meta:
         db_table = 'map_paper_entry_subject_chapter'
 
-        def __str__(self):
-            return
+    def __str__(self):
+        return f'{self.subject_chapter} : {self.paper_entry}'
 
 
 class PaperQuestion(amdl.AagamBaseModel):
@@ -152,7 +152,7 @@ class PaperQuestion(amdl.AagamBaseModel):
         db_table = 'paper_question'
 
     def __str__(self):
-        return self.paper_question_text
+        return f'{self.rau_type} : {self.chapter_topic} : {self.paper_question_text}'
 
 
 class PaperPatternEntry(amdl.AagamBaseModel):
@@ -164,7 +164,7 @@ class PaperPatternEntry(amdl.AagamBaseModel):
         db_table = "paper_pattern_entry"
 
     def __str__(self):
-        return str(self.paper_pattern_entry_id)
+        return f'{self.paper_entry} : {self.paper_question}'
 
 
 class MapStudentPaperPatternEntry(amdl.AagamBaseModel):
@@ -177,4 +177,4 @@ class MapStudentPaperPatternEntry(amdl.AagamBaseModel):
         db_table = "map_myschool_user_paper_pattern_entry"
 
     def __str__(self):
-        return str(self.map_student_paper_pattern_entry_id)
+        return f'{self.myschool_user} : {self.paper_pattern_entry}'

@@ -12,18 +12,18 @@ from MySchoolHome.models import MySchoolUser
 class FeedbackForm(amdl.AagamBaseModel):
     feedback_form_id = models.AutoField(primary_key=True)
     subject_teacher = models.ForeignKey(MapMySchoolUserSubject, models.DO_NOTHING)
-    date_created = models.DateField(auto_now_add=True)
-    form_status = models.BooleanField()
+    feedback_form_date = models.DateField()
+    feedback_form_status = models.BooleanField()
 
     class Meta:
         db_table = 'feedback_form'
 
     def __str__(self):
-        pass
+        return f'{self.subject_teacher} : {self.feedback_form_date}'
 
 
 class FeedbackFormQuestion(amdl.AagamBaseModel):
-    feedback_form_question = models.AutoField(primary_key=True)
+    feedback_form_question_id = models.AutoField(primary_key=True)
     feedback_form = models.ForeignKey('FeedbackForm', models.DO_NOTHING)
     feedback_question = models.ForeignKey('FeedbackQuestion', models.DO_NOTHING)
 
@@ -31,13 +31,13 @@ class FeedbackFormQuestion(amdl.AagamBaseModel):
         db_table = 'feedback_form_question'
 
     def __str__(self):
-        pass
+        return f'{self.feedback_form} : {self.feedback_question}'
 
 
 class Feedback(amdl.AagamBaseModel):
     feedback_id = models.AutoField(primary_key=True)
     feedback_form_question = models.ForeignKey('FeedbackFormQuestion', models.DO_NOTHING)
-    student = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
+    myschool_user = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
     feedback_rating = models.IntegerField()
     feedback_comments = models.TextField()
     feedback_date = models.DateTimeField(auto_now_add=True)
@@ -46,7 +46,7 @@ class Feedback(amdl.AagamBaseModel):
         db_table = 'feedback'
 
     def __str__(self):
-        return self.feedback_id
+        return f'{self.myschool_user} : {self.feedback_form_question}'
 
 
 class FeedbackQuestion(amdl.AagamBaseModel):
