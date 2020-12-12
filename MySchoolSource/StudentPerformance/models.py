@@ -114,9 +114,6 @@ class PaperType(amdl.AagamBaseModel):
     def __str__(self):
         return self.paper_type
 
-    def get_absolute_url(self):
-        return reverse('MySchoolHome:test')
-
 
 class PaperEntry(amdl.AagamBaseModel):
     paper_entry_id = models.AutoField(primary_key=True)
