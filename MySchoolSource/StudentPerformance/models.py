@@ -117,6 +117,7 @@ class PaperType(amdl.AagamBaseModel):
 class PaperEntry(amdl.AagamBaseModel):
     paper_entry_id = models.AutoField(primary_key=True)
     paper_entry_name = models.CharField(max_length=100)
+    subject = models.ForeignKey('TblSubject', models.DO_NOTHING)
     paper_type = models.ForeignKey('PaperType', models.DO_NOTHING)
     paper_entry_status = models.BooleanField(default=True)
     paper_entry_date = models.DateField()
@@ -125,7 +126,7 @@ class PaperEntry(amdl.AagamBaseModel):
         db_table = 'paper_entry'
 
     def __str__(self):
-        return f'{self.paper_entry_name} : {self.paper_entry_date}'
+        return f'{self.paper_entry_name} : {self.subject} : {self.paper_entry_date}'
 
 
 class MapPaperEntrySubjectChapter(amdl.AagamBaseModel):
@@ -170,6 +171,7 @@ class PaperPatternEntry(amdl.AagamBaseModel):
 class MapStudentPaperPatternEntry(amdl.AagamBaseModel):
     map_student_paper_pattern_entry_id = models.AutoField(primary_key=True)
     myschool_user = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
+    standard_section = models.ForeignKey('StandardSection', models.DO_NOTHING)
     paper_pattern_entry = models.ForeignKey('PaperPatternEntry', models.DO_NOTHING)
     marks_obtained = models.IntegerField()  # TODO: Validation PaperQuestion totalmarks <= this
 
