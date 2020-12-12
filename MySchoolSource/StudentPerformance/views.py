@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from .models import *
 from .forms import *
@@ -6,22 +8,25 @@ from .forms import *
 # Create your views here.
 
 
-def paper_type_creation_form_page(request, edit, paper_type_id):
-    if request.method == "POST":
-        if edit:
-            inst = PaperType.objects.get(pk=paper_type_id)
-            paper_type_form = PaperTypeForm(data=request.POST, instance=inst)
-            if paper_type_form.is_valid():
-                return redirect('MySchoolHome:test')
-        else:
-            paper_type_form = PaperTypeForm(data=request.POST)
-            if paper_type_form.is_valid():
-                return redirect('MySchoolHome:test')
-    else:
-        if edit:
-            inst = PaperType.objects.get(pk=paper_type_id)
-            paper_type_form = PaperTypeForm(instance=inst)
-        else:
-            paper_type_form = PaperTypeForm()
+class PaperTypeListView(ListView):
+    model = PaperType
+    paginate_by = 100
 
-    return render(request, 'StudentPerformance/paper_type_form.html', {'form': paper_type_form})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class PaperTypeCreateView(CreateView):
+    model = PaperType
+    fields = ['paper_type', 'out_of']
+
+
+class PaperTypeUpdateView(UpdateView):
+    model = PaperType
+    fields = ['paper_type', 'out_of']
+
+
+class PaperTypeDeleteView(DeleteView):
+    model = PaperType
+    success_url = reverse_lazy('MySchoolHome:test')

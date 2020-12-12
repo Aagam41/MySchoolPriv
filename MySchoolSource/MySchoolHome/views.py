@@ -47,7 +47,7 @@ def test(request):
     # p = User.objects.create_superuser(username='Yash01', password='MySchool@123', first_name='Yash',
     #                                   last_name='Akbari', email='test3@gmail.com')
     # p.save()
-
+    #
     # # Auth.Group
     # g1 = Group.objects.create(name='Learner')
     # g1.save()

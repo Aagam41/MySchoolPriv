@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from aagam_packages.django_model_extensions import models as amdl
 
@@ -112,6 +113,9 @@ class PaperType(amdl.AagamBaseModel):
 
     def __str__(self):
         return self.paper_type
+
+    def get_absolute_url(self):
+        return reverse('MySchoolHome:test')
 
 
 class PaperEntry(amdl.AagamBaseModel):

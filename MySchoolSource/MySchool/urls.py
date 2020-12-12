@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 from MySchoolHome import urls as mshu
+from StudentPerformance import urls as spu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(mshu)),
+    path('msh', include(mshu)),
+    path('', include(spu)),
 ]
