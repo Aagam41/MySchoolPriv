@@ -1,11 +1,10 @@
 from django import forms
-from .models import Student
-from .models import TblClass
+from django.forms import ModelForm
 
-class StudentForm(forms.Form):
-    person = forms.ModelChoiceField(queryset=Student.objects.values_list('person', flat=True),  empty_label=None)
-    class_field = forms.ModelChoiceField(queryset=TblClass.objects.values_list('class_field',flat=True),  empty_label=None)
+from .models import *
 
+
+class PaperTypeForm(ModelForm):
     class Meta:
-        model = Student
-        fields = ['person', 'class_field']
+        model = PaperType
+        fields = ['paper_type', 'out_of']
