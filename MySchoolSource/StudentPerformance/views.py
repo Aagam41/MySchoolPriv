@@ -8,6 +8,7 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 from .models import *
 
 from aagam_packages.terminal_yoda.terminal_yoda import *
+from aagam_packages.django_model_extensions.views import generic
 
 # Create your views here.
 
@@ -38,3 +39,7 @@ class PaperEntryListView(ListView):
 class PaperEntryUpdateView(UpdateView):
     model = PaperEntry
     fields = ['paper_entry_name', 'subject', 'paper_type', 'paper_entry_date']
+
+
+class cv(generic.ModelObjectCreateView):
+    success_label = ""

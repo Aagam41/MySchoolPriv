@@ -26,6 +26,9 @@ def msh_login_page(request):
     if request.method == "POST":
         login_form = forms.AuthenticationForm(data=request.POST)
         if login_form.is_valid():
+            login(request, request.POST['username'], request.POST['password'])
+            yoda_saberize_print(request.POST['username'], YodaSaberColor.RED)
+
             return redirect('MySchoolHome:test')
     else:
         login_form = forms.AuthenticationForm()

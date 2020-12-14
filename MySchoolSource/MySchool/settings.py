@@ -59,6 +59,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'MySchool.urls'
 
+LOGIN_URL = "msh/login"
+LOGIN_REDIRECT_URL = 'msh'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

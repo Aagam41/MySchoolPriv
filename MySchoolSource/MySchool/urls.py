@@ -21,6 +21,11 @@ from StudentPerformance import urls as spu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('msh', include(mshu)),
+    path('msh/', include(mshu)),
     path('', include(spu)),
 ]
+
+admin.site.site_header = "My School Administration"
+admin.site.site_title = "My School Administration"
+admin.site.index_title = "My School Administration"
+admin.site.site_url = "http://127.0.0.1:8000/msh/"

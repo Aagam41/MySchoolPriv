@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404, HttpResponse
 from django.apps import apps
 from django.template.exceptions import TemplateDoesNotExist
@@ -5,21 +6,21 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 
-class ModelObjectCreateView(CreateView):
-    def __init__(self):
-        super(ModelObjectCreateView, self).__init__()
-        self.app_label = ""
-        self.model_label = ""
-        self.template_label = ""
-        self.success_label = ""
+class ModelObjectCreateView(LoginRequiredMixin ,CreateView):
+    context_object_name = 'object'
+    app_label = ""
+    model_label = ""
+    fields_label = ""
+    template_label = ""
+    success_label = ""
+
+    login_url = "MySchoolHome:msh_login_page"
 
     def dispatch(self, request, *args, **kwargs):
-        self.model_label = kwargs.get('model_label', None)
         self.app_label = kwargs.get('app_label', None)
+        self.model_label = kwargs.get('model_label', None)
         self.model = apps.get_model(self.app_label, self.model_label.capitalize())
         self.fields = self.get_modelobject_fields_label()
-
-        self.context_object_name = 'object'
 
         self.template_label = kwargs.get('template_label', None)
         self.template_name = self.get_template_name_label()
@@ -29,11 +30,16 @@ class ModelObjectCreateView(CreateView):
             raise Http404
         return ret
 
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
     def get_template_name_label(self):
         if self.template_label == "0":
             template_name = f'{self.app_label}/{self.model_label}_create.html'
         elif self.template_label:
-            template_name = self.template_name
+            app1, page1 = self.template_label.split("-", 1)
+            template_name = f'{app1}/{page1}.html'
         else:
             template_name = 'modelobject_create.html'
         return template_name
@@ -50,25 +56,24 @@ class ModelObjectCreateView(CreateView):
                 pass
             elif field.name in model_label:
                 pass
+            elif not field.editable:
+                pass
             else:
                 field_label.append(field.name)
         return field_label
 
 
 class ModelObjectDeleteView(DeleteView):
-    def __init__(self):
-        super(ModelObjectDeleteView, self).__init__()
-        self.app_label = ""
-        self.model_label = ""
-        self.template_label = ""
-        self.success_label = ""
+    context_object_name = f'object'
+    app_label = ""
+    model_label = ""
+    template_label = ""
+    success_label = ""
 
     def dispatch(self, request, *args, **kwargs):
         self.model_label = kwargs.get('model_label', None)
         self.app_label = kwargs.get('app_label', None)
         self.model = apps.get_model(self.app_label, self.model_label.capitalize())
-
-        self.context_object_name = f'object'
 
         self.template_label = kwargs.get('template_label', None)
         self.template_name = self.get_template_name_label()
@@ -87,7 +92,7 @@ class ModelObjectDeleteView(DeleteView):
         if self.template_label == "0":
             template_name = f'{self.app_label}/{self.model_label}_confirm_delete.html'
         elif self.template_label:
-            template_name = self.template_name
+            template_name = f'{self.template_label}.html'
         else:
             template_name = 'modelobject_confirm_delete.html'
         return template_name
