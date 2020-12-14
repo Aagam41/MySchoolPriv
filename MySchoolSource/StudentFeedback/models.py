@@ -2,32 +2,51 @@ from django.db import models
 
 from aagam_packages.django_model_extensions import models as amdl
 
-from StudentPerformance.models import MapTeacherSubject
+from StudentPerformance.models import MapMySchoolUserSubject
 from MySchoolHome.models import MySchoolUser
 
 
 # Create your models here.
 
 
-class Feedback(amdl.AagamBaseModel):
-    feedback_id = models.AutoField(primary_key=True)
-    student = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
-    map_teacher_subject = models.ForeignKey(MapTeacherSubject, models.DO_NOTHING)
-    feedback_rating = models.IntegerField()
-    feedback_comments = models.TextField()
-    feedback_question = models.ForeignKey('FeedbackQuestion', models.DO_NOTHING)
-    feedback_date = models.DateTimeField()
+class FeedbackForm(amdl.AagamBaseModel):
+    feedback_form_id = models.AutoField(primary_key=True)
+    subject_teacher = models.ForeignKey(MapMySchoolUserSubject, models.DO_NOTHING)
+    feedback_form_date = models.DateField()
+    feedback_form_status = models.BooleanField()
 
     class Meta:
-        managed = True
-        db_table = 'feedback'
-        constraints = [
-            models.UniqueConstraint(fields=['student', 'map_teacher_subject', 'feedback_question', 'feedback_date'],
-                                    name='unique_for_student_feedback_on_subject_teacher'),
-            ]
+        db_table = 'feedback_form'
 
     def __str__(self):
-        return self.feedback_id
+        return f'{self.subject_teacher} : {self.feedback_form_date}'
+
+
+class FeedbackFormQuestion(amdl.AagamBaseModel):
+    feedback_form_question_id = models.AutoField(primary_key=True)
+    feedback_form = models.ForeignKey('FeedbackForm', models.DO_NOTHING)
+    feedback_question = models.ForeignKey('FeedbackQuestion', models.DO_NOTHING)
+
+    class Meta:
+        db_table = 'feedback_form_question'
+
+    def __str__(self):
+        return f'{self.feedback_form} : {self.feedback_question}'
+
+
+class Feedback(amdl.AagamBaseModel):
+    feedback_id = models.AutoField(primary_key=True)
+    feedback_form_question = models.ForeignKey('FeedbackFormQuestion', models.DO_NOTHING)
+    myschool_user = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
+    feedback_rating = models.IntegerField()
+    feedback_comments = models.TextField()
+    feedback_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'feedback'
+
+    def __str__(self):
+        return f'{self.myschool_user} : {self.feedback_form_question}'
 
 
 class FeedbackQuestion(amdl.AagamBaseModel):
@@ -37,7 +56,6 @@ class FeedbackQuestion(amdl.AagamBaseModel):
     question_group = models.ForeignKey('FeedbackQuestionGroup', models.DO_NOTHING)
 
     class Meta:
-        managed = True
         db_table = 'feedback_question'
 
     def __str__(self):
@@ -50,7 +68,6 @@ class FeedbackQuestionGroup(amdl.AagamBaseModel):
     description = models.TextField()
 
     class Meta:
-        managed = True
         db_table = 'feedback_question_group'
 
     def __str__(self):
