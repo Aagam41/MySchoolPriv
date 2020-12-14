@@ -6,15 +6,13 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 
-class ModelObjectCreateView(LoginRequiredMixin ,CreateView):
+class ModelObjectCreateView(LoginRequiredMixin, CreateView):
     context_object_name = 'object'
     app_label = ""
     model_label = ""
     fields_label = ""
     template_label = ""
     success_label = ""
-
-    login_url = "MySchoolHome:msh_login_page"
 
     def dispatch(self, request, *args, **kwargs):
         self.app_label = kwargs.get('app_label', None)
@@ -63,7 +61,7 @@ class ModelObjectCreateView(LoginRequiredMixin ,CreateView):
         return field_label
 
 
-class ModelObjectDeleteView(DeleteView):
+class ModelObjectDeleteView(LoginRequiredMixin, DeleteView):
     context_object_name = f'object'
     app_label = ""
     model_label = ""
