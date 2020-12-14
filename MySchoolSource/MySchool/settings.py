@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'StudentFeedback.apps.StudentfeedbackConfig',
     'MySchoolHome.apps.MyschoolhomeConfig',
 
+    'widget_tweaks',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,8 +61,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'MySchool.urls'
 
-LOGIN_URL = "msh/login"
-LOGIN_REDIRECT_URL = 'msh'
+LOGIN_URL = "http://127.0.0.1:8000/msh/login/"
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/msh/'
 
 TEMPLATES = [
     {

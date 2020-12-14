@@ -21,8 +21,8 @@ from StudentPerformance import urls as spu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('msh/', include(mshu)),
-    path('', include(spu)),
+    path('', include(mshu)),
+    path('sp', include(spu)),
 ]
 
 admin.site.site_header = "My School Administration"

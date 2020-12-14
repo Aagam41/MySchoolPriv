@@ -23,6 +23,8 @@ urlpatterns += [
          login_required(generic.ModelObjectCreateView.as_view()), name='modelobject_create_view'),
     path('create/<str:app_label>/<str:model_label>/<str:template_label>/',
          generic.ModelObjectCreateView.as_view(), name='modelobject_create_view'),
+    path('create/<str:app_label>/<str:model_label>/<str:template_label>/<str:form_class>',
+         generic.ModelObjectCreateView.as_view(), name='modelobject_create_view'),
 
     path('delete/<str:app_label>/<str:model_label>/<int:pk>/',
          generic.ModelObjectDeleteView.as_view(), name='modelobject_delete_view'),

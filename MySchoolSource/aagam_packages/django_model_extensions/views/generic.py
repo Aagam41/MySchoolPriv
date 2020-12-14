@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.http import Http404, HttpResponse
 from django.apps import apps
 from django.template.exceptions import TemplateDoesNotExist
@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 
-class ModelObjectCreateView(LoginRequiredMixin, CreateView):
+class ModelObjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     context_object_name = 'object'
     app_label = ""
     model_label = ""
@@ -18,10 +18,11 @@ class ModelObjectCreateView(LoginRequiredMixin, CreateView):
         self.app_label = kwargs.get('app_label', None)
         self.model_label = kwargs.get('model_label', None)
         self.model = apps.get_model(self.app_label, self.model_label.capitalize())
-        self.fields = self.get_modelobject_fields_label()
+        self.get_modelobject_fields_label()
 
         self.template_label = kwargs.get('template_label', None)
         self.template_name = self.get_template_name_label()
+        self.permission_required = f'{self.app_label}.add_{self.model_label}'
         try:
             ret = super(ModelObjectCreateView, self).dispatch(request, *args, **kwargs)
         except AttributeError:
@@ -43,25 +44,30 @@ class ModelObjectCreateView(LoginRequiredMixin, CreateView):
         return template_name
 
     def get_modelobject_fields_label(self):
-        model_label = list()
-        field_label = list()
-        for app in apps.get_app_configs():
-            for model in app.get_models():
-                model_label.append(model._meta.verbose_name.replace(" ", ""))
-        field_labels = self.model._meta.get_fields()
-        for field in field_labels:
-            if field.name == f'{self.model.objects.model._meta.db_table}_id':
-                pass
-            elif field.name in model_label:
-                pass
-            elif not field.editable:
-                pass
-            else:
-                field_label.append(field.name)
-        return field_label
+        form = self.kwargs.get("form_label", None)
+        if form:
+            self.form_class = form
+        else:
+            model_label = list()
+            field_label = list()
+            for app in apps.get_app_configs():
+                for model in app.get_models():
+                    model_label.append(model._meta.verbose_name.replace(" ", ""))
+            field_labels = self.model._meta.get_fields()
+            for field in field_labels:
+                if field.name == f'{self.model.objects.model._meta.db_table}_id':
+                    pass
+                elif field.name in model_label:
+                    pass
+                elif not field.editable:
+                    pass
+                else:
+                    field_label.append(field.name)
+            self.fields = field_label
+        return 0
 
 
-class ModelObjectDeleteView(LoginRequiredMixin, DeleteView):
+class ModelObjectDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     context_object_name = f'object'
     app_label = ""
     model_label = ""
@@ -78,6 +84,8 @@ class ModelObjectDeleteView(LoginRequiredMixin, DeleteView):
 
         self.success_label = kwargs.get('success_label', None)
         self.success_url = reverse_lazy(self.get_success_url_label())
+        self.permission_required = f'{self.app_label}.add_{self.model_label}'
+
         try:
             ret = super(ModelObjectDeleteView, self).dispatch(request, *args, **kwargs)
         except AttributeError:
