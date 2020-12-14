@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Prediction Data</title>
-    {% load static %}
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-</head>
-<body>
-<center>
-<div class="col-sm-4">
-	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
-	<div class="card-body">
-  <h4 class="text-center alert alert-info">Add Prediction Data</h4>
-    <form  method="POST" action="/data/">
-    {% csrf_token %}
-        <INPUT TYPE="text" class="form-control" placeholder="Father Education" id="Father_education"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Mother Education" id="Mother_education"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Internet Facility" id="Internet_facility"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Study Time" id="Study_time"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Paid Tution" id="Paid_tution"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Past Failures" id="Past_failures"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Free Time" id="Free_time"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Extra Curricular Activites" id="Extra_curricular_activites"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Absences" id="Absences"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Class Engagement" id="Class_engagement"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Health" id="Health"><br>
-        <a href="#" class="btn btn-primary" data-toggle="button" aria-pressed="false">
-            Prediction Data
-        </a>
-    </form></div></div>
- </div>
-</center>
+    <head>
+        <meta charset="UTF-8">
+        <title>Prediction Data</title>
+        {% load static %}
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
 
-  <!--   Core JS Files   -->
-  <script src="{% static 'js/jquery.min.js' %}"></script>
-  <script src="{% static 'js/popper.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <body>
+        <center>
+            <div class="col-sm-4">
+                <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                    <div class="card-body">
+                          <h4 class="text-center alert alert-info">Add Prediction Data</h4>
+                            <form  method="POST" action="/data/">
+                                {% csrf_token %}
+                                <INPUT TYPE="text" class="form-control" placeholder="Father Education" id="Father_education"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Mother Education" id="Mother_education"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Internet Facility" id="Internet_facility"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Study Time" id="Study_time"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Paid Tution" id="Paid_tution"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Past Failures" id="Past_failures"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Free Time" id="Free_time"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Extra Curricular Activites" id="Extra_curricular_activites"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Absences" id="Absences"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Class Engagement" id="Class_engagement"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Health" id="Health"><br>
+                                <a href="#" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+                                    Prediction Data
+                                </a>
+                            </form>
+                    </div>
+                </div>
+             </div>
+            </center>
+
+        <!--   Core JS Files   -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script>
+          window.TrackJS &&
+            TrackJS.install({
+              token: "ee6fab19c5a04ac1a32a645abde4613a",
+              application: "black-dashboard-free"
+            });
+        </script>
+    </body>
+</html>

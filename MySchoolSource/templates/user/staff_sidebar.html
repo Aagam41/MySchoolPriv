@@ -32,11 +32,11 @@
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">User Details</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="/add_assignment" class="nav__link {% block assignment %} {% endblock %}">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Add Assignment</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="/add_attendence" class="nav__link {% block attendence %} {% endblock %}">
                             <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Add Attendence</span>
                         </a>
@@ -70,7 +70,7 @@
                                 <a href="#" class="collapse__sublink">Members</a>
                             </ul>
                         </div>
-                        <a href="/class_detail" class="nav__link">
+                        <a href="/class_detail" class="nav__link {% block class %} {% endblock %}">
                             <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Class Details</span>
                         </a>
