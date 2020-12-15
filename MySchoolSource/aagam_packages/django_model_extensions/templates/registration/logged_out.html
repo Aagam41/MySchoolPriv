@@ -1,0 +1,77 @@
+<!doctype html>
+
+{% load widget_tweaks %}
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{{ page_context.titleTag }}</title>
+  </head>
+  <body style="background-color:#f9f9f9">
+    <div style="margin-top: 100px;" class="container h-100">
+      <div style="text-align: center"><h1><i><b>{{ page_context.title }}</b></i></h1></div>
+      <div class="row justify-content-center">
+        <div class="card mx-auto" style="margin-top:10%;width:28rem;border-radius: 20px !important;box-shadow:10px 10px 10px #f0f0f0,-10px -10px 10px #fff">
+          <div style="padding: 0px;" class="card-body">
+            <div style="text-align: center;border-radius: 20px 20px 0px 0px !important;
+            background-color: #3F0F3E; color: white; padding: 20px;">
+              <h2>Logout</h2>
+            </div>
+                  {% if form.errors %}
+                    {% for field in form %}
+                      {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                      {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                  {% endif %}
+          <div style="padding: 20px; text-align: center;">
+              <h5>You have been logged out of the <br/></h5> <h4><b>"{{ page_context.title }}"</b></h4><h5>web application.</h5>
+              </div>
+          </div>
+        </div>
+      </div>
+    <div style="text-align: center; margin-top: 40px;"><h6><i>This page will redirect to HomePage in <span id="timer"></span></i></h6></div>
+    </div>
+
+    <footer style="bottom: 0;position: fixed; width: 100%;background-color: #fdfdfd" class="page-footer font-small blue pt-4">
+      <div style="margin-bottom: 20px;" class="footer-copyright text-center mx-auto py-3 text-muted credit">Crafted with ❤ by
+          {{ page_context.footerCreatedBy|safe }}
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <script>
+        var count = 15
+        var counter = setInterval(timer , 1000)
+        document.getElementById("timer").innerHTML= count + " seconds.";
+        function timer()
+        {
+           count = count-1
+           if (count <= 0)
+           {
+               clearInterval(counter);
+               return window.location.replace("http://127.0.0.1:8000/")
+           }
+           document.getElementById("timer").innerHTML= String(count).padStart(2, '0') + " seconds.";
+
+        }
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

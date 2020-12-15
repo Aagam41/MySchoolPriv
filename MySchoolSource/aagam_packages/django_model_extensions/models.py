@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class AagamBaseModel(models.Model):
@@ -7,3 +8,6 @@ class AagamBaseModel(models.Model):
     class Meta:
         managed = True
         abstract = True
+
+    def get_absolute_url(self):
+        return reverse('MySchoolHome:test')

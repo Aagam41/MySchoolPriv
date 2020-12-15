@@ -10,6 +10,25 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RenameField(
+            model_name='feedback',
+            old_name='student',
+            new_name='myschool_user',
+        ),
+        migrations.RenameField(
+            model_name='feedbackform',
+            old_name='form_status',
+            new_name='feedback_form_status',
+        ),
+        migrations.RenameField(
+            model_name='feedbackformquestion',
+            old_name='feedback_form_question',
+            new_name='feedback_form_question_id',
+        ),
+        migrations.RemoveField(
+            model_name='feedbackform',
+            name='date_created',
+        ),
         migrations.AddField(
             model_name='feedbackform',
             name='feedback_form_date',

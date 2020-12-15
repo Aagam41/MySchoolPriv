@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_context.titleTag }}</title>
+</head>
+<body>
+<table>
+{% for f in object %}
+    <tr>
+        <td>{{ f.id }}</td>
+        <td>{{ f.username }}</td>
+        <td>{{ f.first_name }}</td>
+        <td>{{ f.last_name }}</td>
+        <td>{{ f.email }}</td>
+        <td>{% for g in f.groups.all %}{{ g.name }}{% endfor %}</td>
+    </tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
