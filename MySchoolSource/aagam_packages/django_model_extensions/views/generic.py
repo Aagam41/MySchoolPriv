@@ -4,6 +4,7 @@ from django.apps import apps
 from django.template.exceptions import TemplateDoesNotExist
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.contrib.auth import views as auth_views
 
 
 class ModelObjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
@@ -37,16 +38,18 @@ class ModelObjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateV
         if self.template_label == "0":
             template_name = f'{self.app_label}/{self.model_label}_create.html'
         elif self.template_label:
-            app1, page1 = self.template_label.split("-", 1)
-            template_name = f'{app1}/{page1}.html'
+            path = self.template_label.split("-")
+            file = ""
+            for folder in path:
+                file += folder + "/"
+            template_name = f'{file[:-1]}.html'
         else:
             template_name = 'modelobject_create.html'
         return template_name
 
-    def get_modelobject_fields_label(self):
-        form = self.kwargs.get("form_label", None)
-        if form:
-            self.form_class = form
+    def get_modelobject_fields_label(self, form1=None):
+        if not form1 is None:
+            self.form_class = form1
         else:
             model_label = list()
             field_label = list()
@@ -64,6 +67,13 @@ class ModelObjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateV
                 else:
                     field_label.append(field.name)
             self.fields = field_label
+        return 0
+
+    def get_permissions_required_label(self, permission=None):
+        if permission is None:
+            self.permission_required = permission
+        else:
+            self.permission_required = f'{self.app_label}.add_{self.model_label}'
         return 0
 
 
@@ -84,8 +94,6 @@ class ModelObjectDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteV
 
         self.success_label = kwargs.get('success_label', None)
         self.success_url = reverse_lazy(self.get_success_url_label())
-        self.permission_required = f'{self.app_label}.add_{self.model_label}'
-
         try:
             ret = super(ModelObjectDeleteView, self).dispatch(request, *args, **kwargs)
         except AttributeError:
@@ -96,9 +104,13 @@ class ModelObjectDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteV
 
     def get_template_name_label(self):
         if self.template_label == "0":
-            template_name = f'{self.app_label}/{self.model_label}_confirm_delete.html'
+            template_name = f'{self.app_label}/{self.model_label}_create.html'
         elif self.template_label:
-            template_name = f'{self.template_label}.html'
+            path = self.template_label.split("-")
+            file = ""
+            for folder in path:
+                file += folder + "/"
+            template_name = f'{file[:-1]}.html'
         else:
             template_name = 'modelobject_confirm_delete.html'
         return template_name
