@@ -4,7 +4,6 @@
     <option name="branchProtectionPatterns">
       <list>
         <option value="master" />
-        <option value="Aagam.*" />
       </list>
     </option>
   </component>
