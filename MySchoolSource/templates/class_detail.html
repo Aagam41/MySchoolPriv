@@ -1,6 +1,6 @@
-{% extends 'user/staff_sidebar.html' %}
+{% extends 'staff_sidebar.html' %}
 
-{% block subject %} active {% endblock %}
+{% block class %} active {% endblock %}
 
 {% block navbar %}
 
@@ -14,8 +14,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Select Class
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Action</a>
@@ -38,51 +38,43 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Subject Details
+                        Dropdown
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/chapter_detail">Chapter Details</a>
-                        <a class="dropdown-item" href="/topic_detail">Topic Details</a>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
                 </li>
             </ul>
       </div>
     </nav>
 </nav>
-
 {% endblock %}
 
 {% block body %}
 
         <div class="row">
             <div class="col-sm-2 offset-9" >
-        <a href="/add_subject" class="btn btn-primary" data-toggle="button" aria-pressed="false">
-            +Add Subject
+        <a href="/add_class" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+            +Add Class
         </a>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-sm-10 offset-1" >
-            <h4 class="text-center alert alert-info">Subject Details</h4>
+            <h4 class="text-center alert alert-info">Show Class Details</h4>
         <table class="table table-hover">
             <thead>
-                <th scope="col">Subject Name</th>
-                <th scope="col">Subject credit</th>
-                <th scope="col">Remembarence credit</th>
-                <th scope="col">Applied Knowledge credit</th>
-                <th scope="col">Understanding credit</th>
+                <th scope="col">Class</th>
+                <th scope="col">Division</th>
                 <th scope="col">ACTION</th>
             </thead>
             <tbody>
             <tr>
-                <td scope="row">Maths</td>
-                <td scope="row">10</td>
-                <td scope="row">3</td>
-                <td scope="row">3</td>
-                <td scope="row">4</td>
+                <td scope="row">12</td>
+                <td scope="row">A</td>
                 <td>
-                    <a href="/edit_subject" class="btn btn-warning btn-sm">Edit</a>
-
+                    <a href="/edit_class" class="btn btn-warning btn-sm">Edit</a>
                     <a href="#" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
@@ -90,5 +82,4 @@
         </table>
         </div>
         </div>
-
 {% endblock %}

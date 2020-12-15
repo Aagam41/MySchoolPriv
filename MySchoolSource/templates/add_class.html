@@ -2,34 +2,31 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Add Topic</title>
+        <title>Add Class Details</title>
         {% load static %}
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-        <script src="{% static 'js/jquery.min.js' %}"></script>
-        <script src="{% static 'js/popper.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
     </head>
 
     <body>
         <center>
             <div class="col-sm-4">
-                <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card bg-light mb-3 shadow" style="max-width: 840px; border-radius: 25px;">
                     <div class="card-body">
-                          <h4 class="text-center alert alert-info">Add new Topic</h4>
+                          <h4 class="text-center alert alert-info">Add Class</h4>
                             <form  method="POST" action="/data/">
                             {% csrf_token %}
-                                <INPUT TYPE="text" class="form-control" placeholder="Topic name" id="Topic_name" value="Inheritance"><br>
+                                <INPUT TYPE="number" class="form-control" placeholder="Class"><br>
+                                <INPUT TYPE="text" class="form-control" placeholder="Division"><br>
                                 <a href="#" class="btn btn-primary" data-toggle="button" aria-pressed="false">
-                                    +Add Topic
+                                    +Add Class
                                 </a>
                             </form>
                     </div>
                 </div>
-             </div>
+            </div>
         </center>
-
-        <!--   Core JS Files   -->
+          <!--   Core JS Files   -->
         <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="{% static 'js/popper.min.js' %}"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>

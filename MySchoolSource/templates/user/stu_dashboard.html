@@ -2,59 +2,10 @@
 
 {% block dashboard %} active {% endblock %}
 
-{% block navbar %}
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light" class="navbar fixed-top navbar-light bg-light">
-<nav class="navbar fixed-top navbar-light bg-light">
-  <a class="navbar-brand" href="#">SPAPAS</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-      </li>
-
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-<!--<div class="nav justify-content-end"> -->
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-            </li>
-        </ul>
-<!--</div> -->
-  </div>
-</nav>
-</nav>
-{% endblock %}
-
 {% block body %}
-<center>
-	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+<div>
+    <center>
+        <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
 	<div class="card-body">
         <h6>Performance Based On Formative Assessment</h6>
 	<canvas id="bar" arial-label="chart" role="img" width="500" height="150"></canvas>
@@ -99,11 +50,11 @@
 		var radar=new Chart(ctx, {
 			type: "radar",
 			data: {
-			labels: ["Unit tests","Assignments","Practicals","Mid Sem"],
+			labels: ["Unit tests","Assignments","Practicals","Mid Sem","Final Exam"],
 			datasets: [
 			{
 			label :"Class Overall Performance",
-			data: [80,80,80,80],
+			data: [80,80,80,80,80],
 			backgroundColor:["#0000FF"],
 			borderColor: ["black"],
 			},
@@ -113,30 +64,83 @@
 	</script>
 	</div>
 	</div>
-
-	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3 shadow " style="max-width: 280px; border-radius: 25px;">
 	<div class="card-body">
-        <b><h4> Performance </h4>
-            <h6>Based On Progress Of Students</h6></b><br>
-        <canvas id="myChart" arial-label="chart" role="img" width="400" height="150"></canvas>
+        <h4>Reading Skill</h4><br>
+        <canvas id="myChart" arial-label="chart" role="img" width="150" height="150"></canvas>
     <script>var ctx = document.getElementById("myChart").getContext("2d")
 		var myChart=new Chart(ctx, {
 			type: "doughnut",
 			data: {
-			labels: ["Reading Skill","Application Skill","Understanding Skill"],
+			labels: ["Reading Skill","Total"],
 			datasets: [
 			{
-			data: [20,25,15],
-			backgroundColor:["#0099FF","#9933FF","#FF99FF"],
-			borderColor: ["black","black","black"],
+			data: [20,80],
+			backgroundColor:["#0099FF"],
+			borderColor: ["black","black"],
 			},
 		],
 		},
 	});
 	</script>
+        <br><h4><b>20%</b></h4>
 	</div>
 	</div>
+    </div>
 
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3 shadow " style="max-width: 280px; border-radius: 25px;">
+	<div class="card-body">
+        <h4>Application Skill</h4><br>
+        <canvas id="myChart2" arial-label="chart" role="img" width="150" height="150"></canvas>
+    <script>var ctx = document.getElementById("myChart2").getContext("2d")
+		var myChart=new Chart(ctx, {
+			type: "doughnut",
+			data: {
+			labels: ["Application Skill","Total"],
+			datasets: [
+			{
+			data: [20,80],
+			backgroundColor:["#0099FF"],
+			borderColor: ["black","black"],
+			},
+		],
+		},
+	});
+	</script>
+               <br><h4><b>20%</b></h4>
+	</div>
+	</div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3 shadow " style="max-width: 280px; border-radius: 25px;">
+	<div class="card-body">
+        <h4>Understanding Skill</h4><br>
+        <canvas id="myChart1" arial-label="chart" role="img" width="150" height="150"></canvas>
+    <script>var ctx = document.getElementById("myChart1").getContext("2d")
+		var myChart=new Chart(ctx, {
+			type: "doughnut",
+			data: {
+			labels: ["Understanding Skill","Total"],
+			datasets: [
+			{
+			data: [20,80],
+			backgroundColor:["#0099FF"],
+			borderColor: ["black","black"],
+			},
+		],
+		},
+	});
+	</script>
+               <br><h4><b>20%</b></h4>
+	</div>
+	</div>
+    </div>
+
+</div>
 
     <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
 	<div class="card-body">

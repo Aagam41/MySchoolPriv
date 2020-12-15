@@ -1,6 +1,4 @@
-{% extends 'user/staff_sidebar.html' %}
-
-{% block subject %} active {% endblock %}
+{% extends 'staff_sidebar.html' %}
 
 {% block navbar %}
 
@@ -22,8 +20,16 @@
               <a class="dropdown-item" href="#">Another action</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
+            <a class="nav-link dropdown-toggle" href="#" id="subjectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select Subject
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="chapterDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select Chapter
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Action</a>
@@ -38,11 +44,11 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Subject Details
+                        Topic Details
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/subject_detail">Subject Details</a>
                         <a class="dropdown-item" href="/chapter_detail">Chapter Details</a>
-                        <a class="dropdown-item" href="/topic_detail">Topic Details</a>
                 </li>
             </ul>
       </div>
@@ -55,33 +61,25 @@
 
         <div class="row">
             <div class="col-sm-2 offset-9" >
-        <a href="/add_subject" class="btn btn-primary" data-toggle="button" aria-pressed="false">
-            +Add Subject
+        <a href="/add_topic" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+            +Add Topic
         </a>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-sm-10 offset-1" >
-            <h4 class="text-center alert alert-info">Subject Details</h4>
+            <h4 class="text-center alert alert-info">Topic Details</h4>
         <table class="table table-hover">
             <thead>
-                <th scope="col">Subject Name</th>
-                <th scope="col">Subject credit</th>
-                <th scope="col">Remembarence credit</th>
-                <th scope="col">Applied Knowledge credit</th>
-                <th scope="col">Understanding credit</th>
+                <th scope="col">Topic Name</th>
                 <th scope="col">ACTION</th>
             </thead>
             <tbody>
             <tr>
-                <td scope="row">Maths</td>
-                <td scope="row">10</td>
-                <td scope="row">3</td>
-                <td scope="row">3</td>
-                <td scope="row">4</td>
+                <td scope="row">Inheritance</td>
                 <td>
-                    <a href="/edit_subject" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/edit_topic" class="btn btn-warning btn-sm">Edit</a>
 
                     <a href="#" class="btn btn-danger btn-sm">Delete</a>
                 </td>

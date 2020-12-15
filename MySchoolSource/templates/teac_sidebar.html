@@ -13,10 +13,72 @@
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/Chart.js' %}"></script>
 </head>
 
 <!-- Navbar --->
-{% block navbar %} {% endblock %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+  <a class="navbar-brand" href="#">SPAPAS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form method="POST" action="/data/">
+          <div class="row">
+              <div class="col">
+                 <div class="input-group mb-3" >
+                    <select class="custom-select" id="Select_standard">
+                        <option selected>1</option>
+                        <a class="dropdown-item" href="/user_detail">
+                            <option value="1">standard</option>
+                        </a>
+                    </select>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="input-group mb-3">
+                    <select class="custom-select" id="Select_division">
+                        <option selected>A</option>
+                        <option value="1">Division</option>
+                    </select>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="input-group mb-3">
+                    <select class="custom-select" id="Select_subject">
+                        <option selected>Maths</option>
+                        <option value="1">Subject</option>
+                    </select>
+                 </div>
+              </div>
+          </div>
+      </form>
+
+    <div class="col-6"></div>
+
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="Profile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                    <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                </svg>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Edit Profile</a>
+            </div>
+        </li>
+    </ul>
+  </div>
+</nav>
 
 <body id="body-pd">
         <div class="l-navbar" id="navbar">
@@ -25,20 +87,20 @@
                     <br><br>
                     <div class="nav__brand">
                         <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                        <a href="#" class="nav__logo">Staff Panel</a>
+                        <a href="#" class="nav__logo">Educator Panel</a>
                     </div>
                     <div class="nav__list">
-                        <a href="/user_detail" class="nav__link {% block user %} {% endblock %}">
+                        <a href="/teac_dashboard" class="nav__link {% block dashboard %} {% endblock %}}">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">User Details</span>
+                            <span class="nav__name">Dashboard</span>
                         </a>
-                        <a href="/add_assignment" class="nav__link {% block assignment %} {% endblock %}">
-                            <ion-icon name="home-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">Add Assignment</span>
+                        <a href="/prin_performance" class="nav__link {% block performance %} {% endblock %}">
+                            <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Student Performance</span>
                         </a>
-                        <a href="/add_attendence" class="nav__link {% block attendence %} {% endblock %}">
+                        <a href="/teac_feedback" class="nav__link {% block feedback %} {% endblock %}">
                             <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">Add Attendence</span>
+                            <span class="nav__name">Show Feedback</span>
                         </a>
 
                         <div  class="nav__link collapse">
@@ -54,9 +116,9 @@
                             </ul>
                         </div>
 
-                        <a href="/subject_detail" class="nav__link {% block subject %} {% endblock %}">
+                        <a href="/teac_prediction" class="nav__link {% block prediction %} {% endblock %} ">
                             <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">Subject Details</span>
+                            <span class="nav__name">Student Prediction</span>
                         </a>
                         <div class="nav__link collapse">
                             <ion-icon name="people-outline" class="nav__icon"></ion-icon>
@@ -70,9 +132,9 @@
                                 <a href="#" class="collapse__sublink">Members</a>
                             </ul>
                         </div>
-                        <a href="/class_detail" class="nav__link {% block class %} {% endblock %}">
+                        <a href="#" class="nav__link">
                             <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                            <span class="nav__name">Class Details</span>
+                            <span class="nav__name">Add Assignment</span>
                         </a>
                     </div>
                 </div>
@@ -83,7 +145,7 @@
                 </a>
             </nav>
         </div>
-        <br>
+        <br><br><br>
         <!-- body -->
         {% block body %} {% endblock %}
         <!-- ===== IONICONS ===== -->
