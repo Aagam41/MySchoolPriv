@@ -7,6 +7,45 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 from django.contrib.auth import views as auth_views
 
 
+class ModelObjectListView(PermissionRequiredMixin, LoginRequiredMixin, ListView):
+    context_object_name = 'object'
+    app_label = ""
+    model_label = ""
+    template_label = ""
+
+    def dispatch(self, request, *args, **kwargs):
+        self.app_label = kwargs.get('app_label', None)
+        self.model_label = kwargs.get('model_label', None)
+        self.model = apps.get_model(self.app_label, self.model_label.capitalize())
+
+        self.template_label = kwargs.get('template_label', None)
+        self.template_name = self.get_template_name_label()
+        self.permission_required = f'{self.app_label}.add_{self.model_label}'
+        try:
+            ret = super(ModelObjectListView, self).dispatch(request, *args, **kwargs)
+        except AttributeError:
+            raise Http404
+        return ret
+
+    def get_template_name_label(self):
+        if self.template_label is None:
+            template_name = f'{self.app_label}/{self.model_label}_list.html'
+        else:
+            path = self.template_label.split("-")
+            file = ""
+            for folder in path:
+                file += folder + "/"
+            template_name = f'{file[:-1]}.html'
+        return template_name
+
+    def get_permissions_required_label(self, permission=None):
+        if permission is None:
+            self.permission_required = permission
+        else:
+            self.permission_required = f'{self.app_label}.view_{self.model_label}'
+        return 0
+
+
 class ModelObjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     context_object_name = 'object'
     app_label = ""
@@ -35,7 +74,7 @@ class ModelObjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateV
         return super().form_valid(form)
 
     def get_template_name_label(self):
-        if self.template_label == "0":
+        if self.template_label == '0':
             template_name = f'{self.app_label}/{self.model_label}_create.html'
         elif self.template_label:
             path = self.template_label.split("-")
@@ -123,3 +162,10 @@ class ModelObjectDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteV
         else:
             success_url = 'modelobject_success_url.html'
         return success_url
+
+    def get_permissions_required_label(self, permission=None):
+        if permission is None:
+            self.permission_required = permission
+        else:
+            self.permission_required = f'{self.app_label}.delete_{self.model_label}'
+        return 0

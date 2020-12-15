@@ -3,7 +3,7 @@ import random
 
 from django.apps import apps
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -21,20 +21,43 @@ from aagam_packages.terminal_yoda import terminal_utils
 
 # Create your views here.
 
+
 @login_required()
 def home(request):
-    python_lines = str(utils.count_lines("*.py"))
-    html_lines = str(utils.count_lines("*.html"))
-    text_lines = str(utils.count_lines("*.txt"))
-    json_lines = str(utils.count_lines("*.json"))
-    context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines,
-               'page_context': {'title': "MySchool SiteMap",
-                                'footerCreatedBy': '<a href="https://aagamsheth.com"/>Aagam Sheth.</a>',
-                                'titleTag': 'MySchool SiteMap'}}
-
+    if Group.objects.get(name='Learner') in request.user.groups.all():
+        python_lines = str(utils.count_lines("*.py"))
+        html_lines = str(utils.count_lines("*.html"))
+        text_lines = str(utils.count_lines("*.txt"))
+        json_lines = str(utils.count_lines("*.json"))
+        context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines,
+                   'page_context': {'title': "MySchool Student SiteMap",
+                                    'footerCreatedBy': '<a href="https://aagamsheth.com"/>Aagam Sheth.</a>',
+                                    'titleTag': 'MySchool SiteMap'}}
+    elif Group.objects.get(name='Educator') in request.user.groups.all():
+        python_lines = str(utils.count_lines("*.py"))
+        html_lines = str(utils.count_lines("*.html"))
+        text_lines = str(utils.count_lines("*.txt"))
+        json_lines = str(utils.count_lines("*.json"))
+        context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines,
+                   'page_context': {'title': "MySchool Educator SiteMap",
+                                    'footerCreatedBy': '<a href="https://aagamsheth.com"/>Aagam Sheth.</a>',
+                                    'titleTag': 'MySchool SiteMap'}}
+    elif Group.objects.get(name='Principal') in request.user.groups.all():
+        python_lines = str(utils.count_lines("*.py"))
+        html_lines = str(utils.count_lines("*.html"))
+        text_lines = str(utils.count_lines("*.txt"))
+        json_lines = str(utils.count_lines("*.json"))
+        context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines,
+                   'page_context': {'title': "MySchool Principal SiteMap",
+                                    'footerCreatedBy': '<a href="https://aagamsheth.com"/>Aagam Sheth.</a>',
+                                    'titleTag': 'MySchool SiteMap'}}
+    else:
+        return HttpResponse(status=403)
     return render(request, "MySchool_site_nav.html", context)
 
 
+@permission_required('')
+@login_required()
 def test(request):
     # # Auth.User
     # p = User.objects.create_superuser(username='Aagam41', password='MySchool@123', first_name='Aagam',
