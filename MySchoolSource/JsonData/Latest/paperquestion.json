@@ -1,0 +1,580 @@
+[ //Maths
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "1"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "1"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "1"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "1"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "1"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "1"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "1"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "1"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "1"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "1"},
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "2"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "2"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "2"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "2"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "2"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "2"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "2"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "2"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "2"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "2"},
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "3"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "3"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "3"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "3"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "3"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "3"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "3"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "3"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "3"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "3"},
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "4"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "4"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "4"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "4"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "4"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "4"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "4"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "4"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "4"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "4"},
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "5"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "5"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "5"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "5"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "5"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "5"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "5"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "5"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "5"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "5"},
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "11"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "11"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "11"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "11"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "11"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "11"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "11"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "11"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "11"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "11"},
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "12"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "12"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "12"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "12"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "12"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "12"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "12"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "12"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "12"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "12"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "13"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "13"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "13"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "13"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "13"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "13"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "13"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "13"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "13"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "13"},
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "14"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "14"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "14"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "14"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "14"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "14"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "14"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "14"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "14"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "14"},
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "20"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "20"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "20"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "20"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "20"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "20"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "20"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "20"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "20"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "20"},
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "21"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "21"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "21"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "21"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "21"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "21"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "21"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "21"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "21"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "21"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "22"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "22"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "22"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "22"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "22"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "22"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "22"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "22"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "22"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "22"},
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "23"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "23"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "23"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "23"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "23"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "23"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "23"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "23"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "23"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "23"},
+
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "24"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "24"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "24"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "24"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "24"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "24"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "24"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "24"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "24"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "24"},
+
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "30"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "30"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "30"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "30"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "30"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "30"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "30"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "30"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "30"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "30"},
+
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "31"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "31"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "31"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "31"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "31"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "31"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "31"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "31"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "31"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "31"},
+
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "32"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "32"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "32"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "32"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "32"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "32"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "32"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "32"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "32"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "32"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "33"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "33"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "33"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "33"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "33"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "33"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "33"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "33"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "33"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "33"},
+
+
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "40"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "40"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "40"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "40"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "40"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "40"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "40"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "40"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "40"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "40"},
+
+
+
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "41"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "41"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "41"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "41"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "41"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "41"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "41"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "41"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "41"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "41"},
+
+
+
+
+
+
+
+
+
+
+
+//Physics
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "67"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "67"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "67"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "67"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "67"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "67"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "67"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "67"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "67"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "67"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "68"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "68"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "68"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "68"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "68"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "68"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "68"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "68"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "68"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "68"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "69"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "69"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "69"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "69"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "69"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "69"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "69"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "69"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "69"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "69"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "70"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "70"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "70"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "70"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "70"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "70"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "70"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "70"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "70"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "70"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "71"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "71"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "71"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "71"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "71"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "71"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "71"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "71"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "71"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "71"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "72"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "72"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "72"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "72"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "72"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "72"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "72"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "72"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "72"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "72"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "73"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "73"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "73"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "73"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "73"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "73"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "73"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "73"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "73"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "73"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "74"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "74"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "74"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "74"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "74"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "74"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "74"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "74"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "74"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "74"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "75"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "75"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "75"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "75"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "75"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "75"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "75"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "75"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "75"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "75"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "76"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "76"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "76"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "76"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "76"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "76"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "76"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "76"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "76"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "76"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "77"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "77"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "77"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "77"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "77"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "77"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "77"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "77"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "77"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "77"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "78"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "78"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "78"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "78"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "78"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "78"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "78"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "78"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "78"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "78"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "79"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "79"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "79"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "79"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "79"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "79"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "79"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "79"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "79"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "79"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "80"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "80"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "80"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "80"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "80"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "80"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "80"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "80"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "80"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "80"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "81"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "81"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "81"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "81"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "81"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "81"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "81"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "81"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "81"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "81"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "82"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "82"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "82"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "82"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "82"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "82"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "82"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "82"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "82"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "82"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "83"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "83"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "83"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "83"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "83"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "83"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "83"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "83"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "83"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "83"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "84"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "84"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "84"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "84"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "84"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "84"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "84"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "84"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "84"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "84"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "85"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "85"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "85"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "85"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "85"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "85"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "85"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "85"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "85"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "85"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "86"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "86"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "86"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "86"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "86"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "86"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "86"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "86"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "86"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "86"},
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "87"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "87"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "87"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "87"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "87"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "87"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "87"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "87"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "87"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "87"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "88"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "88"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "88"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "88"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "88"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "88"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "88"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "88"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "88"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "88"},
+
+
+
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "89"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "89"},
+  {"paper_question_text": "", "rau_type": "R", "total_marks": "10", "chapter_topic": "89"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "89"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "89"},
+  {"paper_question_text": "", "rau_type": "U", "total_marks": "10", "chapter_topic": "89"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "89"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "89"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "89"},
+  {"paper_question_text": "", "rau_type": "A", "total_marks": "10", "chapter_topic": "89"}
+]

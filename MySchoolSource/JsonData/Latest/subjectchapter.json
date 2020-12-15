@@ -1,89 +1,1153 @@
 [
   {
-    "subject": "",
+    "subject": "Mathematics 9711",
     "chapter_id": "1",
-    "chapter_name": "",
+    "chapter_name": "Coordinates, Points and Lines",
     "remembrance_credit": "3",
     "applied_knowledge_credit": "4",
     "understanding_credit": "3",
     "chapter_credit": "10"
   },
   {
-    "subject": "",
+    "subject": "Mathematics 9711",
     "chapter_id": "2",
-    "chapter_name": "",
+    "chapter_name": "Surds and Indices",
     "remembrance_credit": "3",
     "applied_knowledge_credit": "4",
     "understanding_credit": "3",
     "chapter_credit": "10"
   },
   {
-    "subject": "",
+    "subject": "Mathematics 9711",
     "chapter_id": "3",
-    "chapter_name": "",
+    "chapter_name": "Functions and Graphs",
     "remembrance_credit": "3",
     "applied_knowledge_credit": "4",
     "understanding_credit": "3",
     "chapter_credit": "10"
   },
   {
-    "subject": "",
+    "subject": "Mathematics 9711",
     "chapter_id": "4",
-    "chapter_name": "",
+    "chapter_name": "Quadratics",
     "remembrance_credit": "3",
     "applied_knowledge_credit": "4",
     "understanding_credit": "3",
     "chapter_credit": "10"
   },
   {
-    "subject": "",
+    "subject": "Mathematics 9711",
     "chapter_id": "5",
-    "chapter_name": "",
+    "chapter_name": "Inequalities",
     "remembrance_credit": "3",
     "applied_knowledge_credit": "4",
     "understanding_credit": "3",
     "chapter_credit": "10"
   },
   {
-    "subject": "",
+    "subject": "Mathematics 9711",
     "chapter_id": "6",
-    "chapter_name": "",
+    "chapter_name": "Differentiation",
     "remembrance_credit": "3",
     "applied_knowledge_credit": "4",
     "understanding_credit": "3",
     "chapter_credit": "10"
   },
   {
-    "subject": "",
+    "subject": "Mathematics 9711",
     "chapter_id": "7",
-    "chapter_name": "",
+    "chapter_name": "Sequences",
     "remembrance_credit": "3",
     "applied_knowledge_credit": "4",
     "understanding_credit": "3",
     "chapter_credit": "10"
   },
   {
-    "subject": "",
+    "subject": "Mathematics 9711",
     "chapter_id": "8",
-    "chapter_name": "",
+    "chapter_name": "Trigonometry",
     "remembrance_credit": "3",
     "applied_knowledge_credit": "4",
     "understanding_credit": "3",
     "chapter_credit": "10"
   },
   {
-    "subject": "",
+    "subject": "Mathematics 9711",
     "chapter_id": "9",
-    "chapter_name": "",
+    "chapter_name": "Vectors",
     "remembrance_credit": "3",
     "applied_knowledge_credit": "4",
     "understanding_credit": "3",
     "chapter_credit": "10"
   },
   {
-    "subject": "",
+    "subject": "Mathematics 9711",
     "chapter_id": "10",
-    "chapter_name": "",
+    "chapter_name": "Integration",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8621",
+    "chapter_id": "1",
+    "chapter_name": "Kinematics - Describing Motion",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8621",
+    "chapter_id": "2",
+    "chapter_name": "Accelerated Motion",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8621",
+    "chapter_id": "3",
+    "chapter_name": "Dynamics Explaining Motion",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8621",
+    "chapter_id": "4",
+    "chapter_name": "Forces - Vectors and Moments",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8621",
+    "chapter_id": "5",
+    "chapter_name": "Work, Energy and Power",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8621",
+    "chapter_id": "6",
+    "chapter_name": "Momentum",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8621",
+    "chapter_id": "7",
+    "chapter_name": "Matter",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8621",
+    "chapter_id": "8",
+    "chapter_name": "Deforming Solids",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8621",
+    "chapter_id": "9",
+    "chapter_name": "Electric Fields",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8621",
+    "chapter_id": "10",
+    "chapter_name": "Radioactivity",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "1",
+    "chapter_name": "Moles and Equation",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "2",
+    "chapter_name": "Atomic Structure",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "3",
+    "chapter_name": "Electrons in Atom",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "4",
+    "chapter_name": "Chemical Bonding",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "5",
+    "chapter_name": "States of Matter",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "6",
+    "chapter_name": "Enthalpy Changes",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "7",
+    "chapter_name": "Redox Reactions",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "8",
+    "chapter_name": "Equilibrium",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "9",
+    "chapter_name": "Rates of Reaction",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "10",
+    "chapter_name": "Periodicity",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "11",
+    "chapter_name": "Nitrogen and Sulfur",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "12",
+    "chapter_name": "Halogenoalkanes",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "13",
+    "chapter_name": "Carbonly Compounds",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9091",
+    "chapter_id": "14",
+    "chapter_name": "Lattice Energy",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "1",
+    "chapter_name": "Algebra",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "2",
+    "chapter_name": "Logarithms and Exponentials",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "3",
+    "chapter_name": "Trigonometry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "4",
+    "chapter_name": "Differentiation",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "5",
+    "chapter_name": "Integration",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "6",
+    "chapter_name": "Numerical Solution of Equations",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "7",
+    "chapter_name": "Further Algebra",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "8",
+    "chapter_name": "Further Integration",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "9",
+    "chapter_name": "Differential Equations",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "10",
+    "chapter_name": "Vectors",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9712",
+    "chapter_id": "11",
+    "chapter_name": "Complex Numbers",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "1",
+    "chapter_name": "Circular Motion",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "2",
+    "chapter_name": "Gravitational Fields",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "3",
+    "chapter_name": "Oscillations",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "4",
+    "chapter_name": "Thermal Physics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "5",
+    "chapter_name": "Ideal Gases",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "6",
+    "chapter_name": "Coulombs Law",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "7",
+    "chapter_name": "Capacitance",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "8",
+    "chapter_name": "Magnetic Fields and Electromagnetism",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "9",
+    "chapter_name": "Charged Particles",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "10",
+    "chapter_name": "Electromagnetic Induction",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "11",
+    "chapter_name": "Alternating Currents",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "12",
+    "chapter_name": "Quantum Physics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "13",
+    "chapter_name": "Nuclear Physics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "14",
+    "chapter_name": "Direct sensing",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "15",
+    "chapter_name": "Medical Imaging",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8622",
+    "chapter_id": "16",
+    "chapter_name": "Communication Systems ",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "1",
+    "chapter_name": "Electrochemistry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "2",
+    "chapter_name": "Further Aspects of Equilibria",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "3",
+    "chapter_name": "Reaction Kinetics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "4",
+    "chapter_name": "Entropy and Gibbs free Energy",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "5",
+    "chapter_name": "Transition Elements",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "6",
+    "chapter_name": "Benzene and its Components",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "7",
+    "chapter_name": "Carboxylic acid and Their Derivatives",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "8",
+    "chapter_name": "Organic Nitrogen Compounds",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "9",
+    "chapter_name": "Polymerization",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "10",
+    "chapter_name": "Analytical Chemistry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9092",
+    "chapter_id": "10",
+    "chapter_name": "Organic Synthesis",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "1",
+    "chapter_name": "The particulate nature of matter",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "2",
+    "chapter_name": "Experimental techniques",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "3",
+    "chapter_name": "Atoms, elements and compounds",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "4",
+    "chapter_name": "Stoichiometry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "5",
+    "chapter_name": "Electricity and chemistry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "6",
+    "chapter_name": "Chemical energetics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "7",
+    "chapter_name": "Chemical reactions",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "8",
+    "chapter_name": "Acids, bases and salts",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "9",
+    "chapter_name": "The Periodic Table",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "10",
+    "chapter_name": "Metals",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "11",
+    "chapter_name": "Air and water",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "12",
+    "chapter_name": "Sulfur",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "13",
+    "chapter_name": "Carbonates",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9090",
+    "chapter_id": "14",
+    "chapter_name": "Organic chemistry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter_id": "1",
+    "chapter_name": "Number",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter_id": "2",
+    "chapter_name": "Algebra and graphs",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter_id": "3",
+    "chapter_name": "Coordinate geometry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter_id": "4",
+    "chapter_name": "Geometry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter_id": "5",
+    "chapter_name": "Mensuration",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter_id": "6",
+    "chapter_name": "Trigonometry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter_id": "7",
+    "chapter_name": "Vectors and transformations",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter_id": "8",
+    "chapter_name": "Probability",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9710",
+    "chapter_id": "9",
+    "chapter_name": "Statistics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter_id": "1",
+    "chapter_name": "General Physics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter_id": "2",
+    "chapter_name": "Thermal Physics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter_id": "3",
+    "chapter_name": "Properties of waves, including light and sound",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter_id": "4",
+    "chapter_name": "Electricity and magnetism",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8620",
+    "chapter_id": "5",
+    "chapter_name": "Atomic physics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter_id": "1",
+    "chapter_name": "Number",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter_id": "2",
+    "chapter_name": "Algebra and graphs",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter_id": "3",
+    "chapter_name": "Coordinate geometry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter_id": "4",
+    "chapter_name": "Geometry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter_id": "5",
+    "chapter_name": "Mensuration",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter_id": "6",
+    "chapter_name": "Trigonometry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter_id": "7",
+    "chapter_name": "Vectors and transformations",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter_id": "8",
+    "chapter_name": "Probability",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Mathematics 9709",
+    "chapter_id": "9",
+    "chapter_name": "Statistics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter_id": "1",
+    "chapter_name": "General Physics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter_id": "2",
+    "chapter_name": "Thermal Physics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter_id": "3",
+    "chapter_name": "Properties of waves, including light and sound",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter_id": "4",
+    "chapter_name": "Electricity and magnetism",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Physics 8619",
+    "chapter_id": "5",
+    "chapter_name": "Atomic physics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "1",
+    "chapter_name": "The particulate nature of matter",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "2",
+    "chapter_name": "Experimental techniques",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "3",
+    "chapter_name": "Atoms, elements and compounds",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "4",
+    "chapter_name": "Stoichiometry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "5",
+    "chapter_name": "Electricity and chemistry",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "6",
+    "chapter_name": "Chemical energetics",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "7",
+    "chapter_name": "Chemical reactions",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "8",
+    "chapter_name": "Acids, bases and salts",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "9",
+    "chapter_name": "The Periodic Table",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "10",
+    "chapter_name": "Metals",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "11",
+    "chapter_name": "Air and water",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "12",
+    "chapter_name": "Sulfur",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "13",
+    "chapter_name": "Carbonates",
+    "remembrance_credit": "3",
+    "applied_knowledge_credit": "4",
+    "understanding_credit": "3",
+    "chapter_credit": "10"
+  },
+  {
+    "subject": "Chemistry 9089",
+    "chapter_id": "14",
+    "chapter_name": "Organic chemistry",
     "remembrance_credit": "3",
     "applied_knowledge_credit": "4",
     "understanding_credit": "3",
