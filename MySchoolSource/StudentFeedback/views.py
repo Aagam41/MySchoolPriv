@@ -6,10 +6,10 @@ def login(request):
     return render(request, 'login.html')
 
 def add_user(request):
-    return render(request, 'add_user.html')
+    return render(request, 'user_create.html')
 
 def user_detail(request):
-        return render(request, 'user_detail.html')
+        return render(request, 'user_list.html')
 
 def edit_user(request):
     return render(request, 'edit_user.html')

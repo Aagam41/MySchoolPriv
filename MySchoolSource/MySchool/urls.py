@@ -18,11 +18,13 @@ from django.urls import path, include, re_path
 
 from MySchoolHome import urls as mshu
 from StudentPerformance import urls as spu
+from StudentFeedback import urls as sfu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(mshu)),
-    path('sp', include(spu)),
+    path('sp/', include(spu)),
+    path('sf/', include(sfu)),
 ]
 
 admin.site.site_header = "MySchool Administration"
