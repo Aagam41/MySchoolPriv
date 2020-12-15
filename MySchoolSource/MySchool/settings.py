@@ -61,13 +61,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'MySchool.urls'
 
-LOGIN_URL = "http://127.0.0.1:8000/msh/login/"
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/msh/'
+LOGIN_URL = "http://127.0.0.1:8000/login/"
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/'
+
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates',  'aagam_packages/django_model_extensions/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
