@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from StudentFeedback import urls as sf
 from MySchoolHome import urls as mshu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(mshu)),
+    path('', include(sf)),
 ]
