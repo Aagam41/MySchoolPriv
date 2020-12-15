@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 from MySchoolHome import urls as mshu
 from StudentPerformance import urls as spu
@@ -25,7 +25,7 @@ urlpatterns = [
     path('sp', include(spu)),
 ]
 
-admin.site.site_header = "My School Administration"
-admin.site.site_title = "My School Administration"
-admin.site.index_title = "My School Administration"
-admin.site.site_url = "http://127.0.0.1:8000/msh/"
+admin.site.site_header = "MySchool Administration"
+admin.site.site_title = "MySchool Administration"
+admin.site.index_title = "MySchool Administration"
+admin.site.site_url = "http://127.0.0.1:8000/"

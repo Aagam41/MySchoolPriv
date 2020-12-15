@@ -3,6 +3,7 @@ import random
 
 from django.apps import apps
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -10,7 +11,6 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
 from MySchoolHome import forms
 from django.core import serializers
-
 
 from MySchoolHome import models as msh
 from StudentPerformance import models as sp
@@ -21,18 +21,18 @@ from aagam_packages.terminal_yoda import terminal_utils
 
 # Create your views here.
 
+@login_required()
+def home(request):
+    python_lines = str(utils.count_lines("*.py"))
+    html_lines = str(utils.count_lines("*.html"))
+    text_lines = str(utils.count_lines("*.txt"))
+    json_lines = str(utils.count_lines("*.json"))
+    context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines,
+               'page_context': {'title': "MySchool SiteMap",
+                                'footerCreatedBy': '<a href="https://aagamsheth.com"/>Aagam Sheth.</a>',
+                                'titleTag': 'MySchool SiteMap'}}
 
-def msh_login_page(request):
-    if request.method == "POST":
-        login_form = forms.AuthenticationForm(data=request.POST)
-        if login_form.is_valid():
-            login(request, request.POST['username'], request.POST['password'])
-            yoda_saberize_print(request.POST['username'], YodaSaberColor.RED)
-
-            return redirect('MySchoolHome:test')
-    else:
-        login_form = forms.AuthenticationForm()
-    return render(request, 'MySchoolHome/login.html', {'form': login_form})
+    return render(request, "MySchool_site_nav.html", context)
 
 
 def test(request):
@@ -167,5 +167,4 @@ def test(request):
     # serialized = serializers.serialize('json', a)
     # yoda_saberize_print(serialized, YodaSaberColor.BLACK, YodaSaberColor.CORNFLOWERBLUE)
 
-    output = f'<h1>Done. <br />Number of Lines in Python : {utils.count_lines("*.py")}</h1>'
-    return HttpResponse(output)
+    return HttpResponse("<h1>Done</h1>")
