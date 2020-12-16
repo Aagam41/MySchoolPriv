@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from aagam_packages.django_model_extensions import models as amdl
+from aagam_packages.django.model_extensions import models as amdl
 
 
 # Create your models here.
