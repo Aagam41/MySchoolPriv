@@ -1,6 +1,8 @@
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render
 from django.views.generic import ListView, UpdateView
 
-from .models import *
+from .forms import *
 
 from aagam_packages.django.view_extensions import generic
 
@@ -8,33 +10,23 @@ from aagam_packages.django.view_extensions import generic
 # Create your views here.
 
 
-class PaperTypeListView(ListView):
-    model = PaperType
-    paginate_by = 100
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-
-
-class PaperTypeUpdateView(UpdateView):
-    model = PaperType
-    fields = ['paper_type', 'out_of']
+def paper_entry_create(request):
+    form = PaperEntryForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save()
+        return HttpResponseRedirect("/")
+    return render(request, "test/test.html", {'form': form})
 
 
-class PaperEntryListView(ListView):
-    model = PaperEntry
-    paginate_by = 100
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+def paper_pattern_entry_create_popup(request):
+    form = PaperPatternEntryForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save()
 
+        ## Change the value of the "#id_author". This is the element id in the form
 
-class PaperEntryUpdateView(UpdateView):
-    model = PaperEntry
-    fields = ['paper_entry_name', 'subject', 'paper_type', 'paper_entry_date']
+        return HttpResponse(
+            '<script>opener.closePopup(window, "%s", "%s", "#id_author");</script>' % (instance.pk, instance))
 
-
-class cv(generic.ModelObjectCreateView):
-    success_label = ""
+    return render(request, "author_form.html", {"form": form})
