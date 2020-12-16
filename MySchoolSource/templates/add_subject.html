@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Add Subject</title>
+        {% load static %}
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <center>
+            <div class="col-sm-4">
+                <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                    <div class="card-body">
+                          <h4 class="text-center alert alert-info">Add new Subject</h4>
+                            <form  method="POST" action="/data/">
+                            {% csrf_token %}
+                                 <div class="input-group mb-3">
+                                    <select class="custom-select" id="Class_id">
+                                        <option selected>Select Class</option>
+                                        <option value="1"></option>
+                                    </select>
+                                </div>
+                                <INPUT TYPE="text" class="form-control" placeholder="Subjectname" id="Subject_name"><br>
+                                <INPUT TYPE="number" class="form-control" placeholder="Subject credit" id="Subject_credit"><br>
+                                <INPUT TYPE="number" class="form-control" placeholder="Remembarence credit" id="Remembarence_credit"><br>
+                                <INPUT TYPE="number" class="form-control" placeholder="Applied Knowledge credit" id="Applied_Knowledge_credit"><br>
+                                <INPUT TYPE="number" class="form-control" placeholder="Understanding credit" id="Understanding_credit"><br>
+                                <a href="#" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+                                    +Add Subject
+                                </a>
+                            </form>
+                    </div>
+                </div>
+             </div>
+        </center>
+
+          <!--   Core JS Files   -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script>
+          window.TrackJS &&
+            TrackJS.install({
+              token: "ee6fab19c5a04ac1a32a645abde4613a",
+              application: "black-dashboard-free"
+            });
+        </script>
+    </body>
+</html>

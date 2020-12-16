@@ -1,0 +1,55 @@
+{% extends 'user/prin_sidebar.html' %}
+
+{% block prediction %} active {% endblock %}
+
+{% block body %}
+
+<center>
+	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+	<div class="card-body">
+         <h4>Group Of Students On Basic Of Prediction </h4>
+        <canvas id="myChart" arial-label="chart" role="img" width="400" height="150"></canvas>
+    <script>var ctx = document.getElementById("myChart").getContext("2d")
+		var myChart=new Chart(ctx, {
+			type: "pie",
+			data: {
+			labels: ["Greater Than 75","Greater Than 45 But Less Than 75","Greater Than 23 But Less Than 45"],
+			datasets: [
+			{
+			data: [20,25,15],
+			backgroundColor:["#0000FF","#00FF00","#FF0000"],
+			borderColor: ["black","black","black"],
+			},
+		],
+		},
+	});
+	</script>
+	</div>
+	</div>
+</center>
+<br>
+<br>       <div class="row">
+            <div class="col-sm-10 offset-1" >
+            <h4 class="text-center alert alert-info">Prediction Data</h4>
+        <table class="table table-hover">
+            <thead>
+                <th scope="col">User Name</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Class</th>
+                <th scope="col">Predicted Mark</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td scope="row">ShahNishil</td>
+                <td scope="row">Nishil</td>
+                <td scope="row">Shah</td>
+                <td scope="row">12A</td>
+                <td scope="row">70</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'user/stu_sidebar.html' %}
+
+{% block prediction %} avtive {% endblock %}
+
+{% block body %}
+<center>
+    <div class="row">
+        <div class="col-sm-2 offset-9" >
+            <a href="/prediction_data" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+                Prediction Data
+            </a>
+        </div>
+    </div><br>
+
+	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+	<div class="card-body">
+        <h4> Predicted Marks<br>
+            <div class="circle">
+              <div class="bar"></div>
+              <div class="box"><span></span></div>
+            </div></h4>
+        <script>
+          let options = {
+            startAngle: -1.55,
+            size: 150,
+            value: 0.70,
+            fill: {gradient: ['#2A2A72', '#009FFD']}
+          }
+          $(".circle .bar").circleProgress(options).on('circle-animation-progress',
+          function(event, progress, stepValue){
+            $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2)) + "%");
+          });
+        </script>
+    </div>
+	</div>
+
+    <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+	<div class="card-body">
+        <h1> Group : Average</h1>
+    </div>
+	</div>
+</center>
+{% endblock %}
