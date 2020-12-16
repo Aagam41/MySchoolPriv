@@ -28,12 +28,16 @@ urlpatterns += [
     path('list/<str:app_label>/<str:model_label>/<str:template_label>/',
          generic.ModelObjectListView.as_view(), name='modelobject_list_view'),
 
-
     path('create/<str:app_label>/<str:model_label>/',
          generic.ModelObjectCreateView.as_view(extra_context={'page_context': {'titleTag': '1'}}),
          name='modelobject_create_view'),
     path('create/<str:app_label>/<str:model_label>/<str:template_label>/',
          generic.ModelObjectCreateView.as_view(), name='modelobject_create_view'),
+
+    path('update/<str:app_label>/<str:model_label>/<int:pk>/',
+         generic.ModelObjectUpdateView.as_view(), name='modelobject_update_view'),
+    path('update/<str:app_label>/<str:model_label>/<int:pk>/<str:template_label>/',
+         generic.ModelObjectUpdateView.as_view(), name='modelobject_update_view'),
 
     path('delete/<str:app_label>/<str:model_label>/<int:pk>/',
          generic.ModelObjectDeleteView.as_view(), name='modelobject_delete_view'),

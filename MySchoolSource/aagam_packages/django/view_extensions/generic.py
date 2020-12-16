@@ -20,7 +20,7 @@ class ModelObjectListView(PermissionRequiredMixin, LoginRequiredMixin, ListView)
 
         self.template_label = kwargs.get('template_label', None)
         self.template_name = self.get_template_name_label()
-        self.permission_required = f'{self.app_label}.add_{self.model_label}'
+        self.permission_required = self.get_permissions_required_label()
         try:
             ret = super(ModelObjectListView, self).dispatch(request, *args, **kwargs)
         except AttributeError:
@@ -38,11 +38,25 @@ class ModelObjectListView(PermissionRequiredMixin, LoginRequiredMixin, ListView)
             template_name = f'{file[:-1]}.html'
         return template_name
 
-    def get_permissions_required_label(self, permission=None):
+    def get_permissions_required_label(self, permission=None, permission_type=None):
         if permission is None:
             self.permission_required = permission
         else:
-            self.permission_required = f'{self.app_label}.view_{self.model_label}'
+            if permission_type is None:
+                self.permission_required = (f'{self.app_label}.view_{self.model_label}',
+                                            f'{self.app_label}.add_{self.model_label}',
+                                            f'{self.app_label}.change_{self.model_label}',
+                                            f'{self.app_label}.delete_{self.model_label}')
+            elif permission_type == "view":
+                self.permission_required = f'{self.app_label}.view_{self.model_label}'
+            elif permission_type == "add":
+                self.permission_required = f'{self.app_label}.add_{self.model_label}'
+            elif permission_type == "change":
+                self.permission_required = f'{self.app_label}.change_{self.model_label}'
+            elif permission_type == "delete":
+                self.permission_required = f'{self.app_label}.delete_{self.model_label}'
+            else:
+                return HttpResponse(status=403)
         return 0
 
 
@@ -65,6 +79,76 @@ class ModelObjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateV
         self.permission_required = f'{self.app_label}.add_{self.model_label}'
         try:
             ret = super(ModelObjectCreateView, self).dispatch(request, *args, **kwargs)
+        except AttributeError:
+            raise Http404
+        return ret
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
+    def get_template_name_label(self):
+        if self.template_label == '0':
+            template_name = f'{self.app_label}/{self.model_label}_create.html'
+        elif self.template_label:
+            path = self.template_label.split("-")
+            file = ""
+            for folder in path:
+                file += folder + "/"
+            template_name = f'{file[:-1]}.html'
+        else:
+            template_name = 'modelobject_create.html'
+        return template_name
+
+    def get_modelobject_fields_label(self, form1=None):
+        if not form1 is None:
+            self.form_class = form1
+        else:
+            model_label = list()
+            field_label = list()
+            for app in apps.get_app_configs():
+                for model in app.get_models():
+                    model_label.append(model._meta.verbose_name.replace(" ", ""))
+            field_labels = self.model._meta.get_fields()
+            for field in field_labels:
+                if field.name == f'{self.model.objects.model._meta.db_table}_id':
+                    pass
+                elif field.name in model_label:
+                    pass
+                elif not field.editable:
+                    pass
+                else:
+                    field_label.append(field.name)
+            self.fields = field_label
+        return 0
+
+    def get_permissions_required_label(self, permission=None):
+        if permission is None:
+            self.permission_required = permission
+        else:
+            self.permission_required = f'{self.app_label}.add_{self.model_label}'
+        return 0
+
+
+class ModelObjectUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
+    context_object_name = 'object'
+    app_label = ""
+    model_label = ""
+    fields_label = ""
+    template_label = ""
+    success_label = ""
+
+    def dispatch(self, request, *args, **kwargs):
+        self.app_label = kwargs.get('app_label', None)
+        self.model_label = kwargs.get('model_label', None)
+        self.model = apps.get_model(self.app_label, self.model_label.capitalize())
+        self.get_modelobject_fields_label()
+
+        self.template_label = kwargs.get('template_label', None)
+        self.template_name = self.get_template_name_label()
+        self.permission_required = f'{self.app_label}.add_{self.model_label}'
+        try:
+            ret = super(ModelObjectUpdateView, self).dispatch(request, *args, **kwargs)
         except AttributeError:
             raise Http404
         return ret
