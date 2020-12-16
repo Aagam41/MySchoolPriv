@@ -11,12 +11,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import sys
 import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-with open('MySchool\\env.json') as JSONFile:
+with open('D:\Aagam Projects\Python\Django\MySchool\MySchoolSource\MySchool\env.json') as JSONFile:
     environ = json.load(JSONFile)
 
 # Quick-start development settings - unsuitable for production
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'StudentFeedback.apps.StudentfeedbackConfig',
     'MySchoolHome.apps.MyschoolhomeConfig',
 
-    'widget_tweaks',
+    'aagam_packages.django.form_extensions.aagam_form_tweaks',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -68,7 +69,7 @@ LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates',  'aagam_packages/django_model_extensions/templates'],
+        'DIRS': ['templates', 'aagam_packages/django/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
