@@ -1,7 +1,6 @@
 from django.db import models
-from django.urls import reverse
 
-from aagam_packages.django_model_extensions import models as amdl
+from aagam_packages.django.model_extensions import models as amdl
 
 from MySchoolHome.models import MySchoolUser
 
