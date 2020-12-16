@@ -1,13 +1,10 @@
-from django.contrib.auth.decorators import login_required
-from django.urls import path, include
-from django.conf.urls import url
-from django.contrib import admin
+from django.urls import path
 from django.contrib.auth import views as auth_views
 
 
 from . import views
 
-from aagam_packages.django_model_extensions.views import generic
+from aagam_packages.django.view_extensions import generic
 
 app_name = 'MySchoolHome'
 

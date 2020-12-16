@@ -1,14 +1,9 @@
-from django.http import Http404, HttpResponse
-from django.apps import apps
-from django.template.exceptions import TemplateDoesNotExist
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, UpdateView
 
 from .models import *
 
-from aagam_packages.terminal_yoda.terminal_yoda import *
-from aagam_packages.django_model_extensions.views import generic
+from aagam_packages.django.view_extensions import generic
+
 
 # Create your views here.
 

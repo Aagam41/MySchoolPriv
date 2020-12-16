@@ -2,8 +2,6 @@ from django.urls import path
 
 from . import views
 
-from aagam_packages.django_model_extensions.views import generic
-
 app_name = 'StudentPerformance'
 
 urlpatterns = [
