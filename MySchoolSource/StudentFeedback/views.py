@@ -33,7 +33,7 @@ def edit_subject(request):
     return render(request, 'edit_subject.html')
 
 def chapter_detail(request):
-    return render(request, 'chapter_detail.html')
+    return render(request, 'subjectchapter_list.html')
 
 def add_chapter(request):
     return render(request, 'add_chapter.html')

@@ -24,7 +24,7 @@ class TblSubject(amdl.AagamBaseModel):
         db_table = 'tblsubject'
 
     def __str__(self):
-        return f'{self.subject_name} : {self.standard}'
+        return f'{self.subject_name}'
 
 
 class SubjectChapter(amdl.AagamBaseModel):

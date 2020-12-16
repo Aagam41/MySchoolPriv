@@ -25,6 +25,9 @@ urlpatterns += [
     path('list/<str:app_label>/<str:model_label>/',
          generic.ModelObjectListView.as_view(extra_context={'page_context': {'titleTag': '1'}}),
          name='modelobject_list_view'),
+    path('list/<str:app_label>/<str:model_label>/<str:template_label>/',
+         generic.ModelObjectListView.as_view(), name='modelobject_list_view'),
+
 
     path('create/<str:app_label>/<str:model_label>/',
          generic.ModelObjectCreateView.as_view(extra_context={'page_context': {'titleTag': '1'}}),

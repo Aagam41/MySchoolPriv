@@ -143,7 +143,7 @@ class ModelObjectDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteV
 
     def get_template_name_label(self):
         if self.template_label == "0":
-            template_name = f'{self.app_label}/{self.model_label}_create.html'
+            template_name = f'{self.app_label}/{self.model_label}_delete.html'
         elif self.template_label:
             path = self.template_label.split("-")
             file = ""
