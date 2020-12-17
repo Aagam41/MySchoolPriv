@@ -56,13 +56,10 @@ def home(request):
     return render(request, "MySchool_site_nav.html", context)
 
 
-@permission_required('')
-@login_required()
 def test(request):
     # # Auth.User
     # p = User.objects.create_superuser(username='Aagam41', password='MySchool@123', first_name='Aagam',
-    #                                   last_name='Sheth',
-    #          email='aagam.h.sheth@icloud.com')
+    #                                   last_name='Sheth', email='aagam.h.sheth@icloud.com')
     # p.save()
     # p = User.objects.create_superuser(username='Bhavesh03', password='MySchool@123', first_name='Bhavesh',
     #                                   last_name='Bhavnani', email='test@gmail.com')
@@ -85,7 +82,7 @@ def test(request):
     #
     #
     # # Auth.User
-    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    # with open('JsonData\\Latest\\user.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = User(username=p['username'], password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
@@ -95,7 +92,7 @@ def test(request):
     #     group1.user_set.add(p)
     #
     #     # Auth.User for teacher
-    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\teacher.json') as f:
+    # with open('JsonData\\Latest\\teacher.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = User(username=p['username'], password=p['password'], first_name=p['first_name'],
@@ -111,7 +108,7 @@ def test(request):
     #     s.save()
     #
     # # TblSubject
-    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\subject.json') as f:
+    # with open('JsonData\\Latest\\subject.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = sp.TblSubject(subject_name=p['subject_name'], standard=sp.Standard.objects.get(standard=p['standard']),
@@ -122,7 +119,7 @@ def test(request):
     #
     #
     # # SubjectChapter
-    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\subjectchapter.json') as f:
+    # with open('JsonData\\Latest\\subjectchapter.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = sp.SubjectChapter(subject=sp.TblSubject.objects.get(subject_name=p['subject']),
@@ -134,7 +131,7 @@ def test(request):
     #
     # # ChapterTopic
     # with open(
-    #         'D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\chaptertopic2.json') as f:
+    #         'JsonData\\Latest\\chaptertopic2.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     subject1 = sp.TblSubject.objects.get(subject_name=p['subject'])
@@ -145,7 +142,7 @@ def test(request):
     #
     # # MySchoolUser  Educator
     # with open(
-    #        'D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\teacher.json') as f:
+    #        'JsonData\\Latest\\teacher.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = msh.MySchoolUser(auth_user=User.objects.get(username=p['username']))
@@ -169,7 +166,7 @@ def test(request):
     #
     # # MySchoolUser
     # with open(
-    #        'D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #        'JsonData\\Latest\\user.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = msh.MySchoolUser(auth_user=User.objects.get(username=p['username']))
