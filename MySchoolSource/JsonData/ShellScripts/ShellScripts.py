@@ -9,7 +9,7 @@ from StudentFeedback import models as sf
 from StudentPerformancePrediction import models as spp
 
 
-with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+with open('C:\Users\gvp\PycharmProjects\MySchoolPriv\MySchoolSource\JsonData\Latest\user.json') as f:
     user = json.load(f)
 
 

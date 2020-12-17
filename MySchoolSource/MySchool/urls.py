@@ -21,4 +21,5 @@ from MySchoolHome import urls as mshu
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(mshu)),
+    path('subjects/', include('StudentPerformance.urls'))
 ]

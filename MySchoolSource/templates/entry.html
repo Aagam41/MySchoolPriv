@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Entry</h1>
+    <form method="post" action="/subjects/subentry/">
+        {% csrf_token %}
+        <input type="text" name="sub_name">
+        <input type="text" name="std">
+        <input type="text" name="r_credit">
+        <input type="text" name="ak_credit">
+        <input type="text" name="u_credit">
+        <input type="text" name="s_credit">
+        <input type="submit">
+    </form>
+    <br>
+    <h1>Delete</h1>
+    <form method="post" action="/subjects/subdelete/">
+        {% csrf_token %}
+        <input type="text" name="sub_name">
+        <input type="text" name="std">
+        <input type="submit">
+    </form>
+    <br>
+    <h1>Update</h1>
+    <form method="post" action="/subjects/subupdate/">
+        {% csrf_token %}
+        <input type="text" name="sub_id">
+        <input type="text" name="sub_name">
+        <input type="text" name="std">
+        <input type="text" name="r_credit">
+        <input type="text" name="ak_credit">
+        <input type="text" name="u_credit">
+        <input type="text" name="s_credit">
+        <input type="submit">
+    </form>
+    <h1>Chapter_Entry</h1>
+    <form method="post" action="/subjects/chapentry/">
+        {% csrf_token %}
+        <input type="text" name="subject">
+        <input type="text" name="ch_id">
+        <input type="text" name="ch_name">
+        <input type="text" name="ch_r_credit">
+        <input type="text" name="ch_ak_credit">
+        <input type="text" name="ch_u_credit">
+        <input type="text" name="ch_credit">
+        <input type="submit">
+    </form>
+    <br>
+    <h1>Topic_Entry</h1>
+    <form method="post" action="/subjects/topicentry/">
+        {% csrf_token %}
+        <input type="text" name="chapter">
+        <input type="text" name="t_id">
+        <input type="text" name="t_name">
+        <input type="submit">
+    </form>
+    <br>
+    <h1>Chapter Update</h1>
+    <form method="post" action="/subjects/chapupdate/">
+        {% csrf_token %}
+        <input type="text" name="s_c_id">
+        <input type="text" name="ch_id">
+        <input type="text" name="ch_name">
+        <input type="text" name="ch_r_credit">
+        <input type="text" name="ch_ak_credit">
+        <input type="text" name="ch_u_credit">
+        <input type="text" name="ch_credit">
+        <input type="submit">
+    </form>
+    <br>
+    <h1>Chapter Delete</h1>
+    <form method="post" action="/subjects/chapdelete/">
+        {% csrf_token %}
+        <input type="text" name="chap_name">
+        <input type="text" name="sub">
+        <input type="submit">
+    </form>
+    <br>
+    <h1>Topic Update</h1>
+    <form method="post" action="/subjects/topicupdate/">
+        {% csrf_token %}
+        <input type="text" name="c_t_id">
+        <input type="text" name="t_id">
+        <input type="text" name="t_name">
+        <input type="submit">
+    </form>
+    <br>
+    <h1>Topic Delete</h1>
+    <form method="post" action="/subjects/topicdelete/">
+        {% csrf_token %}
+        <input type="text" name="topic_name">
+        <input type="text" name="chap">
+        <input type="submit">
+    </form>
+</body>
+</html>

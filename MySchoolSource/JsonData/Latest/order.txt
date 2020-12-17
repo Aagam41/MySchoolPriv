@@ -1,3 +1,0 @@
-subject = 36 (3*12), 1-4, 5-8 yash, 9-12
-subjectchapter = 10 chapters for each subject, for your subject
-chaptertopic = 5 topics for each chapter, for your subject
