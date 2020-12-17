@@ -1,6 +1,69 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
+from MySchoolHome import models as msh
+from StudentPerformance import models as sp
+from StudentPerformancePrediction import models as spp
 
-# Create your views here.
+
+
+def add_user(request):
+    return render(request, 'add_user.html')
+
+def user_detail(request):
+    return render(request, 'user_detail.html')
+
+def edit_user(request):
+    return render(request, 'edit_user.html')
+
+def class_detail(request):
+    data = sp.StandardSection.objects.values('standard', 'section')
+    return render(request, 'class_detail.html', {'da': data})
+
+'''def edit_class(request, standard):
+    if request.method == 'POST':
+        pi = sp.StandardSection.objects.get(pk=standard)
+        std = request.POST["Standard"]
+        sec = request.POST["Section"]
+        data = sp.StandardSection(section=sec, standard=std, instance=pi)
+        data.save()
+    else:
+        pi = sp.StandardSection.objects.get(pk=standard)
+        data = sp.StandardSection(instance=pi)
+        return render(request, 'edit_class.html', {'da': data})'''
+
+
+
+def add_class(request):
+    if request.method == 'POST':
+        std = request.POST["Standard"]
+        sec = request.POST["Section"]
+        data = sp.StandardSection(section=sec, standard_id=std)
+        data.save()
+        #return HttpResponseRedirect('/class_detail')
+        return render(request, 'add_class.html')
+    else:
+        return render(request, 'add_class.html')
+    return render(request, 'add_class.html')
+
+def delete_class(request,standard):
+    if request.method == "POST":
+        pi = sp.StandardSection.objects.get(pk=standard)
+        pi.delete()
+        return HttpResponseRedirect('/class_detail')
+        #return render(request, 'class_detail.html')
+
+
+def get_teacher_dashboard(request):
+    return render(request, 'teac_dashboard.html')
+
+
+def get_student_prediction(request):
+    return render(request, 'stu_prediction.html')
+
+def get_teacher_prediction(request):
+    return render(request, 'teac_prediction.html')
+
+def get_principal_prediction(request):
+    return render(request, 'prin_prediction.html')
 
 def login(request):
     return render(request, 'login.html')

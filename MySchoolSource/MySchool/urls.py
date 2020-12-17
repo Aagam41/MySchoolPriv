@@ -23,8 +23,8 @@ from StudentFeedback import urls as sfu
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(mshu)),
-    path('', include(spu)),
-    path('', include(sfu)),
+    path('', include(sp)),
+    path('', include(sf)),
 ]
 
 admin.site.site_header = "MySchool Administration"
