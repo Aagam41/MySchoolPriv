@@ -17,7 +17,7 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-with open('D:\Aagam Projects\Python\Django\MySchool\MySchoolSource\MySchool\env.json') as JSONFile:
+with open('MySchool\\env.json') as JSONFile:
     environ = json.load(JSONFile)
 
 # Quick-start development settings - unsuitable for production
