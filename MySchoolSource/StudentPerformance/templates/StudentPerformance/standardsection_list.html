@@ -70,14 +70,16 @@
                 <th scope="col">ACTION</th>
             </thead>
             <tbody>
+            {% for i in da %}
             <tr>
-                <td scope="row">12</td>
-                <td scope="row">A</td>
+                <td scope="row">{{ i.standard }}</td>
+                <td scope="row">{{ i.section }}</td>
                 <td>
                     <a href="/edit_class" class="btn btn-warning btn-sm">Edit</a>
                     <a href="#" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
+            {% endfor %}
             </tbody>
         </table>
         </div>

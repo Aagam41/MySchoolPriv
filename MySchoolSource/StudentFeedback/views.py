@@ -1,9 +1,10 @@
 from django.shortcuts import render
-
+from StudentPerformance import models as ap
+from aagam_packages.terminal_yoda.terminal_yoda import *
 # Create your views here.
 
 def login(request):
-    return render(request, 'login.html')
+    return render(request, 'registration/login.html')
 
 def add_user(request):
     return render(request, 'auth/user_create.html')
@@ -12,52 +13,54 @@ def user_detail(request):
         return render(request, 'auth/user_list.html')
 
 def edit_user(request):
-    return render(request, 'user_update.html')
+    return render(request, 'notNeeded/user_update.html')
 
 def add_class(request):
-    return render(request, 'standard_create.html')
+    return render(request, 'StudentPerformance/standard_create.html')
 
 def class_detail(request):
-        return render(request, 'standardsection_list.html')
+    yoda_saberize_print("Aagam", YodaSaberColor.WHITE, YodaSaberColor.HOTPINK)
+    data = ap.StandardSection.objects.values('standard', 'section')
+    return render(request, 'StudentPerformance/standardsection_list.html', {'da': data})
 
 def edit_class(request):
-    return render(request, 'standard_update.html')
+    return render(request, 'notNeeded/standard_update.html')
 
 def subject_detail(request):
-    return render(request, 'subject_list.html')
+    return render(request, 'StudentPerformance/subject_list.html')
 
 def add_subject(request):
-    return render(request, 'tblsubject_create.html')
+    return render(request, 'StudentPerformance/tblsubject_create.html')
 
 def edit_subject(request):
-    return render(request, 'tblsubject_update.html')
+    return render(request, 'notNeeded/tblsubject_update.html')
 
 def chapter_detail(request):
-    return render(request, 'subjectchapter_list.html')
+    return render(request, 'StudentPerformance/subjectchapter_list.html')
 
 def add_chapter(request):
-    return render(request, 'subjectchapter_create.html')
+    return render(request, 'StudentPerformance/subjectchapter_create.html')
 
 def edit_chapter(request):
-    return render(request, 'subjectchapter_update.html')
+    return render(request, 'notNeeded/subjectchapter_update.html')
 
 def topic_detail(request):
-    return render(request, 'chaptertopic_list.html')
+    return render(request, 'StudentPerformance/chaptertopic_list.html')
 
 def add_topic(request):
-    return render(request, 'chaptertopic_create.html')
+    return render(request, 'StudentPerformance/chaptertopic_create.html')
 
 def edit_topic(request):
-    return render(request, 'chaptertopic_update.html')
+    return render(request, 'notNeeded/chaptertopic_update.html')
 
 def teac_dashboard(request):
-    return render(request, 'teac_dashboard.html')
+    return render(request, 'Educator/teac_dashboard.html')
 
 def teac_prediction(request):
-    return render(request, 'teac_prediction.html')
+    return render(request, 'Educator/teac_prediction.html')
 
 def teac_feedback(request):
-    return render(request, 'teac_feedback.html')
+    return render(request, 'Educator/teac_feedback.html')
 
 def stu_prediction(request):
     return render(request, 'stu_prediction.html')
@@ -69,13 +72,13 @@ def stu_feedback(request):
     return render(request, 'stu_feedback.html')
 
 def prin_dashboard(request):
-    return render(request, 'prin_dashboard.html')
+    return render(request, 'Educator/prin_dashboard.html')
 
 def prin_feedback(request):
-    return render(request, 'prin_feedback.html')
+    return render(request, 'Educator/prin_feedback.html')
 
 def prin_prediction(request):
-    return render(request, 'prin_prediction.html')
+    return render(request, 'Educator/prin_prediction.html')
 
 def prediction_data(request):
-    return render(request, 'studentefficacy_create.html')
+    return render(request, 'StudentPerformancePrediction/studentefficacy_create.html')
