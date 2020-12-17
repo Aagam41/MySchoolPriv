@@ -56,7 +56,6 @@ def home(request):
     return render(request, "MySchool_site_nav.html", context)
 
 
-@permission_required('')
 @login_required()
 def test(request):
     # # Auth.User

@@ -80,7 +80,7 @@ class StandardSection(amdl.AagamBaseModel):
 
 
 class MapMySchoolUserStandardSection(amdl.AagamBaseModel):
-    map_my_school_user_standard_section = models.AutoField(primary_key=True)
+    map_my_school_user_standard_section_id = models.AutoField(primary_key=True)
     myschool_user = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
     standard_section = models.ForeignKey(StandardSection, models.DO_NOTHING)
 
