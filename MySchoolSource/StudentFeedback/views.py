@@ -27,7 +27,7 @@ def edit_class(request):
     return render(request, 'notNeeded/standard_update.html')
 
 def subject_detail(request):
-    return render(request, 'StudentPerformance/subject_list.html')
+    return render(request, 'StudentPerformance/tblsubject_list.html')
 
 def add_subject(request):
     return render(request, 'StudentPerformance/tblsubject_create.html')

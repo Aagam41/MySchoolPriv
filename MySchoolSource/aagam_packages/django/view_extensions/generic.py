@@ -27,6 +27,14 @@ class ModelObjectListView(PermissionRequiredMixin, LoginRequiredMixin, ListView)
             raise Http404
         return ret
 
+    def get_queryset(self):
+        filters = {}
+        for key, value in self.request.GET.items():
+            if value != '':
+                filters[key] = value
+        filter_list = self.model.objects.filter(**filters)
+        return filter_list
+
     def get_template_name_label(self):
         if self.template_label is None:
             template_name = f'{self.app_label}/{self.model_label}_list.html'
@@ -39,25 +47,25 @@ class ModelObjectListView(PermissionRequiredMixin, LoginRequiredMixin, ListView)
         return template_name
 
     def get_permissions_required_label(self, permission=None, permission_type=None):
-        if permission is None:
-            self.permission_required = permission
+        if permission is not None:
+            permission_required_label = permission
         else:
             if permission_type is None:
-                self.permission_required = (f'{self.app_label}.view_{self.model_label}',
-                                            f'{self.app_label}.add_{self.model_label}',
-                                            f'{self.app_label}.change_{self.model_label}',
-                                            f'{self.app_label}.delete_{self.model_label}')
+                permission_required_label = (f'{self.app_label}.view_{self.model_label}',
+                                             f'{self.app_label}.add_{self.model_label}',
+                                             f'{self.app_label}.change_{self.model_label}',
+                                             f'{self.app_label}.delete_{self.model_label}')
             elif permission_type == "view":
-                self.permission_required = f'{self.app_label}.view_{self.model_label}'
+                permission_required_label = f'{self.app_label}.view_{self.model_label}'
             elif permission_type == "add":
-                self.permission_required = f'{self.app_label}.add_{self.model_label}'
+                permission_required_label = f'{self.app_label}.add_{self.model_label}'
             elif permission_type == "change":
-                self.permission_required = f'{self.app_label}.change_{self.model_label}'
+                permission_required_label = f'{self.app_label}.change_{self.model_label}'
             elif permission_type == "delete":
-                self.permission_required = f'{self.app_label}.delete_{self.model_label}'
+                permission_required_label = f'{self.app_label}.delete_{self.model_label}'
             else:
                 return HttpResponse(status=403)
-        return 0
+        return permission_required_label
 
 
 class ModelObjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
