@@ -238,3 +238,8 @@ def remove_attr(field, attr):
     if attr in field.field.widget.attrs:
         del field.field.widget.attrs[attr]
     return field
+
+
+@register.filter
+def get_dic_item(dictionary, key):
+    return dictionary.get(key)

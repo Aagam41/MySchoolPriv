@@ -18,9 +18,22 @@ urlpatterns = [
          name='logout'),
 ]
 
+
+urlpatterns += [
+    path('test/', views.test, name='test'),
+    path('sitemap/', views.sitemap, name='sitemap'),
+]
+
+
 urlpatterns += [
     path('', views.home, name='home'),
-    path('test/', views.test, name='test'),
+    path('student/', views.student_dashboard, name='student_dashboard'),
+    path('educator/', views.educator_dashboard, name='educator_dashboard'),
+    path('principal/', views.principal_dashboard, name='principal_dashboard'),
+]
+
+
+urlpatterns += [
 
     path('list/<str:app_label>/<str:model_label>/',
          generic.ModelObjectListView.as_view(extra_context={'page_context': {'titleTag': '1'}}),

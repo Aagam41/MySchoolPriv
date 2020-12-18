@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'StudentFeedback.apps.StudentfeedbackConfig',
     'MySchoolHome.apps.MyschoolhomeConfig',
 
-    'aagam_packages.django.form_extensions.aagam_form_tweaks',
+    'aagam_packages.django.template_tag_extensions.aagam_template_tag_tweaks',
 
     'django.contrib.admin',
     'django.contrib.auth',

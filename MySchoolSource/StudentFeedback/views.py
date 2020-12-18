@@ -7,7 +7,7 @@ def login(request):
     return render(request, 'registration/login.html')
 
 def add_user(request):
-    return render(request, 'auth/user_create.html')
+    return render(request, 'index.html')
 
 def user_detail(request):
         return render(request, 'auth/user_list.html')
@@ -63,7 +63,7 @@ def teac_feedback(request):
     return render(request, 'Educator/teac_feedback.html')
 
 def stu_prediction(request):
-    return render(request, 'stu_prediction.html')
+    return render(request, 'prediction.html')
 
 def stu_dashboard(request):
     return render(request, 'stu_dashboard.html')
