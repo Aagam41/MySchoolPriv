@@ -18,7 +18,7 @@
               Select Class
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
+              <a name="subject_name" value="Mathematics 9709" class="dropdown-item" href="#">Mathematics 9709</a>
               <a class="dropdown-item" href="#">Another action</a>
           </li>
           <li class="nav-item dropdown">
@@ -31,9 +31,10 @@
           </li>
 
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form method="GET" class="form-inline my-2 my-lg-0">
+          <input name="standard" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <input name="subject_name" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
@@ -74,18 +75,20 @@
                 <th scope="col">ACTION</th>
             </thead>
             <tbody>
+            {% for obj in object %}
             <tr>
-                <td scope="row">Maths</td>
-                <td scope="row">10</td>
-                <td scope="row">3</td>
-                <td scope="row">3</td>
-                <td scope="row">4</td>
+                <td scope="row">{{ obj.subject_name }}</td>
+                <td scope="row">{{ obj.standard }}</td>
+                <td scope="row">{{ obj.remembrance_credit }}</td>
+                <td scope="row">{{ obj.applied_knowledge_credit }}</td>
+                <td scope="row">{{ obj.understanding_credit }}</td>
                 <td>
                     <a href="/edit_subject" class="btn btn-warning btn-sm">Edit</a>
 
                     <a href="#" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
+            {% endfor %}
             </tbody>
         </table>
         </div>
