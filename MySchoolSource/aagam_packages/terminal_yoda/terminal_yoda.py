@@ -149,10 +149,17 @@ class YodaSaberColor:
 
 
 def yoda_saberize_print(text, fg_code=(255, 255, 255), bg_code=(-1, -1, -1)):
-    op = f'\033[38;2;{str(fg_code[0])};{str(fg_code[1])};{str(fg_code[2])}m'
-    if bg_code != (-1, -1, -1):
-        op += f'\033[48;2;{str(bg_code[0])};{str(bg_code[1])};{str(bg_code[2])}m'
-    print(op + text + SGR.RESET_ALL)
+    try:
+        op = f'\033[38;2;{str(fg_code[0])};{str(fg_code[1])};{str(fg_code[2])}m'
+        if bg_code != (-1, -1, -1):
+            op += f'\033[48;2;{str(bg_code[0])};{str(bg_code[1])};{str(bg_code[2])}m'
+        print(op + str(text) + SGR.RESET_ALL)
+    except ValueError:
+        raise ValueError
+    except TypeError:
+        raise TypeError
+    except AttributeError:
+        raise AttributeError
     return None
 
 
