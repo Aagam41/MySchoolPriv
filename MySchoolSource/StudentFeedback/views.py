@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from StudentPerformance import models
+from MySchoolHome import views
 
 
 
@@ -46,6 +47,7 @@ def get_teacher_prediction(request):
 
 
 def get_teacher_dashboard(request):
-    return render(request, 'teac_dashboard.html')
+    a = views.student_navbar(request)
+    return render(request, 'teac_dashboard.html', {'a': a})
 
 

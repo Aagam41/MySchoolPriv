@@ -25,37 +25,64 @@ from aagam_packages.terminal_yoda import terminal_utils
 @login_required()
 def home(request):
     if Group.objects.get(name='Learner') in request.user.groups.all():
-        python_lines = str(utils.count_lines("*.py"))
-        html_lines = str(utils.count_lines("*.html"))
-        text_lines = str(utils.count_lines("*.txt"))
-        json_lines = str(utils.count_lines("*.json"))
-        context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines,
-                   'page_context': {'title': "MySchool Student SiteMap",
-                                    'footerCreatedBy': '<a href="https://aagamsheth.com"/>Aagam Sheth.</a>',
-                                    'titleTag': 'MySchool SiteMap'}}
+        return redirect("MySchoolHome:student_dashboard")
     elif Group.objects.get(name='Educator') in request.user.groups.all():
-        python_lines = str(utils.count_lines("*.py"))
-        html_lines = str(utils.count_lines("*.html"))
-        text_lines = str(utils.count_lines("*.txt"))
-        json_lines = str(utils.count_lines("*.json"))
-        context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines,
-                   'page_context': {'title': "MySchool Educator SiteMap",
-                                    'footerCreatedBy': '<a href="https://aagamsheth.com"/>Aagam Sheth.</a>',
-                                    'titleTag': 'MySchool SiteMap'}}
+        return redirect("MySchoolHome:educator_dashboard")
     elif Group.objects.get(name='Principal') in request.user.groups.all():
-        python_lines = str(utils.count_lines("*.py"))
-        html_lines = str(utils.count_lines("*.html"))
-        text_lines = str(utils.count_lines("*.txt"))
-        json_lines = str(utils.count_lines("*.json"))
-        context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines,
-                   'page_context': {'title': "MySchool Principal SiteMap",
-                                    'footerCreatedBy': '<a href="https://aagamsheth.com"/>Aagam Sheth.</a>',
-                                    'titleTag': 'MySchool SiteMap'}}
+        return redirect("MySchoolHome:principal_dashboard")
     else:
         return HttpResponse(status=403)
+
+
+def sitemap(request):
+    python_lines = str(utils.count_lines("*.py"))
+    html_lines = str(utils.count_lines("*.html"))
+    text_lines = str(utils.count_lines("*.txt"))
+    json_lines = str(utils.count_lines("*.json"))
+    context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines}
     return render(request, "MySchool_site_nav.html", context)
 
 
+def student_navbar(request):
+    map_id = sp.MapMySchoolUserStandardSection.objects.select_related('standard_section',
+                                                                      'myschool_user__auth_user').filter(
+        myschool_user__auth_user=request.user)
+    map_id = map_id.values('pk', 'standard_section__section', 'standard_section__standard', 'myschool_user__pk',
+                           'myschool_user__auth_user__username', 'status')
+    map_active_id = map_id.get(standard_section__standard=request.GET.get('standard')) if request.GET.get(
+        'standard') else map_id.get(status=True)
+    subject = sp.TblSubject.objects.filter(standard=map_active_id['standard_section__standard'])
+    context = {'search_name': '',
+               'standard_section': map_id,
+               'standard_section_current': map_active_id,
+               'subject': subject}
+    return context
+
+
+@login_required()
+def student_dashboard(request):
+    context = {'page_context': {'title': "MySchool Student Dashboard",
+                     'titleTag': 'MySchool'}, 'navbar': student_navbar(request)}
+    return render(request, 'dashboard/student_dashboard.html', context)
+
+
+@login_required()
+def educator_dashboard(request):
+    context = {'page_context': {'title': "MySchool Educator Dashboard",
+                                'titleTag': 'MySchool'},
+               'search_name': 'disabled'}
+    return render(request, 'dashboard/educator_dashboard.html', context)
+
+
+@login_required()
+def principal_dashboard(request):
+    context = {'page_context': {'title': "MySchool Principal Dashboard",
+                                'titleTag': 'MySchool'},
+               'search_name': 'disabled'}
+    return render(request, 'dashboard/principal_dashboard.html', context)
+
+
+@login_required()
 def test(request):
     # # Auth.User
     # p = User.objects.create_superuser(username='Aagam41', password='MySchool@123', first_name='Aagam',
