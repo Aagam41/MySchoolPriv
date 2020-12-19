@@ -240,6 +240,11 @@ def remove_attr(field, attr):
     return field
 
 
-@register.filter
+@register.filter(name='get_dic_item')
 def get_dic_item(dictionary, key):
     return dictionary.get(key)
+
+
+@register.filter(name='has_group')
+def has_group(user, group_name):
+    return user.groups.filter(name=group_name).exists()
