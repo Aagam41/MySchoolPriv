@@ -31,7 +31,7 @@ class ModelObjectListView(PermissionRequiredMixin, LoginRequiredMixin, ListView)
         filters = {}
         for key, value in self.request.GET.items():
             if value != '':
-                filters[key] = value
+                filters[f'{key}__icontains'] = value
         filter_list = self.model.objects.filter(**filters)
         return filter_list
 
