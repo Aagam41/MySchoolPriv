@@ -3,15 +3,6 @@ from StudentPerformance import models
 
 
 
-def add_user(request):
-    return render(request, 'add_user.html')
-
-
-def user_detail(request):
-    return render(request, 'user_detail.html')
-
-def edit_user(request):
-    return render(request, 'edit_user.html')
 
 def class_detail(request):
     data = models.StandardSection.objects.all()
@@ -49,4 +40,12 @@ def delete_class(request, standard_section_id):
         pi.delete()
         return HttpResponseRedirect('/class_detail.html')
         #return render(request, 'class_detail.html')
+
+def get_teacher_prediction(request):
+    return render(request, 'teac_prediction.html')
+
+
+def get_teacher_dashboard(request):
+    return render(request, 'teac_dashboard.html')
+
 
