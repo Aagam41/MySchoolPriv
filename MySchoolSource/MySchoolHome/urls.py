@@ -28,6 +28,7 @@ urlpatterns += [
 urlpatterns += [
     path('', views.home, name='home'),
     path('student/', views.student_dashboard, name='student_dashboard'),
+    path('student/prediction', views.student_prediction, name='student_prediction'),
     path('educator/', views.educator_dashboard, name='educator_dashboard'),
     path('principal/', views.principal_dashboard, name='principal_dashboard'),
 ]

@@ -63,7 +63,7 @@ def teac_feedback(request):
     return render(request, 'Educator/teac_feedback.html')
 
 def stu_prediction(request):
-    return render(request, 'prediction.html')
+    return render(request, 'student_prediction.html')
 
 def stu_dashboard(request):
     return render(request, 'stu_dashboard.html')

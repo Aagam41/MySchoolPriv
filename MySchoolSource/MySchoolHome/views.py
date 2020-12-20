@@ -15,6 +15,8 @@ from django.core import serializers
 from MySchoolHome import models as msh
 from StudentPerformance import models as sp
 
+from StudentPerformancePrediction.MachineLearningModels import KNNmdl
+
 from aagam_packages.utils import utils
 from aagam_packages.terminal_yoda.terminal_yoda import *
 from aagam_packages.terminal_yoda import terminal_utils
@@ -43,20 +45,34 @@ def sitemap(request):
     return render(request, "MySchool_site_nav.html", context)
 
 
-@login_required()
-def student_dashboard(request):
-    map_id = sp.MapMySchoolUserStandardSection.objects.select_related('standard_section', 'myschool_user__auth_user').filter(myschool_user__auth_user=request.user)
-    map_id = map_id.values('pk', 'standard_section__section', 'standard_section__standard', 'myschool_user__pk', 'myschool_user__auth_user__username', 'status')
-    map_active_id = map_id.get(standard_section__standard=request.GET.get('standard')) if request.GET.get('standard') else map_id.get(status=True)
+def student_navbar(request):
+    map_id = sp.MapMySchoolUserStandardSection.objects.\
+        select_related('standard_section','myschool_user__auth_user')\
+        .filter(myschool_user__auth_user=request.user)
+    map_id = map_id.values('pk', 'standard_section__section', 'standard_section__standard', 'myschool_user__pk',
+                           'myschool_user__auth_user__username', 'status')
+    map_active_id = map_id.get(standard_section__standard=request.GET.get('standard')) if request.GET.get('standard') \
+        else map_id.get(status=True)
     subject = sp.TblSubject.objects.filter(standard=map_active_id['standard_section__standard'])
-    context = {'page_context': {'title': "MySchool Student Dashboard",
-                                'titleTag': 'MySchool'},
-               'search_name': '',
-               'standard_section': map_id,
+    context = {'standard_section': map_id,
                'standard_section_current': map_active_id,
                'subject': subject}
+    return context
+
+
+@login_required()
+def student_dashboard(request):
+    context = {'page_context': {'title': "MySchool Student Dashboard", 'titleTag': 'MySchool'},
+               'search_name': '',
+               'navbar': student_navbar(request)}
     return render(request, 'dashboard/student_dashboard.html', context)
 
+
+def student_prediction(request):
+    context = {'page_context': {'title': "MySchool Student Dashboard", 'titleTag': 'MySchool'},
+               'search_name': '',
+               'navbar': student_navbar(request)}
+    return render(request, 'StudentPerformancePrediction/student_prediction.html', context)
 
 @login_required()
 def educator_dashboard(request):
@@ -74,8 +90,13 @@ def principal_dashboard(request):
     return render(request, 'dashboard/principal_dashboard.html', context)
 
 
-@login_required()
 def test(request):
+    KNNmdl.train_k_nearest_neighbor_model()
+    return HttpResponse('<h1>Check Terminal</h1')
+
+
+@login_required()
+def load_database(request):
     # # Auth.User
     # p = User.objects.create_superuser(username='Aagam41', password='MySchool@123', first_name='Aagam',
     #                                   last_name='Sheth',

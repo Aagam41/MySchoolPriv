@@ -21,7 +21,10 @@ class StudentEfficacy(amdl.AagamBaseModel):
     class_engagement = models.IntegerField()
     health = models.IntegerField()
     student = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
+    past_marks = models.IntegerField()
+    past_marks1 = models.IntegerField()
     predictions = models.IntegerField()
+    group = models.IntegerField()
 
     class Meta:
         managed = True
