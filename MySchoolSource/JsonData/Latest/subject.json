@@ -1,93 +1,95 @@
 [
   {
-    "subject_name": "Maths_5",
-    "standard": "5",
+    "subject_name": "Mathematics 9709",
+    "standard": "9",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
   },
   {
-    "subject_name": "English_5",
-    "standard": "5",
+    "subject_name": "Physics 8619",
+    "standard": "9",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
   },
   {
-    "subject_name": "Science_5",
-    "standard": "5",
+    "subject_name": "Chemistry 9089",
+    "standard": "9",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
   },
   {
-    "subject_name": "Maths_6",
-    "standard": "6",
+    "subject_name": "Mathematics 9710",
+    "standard": "10",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
   },
   {
-    "subject_name": "Science_6",
-    "standard": "6",
+    "subject_name": "Physics 8620",
+    "standard": "10",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
   },
   {
-    "subject_name": "English_6",
-    "standard": "6",
+    "subject_name": "Chemistry 9090",
+    "standard": "10",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
   },
   {
-    "subject_name": "Maths_7",
-    "standard": "7",
+    "subject_name": "Mathematics 9711",
+    "standard": "11",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
   },
   {
-    "subject_name": "English_7",
-    "standard": "7",
+    "subject_name": "Physics 8621",
+    "standard": "11",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
   },
   {
-    "subject_name": "Science_7",
-    "standard": "7",
+    "subject_name": "Chemistry 9091",
+    "standard": "11",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
   },
   {
-    "subject_name": "Maths_8",
-    "standard": "8",
+    "subject_name": "Mathematics 9712",
+    "standard": "12",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
-  },{
-    "subject_name": "Science_8",
-    "standard": "8",
+  },
+  {
+    "subject_name": "Physics 8622",
+    "standard": "12",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",
     "subject_credit":"100"
-  },{
-    "subject_name": "English_8",
-    "standard": "8",
+  },
+  {
+    "subject_name": "Chemistry 9092",
+    "standard": "12",
     "remembrance_credit": "30",
     "applied_knowledge_credit": "40",
     "understanding_credit": "30",

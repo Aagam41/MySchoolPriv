@@ -2,18 +2,31 @@ from django.db import models
 
 from aagam_packages.django_model_extensions import models as amdl
 
-from StudentPerformance.models import MapMySchoolUserSubject
+from StudentPerformance.models import MapMySchoolUserSubject, TblSubject
 from MySchoolHome.models import MySchoolUser
 
 
 # Create your models here.
 
+class FeedbackManager(models.Manager):
+    def retrive_feedback_forms(self):
+        forms = self.model.objects.all()
+        return forms
+
+    def map_teacher_subject(self, sub):
+        s = TblSubject.objects.get(subject_name=sub)
+        mp = MapMySchoolUserSubject.objects.get(subject=s)
+        ff = FeedbackForm.objects.get(subject_teacher=mp)
+        ffq = FeedbackFormQuestion.objects.get(feedback_form=ff)
+        return ffq
 
 class FeedbackForm(amdl.AagamBaseModel):
     feedback_form_id = models.AutoField(primary_key=True)
     subject_teacher = models.ForeignKey(MapMySchoolUserSubject, models.DO_NOTHING)
     feedback_form_date = models.DateField()
     feedback_form_status = models.BooleanField()
+
+    objects = FeedbackManager()
 
     class Meta:
         db_table = 'feedback_form'
@@ -26,6 +39,8 @@ class FeedbackFormQuestion(amdl.AagamBaseModel):
     feedback_form_question_id = models.AutoField(primary_key=True)
     feedback_form = models.ForeignKey('FeedbackForm', models.DO_NOTHING)
     feedback_question = models.ForeignKey('FeedbackQuestion', models.DO_NOTHING)
+
+    objects = FeedbackManager()
 
     class Meta:
         db_table = 'feedback_form_question'
@@ -42,6 +57,8 @@ class Feedback(amdl.AagamBaseModel):
     feedback_comments = models.TextField()
     feedback_date = models.DateTimeField(auto_now_add=True)
 
+    objects = FeedbackManager()
+
     class Meta:
         db_table = 'feedback'
 
@@ -54,6 +71,8 @@ class FeedbackQuestion(amdl.AagamBaseModel):
     question_text = models.TextField()
     feedback_question_credit = models.IntegerField()
     question_group = models.ForeignKey('FeedbackQuestionGroup', models.DO_NOTHING)
+
+    objects = FeedbackManager()
 
     class Meta:
         db_table = 'feedback_question'
