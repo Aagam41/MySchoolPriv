@@ -40,13 +40,15 @@
                 <th scope="col">Predicted Mark</th>
             </thead>
             <tbody>
+             {% for i in pm %}
             <tr>
-                <td scope="row">ShahNishil</td>
-                <td scope="row">Nishil</td>
-                <td scope="row">Shah</td>
-                <td scope="row">12A</td>
-                <td scope="row">70</td>
+                <td scope="row">{{i.student_id__auth_user__username}}</td>
+                <td scope="row">{{i.student_id__auth_user__first_name}}</td>
+                <td scope="row">{{i.student_id__auth_user__last_name}}</td>
+                <td scope="row">{{i.student_id.auth_user_id.username}}</td>
+                <td scope="row">{{i.predictions}}</td>
             </tr>
+              {% endfor %}
             </tbody>
         </table>
         </div>

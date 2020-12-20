@@ -25,31 +25,39 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form method="POST" action="/data/">
-          <div class="row">
+      <form method="GET" >
+          <f class="row">
               <div class="col">
                  <div class="input-group mb-3" >
-                    <select class="custom-select" id="Select_standard">
-                        <option selected>1</option>
-                        <a class="dropdown-item" href="/user_detail">
-                            <option value="1">standard</option>
+                    <select class="custom-select" name="Standard">
+                        <a class="dropdown-item" href="/user_detail" >
+                            {% for i in st %}
+                            <option value="{{i}}" selected>{{i.standard}}</option>
+                            {% endfor %}
                         </a>
                     </select>
                  </div>
               </div>
+      </form>
+      <form method="GET">
               <div class="col">
                  <div class="input-group mb-3">
                     <select class="custom-select" id="Select_division">
-                        <option selected>A</option>
-                        <option value="1">Division</option>
+                        {% for i in se %}
+                           <option value="{{i}}">{{i.section}}</option>
+                        {% endfor %}
                     </select>
                  </div>
               </div>
+          </form>
+      <form method="GET">
               <div class="col">
                  <div class="input-group mb-3">
                     <select class="custom-select" id="Select_subject">
                         <option selected>Maths</option>
-                        <option value="1">Subject</option>
+                        {% for i in su %}
+                        <option value="{{i}}">{{i.subject_name}}</option>
+                        {% endfor %}
                     </select>
                  </div>
               </div>

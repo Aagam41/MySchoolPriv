@@ -44,6 +44,7 @@ def sitemap(request):
 
 
 def student_navbar(request):
+   # first() of queryset
     map_id = sp.MapMySchoolUserStandardSection.objects.select_related('standard_section',
                                                                       'myschool_user__auth_user').filter(
         myschool_user__auth_user=request.user)

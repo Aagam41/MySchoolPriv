@@ -83,6 +83,7 @@ class MapMySchoolUserStandardSection(amdl.AagamBaseModel):
     map_my_school_user_standard_section = models.AutoField(primary_key=True)
     myschool_user = models.ForeignKey(MySchoolUser, models.DO_NOTHING)
     standard_section = models.ForeignKey(StandardSection, on_delete=models.CASCADE)
+    status = models.BooleanField()
 
     class Meta:
         db_table = "map_myschool_user_standard_section"
