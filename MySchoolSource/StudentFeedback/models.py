@@ -2,11 +2,28 @@ from django.db import models
 
 from aagam_packages.django_model_extensions import models as amdl
 
-from StudentPerformance.models import MapMySchoolUserSubject
+from StudentPerformance.models import MapMySchoolUserSubject, TblSubject
 from MySchoolHome.models import MySchoolUser
 
 
 # Create your models here.
+
+class FeedbackManager(models.Manager):
+    def retrive_feedback_forms(self, rate, com, user_id):
+        forms = self.model.objects.all()
+        r_c = self.model(feedback_rating=rate, feedback_comments=com, myschool_user=user_id)
+        return forms, r_c
+
+    def map_teacher_subject(self, sub):
+        s = TblSubject.objects.get(subject_name=sub)
+        mp = MapMySchoolUserSubject.objects.get(subject=s)
+        ff = FeedbackForm.objects.get(subject_teacher=mp)
+        ffq = FeedbackFormQuestion.objects.filter(feedback_form=ff)
+        fbs = []
+        for f in ffq:
+            fb = Feedback.objects.filter(feedback_form_question=f)
+            fbs.append(fb)
+        return fbs
 
 
 class FeedbackForm(amdl.AagamBaseModel):
@@ -14,6 +31,8 @@ class FeedbackForm(amdl.AagamBaseModel):
     subject_teacher = models.ForeignKey(MapMySchoolUserSubject, models.DO_NOTHING)
     feedback_form_date = models.DateField()
     feedback_form_status = models.BooleanField()
+
+    yash_objects = FeedbackManager()
 
     class Meta:
         db_table = 'feedback_form'
@@ -26,6 +45,8 @@ class FeedbackFormQuestion(amdl.AagamBaseModel):
     feedback_form_question_id = models.AutoField(primary_key=True)
     feedback_form = models.ForeignKey('FeedbackForm', models.DO_NOTHING)
     feedback_question = models.ForeignKey('FeedbackQuestion', models.DO_NOTHING)
+
+    yash_objects = FeedbackManager()
 
     class Meta:
         db_table = 'feedback_form_question'
@@ -42,6 +63,8 @@ class Feedback(amdl.AagamBaseModel):
     feedback_comments = models.TextField()
     feedback_date = models.DateTimeField(auto_now_add=True)
 
+    yash_objects = FeedbackManager()
+
     class Meta:
         db_table = 'feedback'
 
@@ -54,6 +77,8 @@ class FeedbackQuestion(amdl.AagamBaseModel):
     question_text = models.TextField()
     feedback_question_credit = models.IntegerField()
     question_group = models.ForeignKey('FeedbackQuestionGroup', models.DO_NOTHING)
+
+    yash_objects = FeedbackManager()
 
     class Meta:
         db_table = 'feedback_question'

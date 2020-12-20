@@ -188,7 +188,7 @@ class PaperType(amdl.AagamBaseModel):
 class PaperEntry(amdl.AagamBaseModel):
     paper_entry_id = models.AutoField(primary_key=True)
     paper_entry_name = models.CharField(max_length=100)
-    paper_type = models.ForeignKey('PaperType', models.DO_NOTHING)
+    paper_type = models.ForeignKey('PaperType', models.CASCADE)
     paper_entry_status = models.BooleanField(default=True)
     paper_entry_date = models.DateField()
 
@@ -249,3 +249,11 @@ class MapStudentPaperPatternEntry(amdl.AagamBaseModel):
 
     def __str__(self):
         return f'{self.myschool_user} : {self.paper_pattern_entry}'
+
+'''select paper_entry_name,marks_obtained,out_of,rau_type,total_marks from myschool_user as u inner join 
+map_myschool_user_paper_pattern_entry as map on u.myschool_user_id = map.map_student_paper_pattern_entry_id 
+inner join paper_pattern_entry as pp on map_student_paper_pattern_entry_id = pp.paper_pattern_entry_id 
+inner join paper_question as pq on pp.paper_pattern_entry_id = pq.paper_question_id inner join 
+paper_entry as pe on pp.paper_pattern_entry_id = pe.paper_entry_id inner join paper_type as pt on 
+pe.paper_entry_id = pt.paper_type_id where paper_entry_name like '%mid%' and u.myschool_user_id=2;
+'''

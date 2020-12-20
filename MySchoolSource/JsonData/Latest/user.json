@@ -1,9 +1,9 @@
 [
   {
-    "username": "jay",
-    "password": "12345",
-    "first_name":"Jay",
-    "last_name": "Patel",
+    "username": "jay_123",
+    "password": "1234512345",
+    "first_name":"Jay_1",
+    "last_name": "Patel_!",
     "email": "Jaypatel@gmail.com",
     "groups": "learner"
   },
