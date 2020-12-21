@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from StudentPerformance import models
 from MySchoolHome import views
 #from StudentFeedback import models
-from StudentPerformancePrediction import models
+#from StudentPerformancePrediction import models
 from django.contrib.auth.models import User
 
 
@@ -12,17 +12,15 @@ def class_detail(request):
     data = models.StandardSection.objects.all()
     return render(request, 'class_detail.html', {"da": data})
 
-'''def edit_class(request, standard):
-    if request.method == 'POST':
-        pi = sp.StandardSection.objects.get(pk=standard)
+def edit_class(request, standard_section_id):
+    '''if request.method == 'POST':
+        standard_section_id = models.StandardSection.objects.get(pk=standard_section_id)
         std = request.POST["Standard"]
         sec = request.POST["Section"]
-        data = sp.StandardSection(section=sec, standard=std, instance=pi)
-        data.save()
-    else:
-        pi = sp.StandardSection.objects.get(pk=standard)
-        data = sp.StandardSection(instance=pi)
-        return render(request, 'edit_class.html', {'da': data})'''
+        data = models.StandardSection(section=sec, standard_id=std, instance=standard_section_id)
+        data.save()'''
+    standard_sec = models.StandardSection.objects.get(pk=standard_section_id)
+    return render(request, 'edit_class.html', {'st_se': standard_sec})
 
 
 
@@ -55,7 +53,7 @@ def get_teacher_prediction(request):
         return render(request, 'teac_prediction.html', {'st': stand, 'se': sec, 'su': sub})
 
 
-def get_prediction_data(request):
+def get_prediction_data(request): 
     pre_data = models.StudentEfficacy.objects.select_related('student_id__auth_user')
     prediction = pre_data.values('student_id__auth_user__username', 'predictions','student_id__auth_user__first_name','student_id__auth_user__last_name')
     return render(request, 'teac_prediction.html', {'pm': prediction})

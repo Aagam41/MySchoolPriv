@@ -13,10 +13,10 @@
     <div class="card bg-light mb-3 shadow" style="max-width: 840px; border-radius: 25px;">
 	<div class="card-body">
   <h4 class="text-center alert alert-info">Edit Class Info</h4>
-    <form  method="POST" action="/data/">
+    <form  method="POST">
     {% csrf_token %}
-        <INPUT TYPE="number" class="form-control" placeholder="Class" value="12"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Division" value="A"><br>
+        <INPUT TYPE="number" class="form-control" placeholder="Class" value="{{i.standard_id}}"><br>
+        <INPUT TYPE="text" class="form-control" placeholder="Division" value="{{i.section}}"><br>
         <a href="#" class="btn btn-primary" data-toggle="button" aria-pressed="false">
             Save
         </a>
