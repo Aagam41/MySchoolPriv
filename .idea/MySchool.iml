@@ -19,7 +19,7 @@
       <excludeFolder url="file://$MODULE_DIR$/Docs/Raw Doc/project/Ready Code/Faculty-Feedback-System-master/venv" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (MySchool)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (MySchoolPriv)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
