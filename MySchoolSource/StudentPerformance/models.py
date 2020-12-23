@@ -14,7 +14,7 @@ from MySchoolHome.models import MySchoolUser
 class TblSubject(amdl.AagamBaseModel):
     subject_id = models.AutoField(primary_key=True)
     subject_name = models.CharField(max_length=20)
-    standard = models.ForeignKey('Standard', models.DO_NOTHING)
+    standard = models.ForeignKey('TblStandard', models.DO_NOTHING)
     remembrance_credit = models.IntegerField(default=40)
     applied_knowledge_credit = models.IntegerField(default=30)
     understanding_credit = models.IntegerField(default=30)
@@ -57,11 +57,11 @@ class ChapterTopic(amdl.AagamBaseModel):
         return f'{self.topic_id}. {self.topic_name} : {self.subject_chapter}'
 
 
-class Standard(amdl.AagamBaseModel):
+class TblStandard(amdl.AagamBaseModel):
     standard = models.IntegerField(primary_key=True)
 
     class Meta:
-        db_table = 'standard'
+        db_table = 'tblstandard'
 
     def __str__(self):
         return str(self.standard)
@@ -69,7 +69,7 @@ class Standard(amdl.AagamBaseModel):
 
 class StandardSection(amdl.AagamBaseModel):
     standard_section_id = models.AutoField(primary_key=True)
-    standard = models.ForeignKey(Standard, models.DO_NOTHING)
+    standard = models.ForeignKey(TblStandard, models.DO_NOTHING)
     section = models.CharField(max_length=1)
 
     class Meta:
