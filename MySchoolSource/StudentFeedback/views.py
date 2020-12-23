@@ -39,16 +39,16 @@ def chapter_detail(request):
     return render(request, 'StudentPerformance/../zzzbrijtemplates/subjectchapter_list.html')
 
 def add_chapter(request):
-    return render(request, 'StudentPerformance/../zzzbrijtemplates/subjectchapter_create.html')
+    return render(request, 'zzzbrijtemplates/subjectchapter_create.html')
 
 def edit_chapter(request):
-    return render(request, 'StudentPerformance/../zzzbrijtemplates/subjectchapter_update.html')
+    return render(request, 'zzzbrijtemplates/subjectchapter_update.html')
 
 def topic_detail(request):
-    return render(request, 'StudentPerformance/../zzzbrijtemplates/chaptertopic_list.html')
+    return render(request, 'zzzbrijtemplates/chaptertopic_list.html')
 
 def add_topic(request):
-    return render(request, 'StudentPerformance/../zzzbrijtemplates/chaptertopic_create.html')
+    return render(request, 'zzzbrijtemplates/chaptertopic_create.html')
 
 def edit_topic(request):
     return render(request, 'notNeeded/chaptertopic_update.html')

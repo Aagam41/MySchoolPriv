@@ -14,8 +14,10 @@ from django.core import serializers
 
 from MySchoolHome import models as msh
 from StudentPerformance import models as sp
+from StudentPerformancePrediction import models as spp
 
 from StudentPerformancePrediction.MachineLearningModels import KNNmdl
+from StudentPerformancePrediction.MachineLearningModels import LinearRegression
 
 from aagam_packages.utils import utils
 from aagam_packages.terminal_yoda.terminal_yoda import *
@@ -31,7 +33,7 @@ def home(request):
     elif Group.objects.get(name='Educator') in request.user.groups.all():
         return redirect("MySchoolHome:educator_dashboard")
     elif Group.objects.get(name='Principal') in request.user.groups.all():
-        return redirect("MySchoolHome:principal_dashboard")
+        return HttpResponse("MySchoolHome:principal_dashboard")
     else:
         return HttpResponse(status=403)
 
@@ -48,13 +50,14 @@ def sitemap(request):
 def student_navbar(request):
     map_id = sp.MapMySchoolUserStandardSection.objects.\
         select_related('standard_section','myschool_user__auth_user')\
-        .filter(myschool_user__auth_user=request.user)
+        .filter(myschool_user=83) # __auth_user=request.user)
     map_id = map_id.values('pk', 'standard_section__section', 'standard_section__standard', 'myschool_user__pk',
                            'myschool_user__auth_user__username', 'status')
-    map_active_id = map_id.get(standard_section__standard=request.GET.get('standard')) if request.GET.get('standard') \
-        else map_id.get(status=True)
-    subject = sp.TblSubject.objects.filter(standard=map_active_id['standard_section__standard'])
+    map_active_id = map_id.get(status=True)
+    sections = sp.StandardSection.objects.all().values('section').distinct()
+    subject = sp.TblSubject.objects.filter(standard__lte=map_active_id['standard_section__standard'])
     context = {'standard_section': map_id,
+               'section': sections,
                'standard_section_current': map_active_id,
                'subject': subject}
     return context
@@ -68,17 +71,12 @@ def student_dashboard(request):
     return render(request, 'dashboard/student_dashboard.html', context)
 
 
-def student_prediction(request):
-    context = {'page_context': {'title': "MySchool Student Dashboard", 'titleTag': 'MySchool'},
-               'search_name': '',
-               'navbar': student_navbar(request)}
-    return render(request, 'StudentPerformancePrediction/student_prediction.html', context)
-
 @login_required()
 def educator_dashboard(request):
     context = {'page_context': {'title': "MySchool Educator Dashboard",
                                 'titleTag': 'MySchool'},
-               'search_name': 'disabled'}
+               'search_name': '',
+               'navbar': student_navbar(request)}
     return render(request, 'dashboard/educator_dashboard.html', context)
 
 
@@ -91,16 +89,19 @@ def principal_dashboard(request):
 
 
 def test(request):
-    KNNmdl.train_k_nearest_neighbor_model()
-    return HttpResponse('<h1>Check Terminal</h1')
+    LinearRegression.train_linear_regression_model()
+    c = ""
+    for i in spp.StudentEfficacy.objects.all().order_by('pk'):
+        # a, b = LinearRegression.fetch_prediction_data(msh.MySchoolUser.objects.get(auth_user=i.student.auth_user))
+        a, b, d = LinearRegression.fetch_prediction_data(i.pk)
+        c += f'<h2>predicted: {a} : {b} : {d}</h2><br />'
+    return HttpResponse(f'<h1>{c}</h1>')
 
 
-@login_required()
 def load_database(request):
     # # Auth.User
     # p = User.objects.create_superuser(username='Aagam41', password='MySchool@123', first_name='Aagam',
-    #                                   last_name='Sheth',
-    #          email='aagam.h.sheth@icloud.com')
+    #                                   last_name='Sheth', email='aagam.h.sheth@icloud.com')
     # p.save()
     # p = User.objects.create_superuser(username='Bhavesh03', password='MySchool@123', first_name='Bhavesh',
     #                                   last_name='Bhavnani', email='test@gmail.com')
@@ -145,14 +146,14 @@ def load_database(request):
     #
     # # Standard
     # for i in range(1,13):
-    #     s = sp.Standard.objects.create(standard=i)
+    #     s = sp.TblStandard.objects.create(standard=i)
     #     s.save()
     #
     # # TblSubject
     # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\subject.json') as f:
     #     user = json.load(f)
     # for p in user:
-    #     p = sp.TblSubject(subject_name=p['subject_name'], standard=sp.Standard.objects.get(standard=p['standard']),
+    #     p = sp.TblSubject(subject_name=p['subject_name'], standard=sp.TblStandard.objects.get(standard=p['standard']),
     #                       remembrance_credit=p['remembrance_credit'],
     #                       applied_knowledge_credit=p['applied_knowledge_credit'],
     #                       understanding_credit=p['understanding_credit'], subject_credit=p['subject_credit'])
@@ -192,16 +193,16 @@ def load_database(request):
     # # StandardSection
     # for i in range(1, 13):  # for 1 to 12, default starts for 0 and ends before stop value
     #     for j in ['A', 'B']:
-    #         p = sp.StandardSection(standard=sp.Standard.objects.get(standard=i), section=j)
+    #         p = sp.StandardSection(standard=sp.TblStandard.objects.get(standard=i), section=j)
     #         p.save()
     #     rand = random.randint(0, 1)
     #     if 1 == rand:
-    #         p = sp.StandardSection(standard=sp.Standard.objects.get(standard=i), section="C")
+    #         p = sp.StandardSection(standard=sp.TblStandard.objects.get(standard=i), section="C")
     #         p.save()
-    #         p = sp.StandardSection(standard=sp.Standard.objects.get(standard=i), section="D")
+    #         p = sp.StandardSection(standard=sp.TblStandard.objects.get(standard=i), section="D")
     #         p.save()
     #     else:
-    #         p = sp.StandardSection(standard=sp.Standard.objects.get(standard=i), section="C")
+    #         p = sp.StandardSection(standard=sp.TblStandard.objects.get(standard=i), section="C")
     #         p.save()
     #
     #
@@ -220,10 +221,10 @@ def load_database(request):
     #     stan = random.randint(1, 12)
     #     sec = random.choice(sp.StandardSection.objects.filter(standard=stan))
     #     stss = sp.MapMySchoolUserStandardSection(myschool_user=stud[0],
-    #                                              standard_section=sec)
+    #                                              standard_section=sec, status=True)
     #     stss.save()
-    #
-    # # Serialize tables
+
+    # Serialize tables
     # a = sp.PaperQuestion.objects.all()
     # serialized = serializers.serialize('json', a)
     # yoda_saberize_print(serialized, YodaSaberColor.BLACK, YodaSaberColor.CORNFLOWERBLUE)
