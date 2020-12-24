@@ -8,6 +8,6 @@ app_name = "StudentPerformancePrediction"
 
 
 urlpatterns = [
-    path('student/prediction/home/', views.student_prediction, name="student_prediction")
+    path('student/prediction/<int:id>/', views.student_prediction, name="student_prediction")
 ]
 

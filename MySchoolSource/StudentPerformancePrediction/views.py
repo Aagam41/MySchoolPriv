@@ -8,11 +8,14 @@ from MySchoolHome.models import MySchoolUser
 from MySchoolHome import views
 from .MachineLearningModels import LinearRegression
 
+
 # Create your views here.
 
 
-def student_prediction(request):
-    prediction_data = StudentEfficacy.objects.get(student=MySchoolUser.objects.get(auth_user=request.user))
+def student_prediction(request, **kwargs):
+    learner_data = MySchoolUser.objects.get(auth_user=kwargs.get("id"))
+
+    prediction_data = StudentEfficacy.objects.get(student=MySchoolUser.objects.get(auth_user=kwargs.get("id")))
 
     father_education = ""
     internet_facility = ""
@@ -40,14 +43,14 @@ def student_prediction(request):
 
     if prediction_data.internet_facility == 0:
         internet_facility = "Not Available"
-    elif 2 < prediction_data.internet_facility == 1:
+    elif prediction_data.internet_facility == 1:
         internet_facility = "Available"
 
     study_time = prediction_data.study_time
 
     if prediction_data.paid_tuition == 0:
         paid_tuition = "None"
-    elif 2 < prediction_data.paid_tuition == 1:
+    elif prediction_data.paid_tuition == 1:
         paid_tuition = "Yes"
 
     past_failures = prediction_data.past_failures
@@ -56,7 +59,7 @@ def student_prediction(request):
 
     if prediction_data.extra_curricular_activities == 0:
         extra_curricular_activities = "None"
-    elif 2 < prediction_data.extra_curricular_activities == 1:
+    elif prediction_data.extra_curricular_activities == 1:
         extra_curricular_activities = "Yes"
 
     absences = prediction_data.absences
@@ -83,29 +86,37 @@ def student_prediction(request):
     elif prediction_data.health == 5:
         health = "At the Pink of Health"
 
-    predicted_marks = LinearRegression.fetch_prediction_data(MySchoolUser.objects.get(auth_user=request.user))
+    predicted_marks = LinearRegression.fetch_prediction_data(MySchoolUser.objects.get(auth_user=kwargs.get('id')))
 
     total_marks = PaperType.objects.get(paper_type="Final Exam")
     total_marks = total_marks.out_of
 
     percentage = (predicted_marks / total_marks) * 100
 
+    group = 'Low Performer' if predicted_marks < 36 \
+        else 'Average Performance' if 35 < predicted_marks < 75 \
+        else 'Top Performer'
+
     context = {'page_context': {'title': "MySchool Student Dashboard", 'titleTag': 'MySchool'},
-               'search_name': '',
-               'navbar': views.student_navbar(request),
+               'navbar': views.student_navbar(request) if request.user.groups.filter(name='Learner').exists() \
+                   else views.educator_navbar(request) if request.user.groups.filter(name='Educator').exists() \
+                   else views.principal_navbar(request) if request.user.groups.filter(name='Principal').exists() \
+                   else PermissionError,
+               'learner_data': learner_data,
                'prediction': {
-                    'father_education': father_education,
-                    'internet_facility': internet_facility,
-                    'study_time': study_time,
-                    'paid_tuition': paid_tuition,
-                    'past_failures': past_failures,
-                    'free_time': free_time,
-                    'extra_curricular_activities': extra_curricular_activities,
-                    'absences': absences,
-                    'class_engagement': class_engagement,
-                    'health': health,
-                    'predicted_marks': predicted_marks,
-                    'total_marks': total_marks,
-                    'percentage': percentage
+                   'father_education': father_education,
+                   'internet_facility': internet_facility,
+                   'study_time': study_time,
+                   'paid_tuition': paid_tuition,
+                   'past_failures': past_failures,
+                   'free_time': free_time,
+                   'extra_curricular_activities': extra_curricular_activities,
+                   'absences': absences,
+                   'class_engagement': class_engagement,
+                   'health': health,
+                   'predicted_marks': predicted_marks,
+                   'total_marks': total_marks,
+                   'percentage': percentage,
+                   'group': group
                }}
     return render(request, 'StudentPerformancePrediction/student_prediction.html', context)
