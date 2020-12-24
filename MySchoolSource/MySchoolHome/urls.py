@@ -11,11 +11,9 @@ app_name = 'MySchoolHome'
 
 page_context = {'title': "MySchool Administration",
                 'footerCreatedBy': '<a href="https://aagamsheth.com"/>Aagam Sheth.</a>'}
-student_navbar = {'navbar': views.student_navbar(request)}
 
 
 urlpatterns = [
-    path('test/', views.test, name='test'),
     path('sitemap/', views.sitemap, name='sitemap'),
     path('loadDatabase/', views.load_database, name='load_database'),
 ]
@@ -36,14 +34,10 @@ urlpatterns += [
 
 urlpatterns += [
     path('list/<str:app_label>/<str:model_label>/',
-         generic.ModelObjectListView.as_view(extra_context={'page_context': {'titleTag': '1'},
-                                                            'navbar': views.student_navbar(request),
-                                                            'search_name': ""}),
+         views.MshModelListView.as_view(extra_context={'page_context': {'titleTag': '1'}}),
         name='modelobject_list_view'),
     path('list/<str:app_label>/<str:model_label>/<str:template_label>/',
-         generic.ModelObjectListView.as_view(extra_context={'page_context': {'titleTag': '1'},
-                                                            'navbar': views.student_navbar(request),
-                                                            'search_name': ""}), name='modelobject_list_view'),
+         views.MshModelListView.as_view(extra_context={'page_context': {'titleTag': '1'}}), name='modelobject_list_view'),
 
     path('create/<str:app_label>/<str:model_label>/',
          generic.ModelObjectCreateView.as_view(extra_context={'page_context': {'titleTag': '1'}}),
@@ -52,13 +46,9 @@ urlpatterns += [
          generic.ModelObjectCreateView.as_view(), name='modelobject_create_view'),
 
     path('update/<str:app_label>/<str:model_label>/<int:pk>/',
-         generic.ModelObjectUpdateView.as_view(extra_context={'page_context': {'titleTag': '1'},
-                                                            'navbar': views.student_navbar(request),
-                                                            'search_name': ""}), name='modelobject_update_view'),
+         views.MshModelUpdateView.as_view(extra_context={'page_context': {'titleTag': '1'}}), name='modelobject_update_view'),
     path('update/<str:app_label>/<str:model_label>/<int:pk>/<str:template_label>/',
-         generic.ModelObjectUpdateView.as_view(extra_context={'page_context': {'titleTag': '1'},
-                                                            'navbar': views.student_navbar(request),
-                                                            'search_name': ""}), name='modelobject_update_view'),
+         views.MshModelUpdateView.as_view(extra_context={'page_context': {'titleTag': '1'}}), name='modelobject_update_view'),
 
     path('delete/<str:app_label>/<str:model_label>/<int:pk>/',
          generic.ModelObjectDeleteView.as_view(), name='modelobject_delete_view'),

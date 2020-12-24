@@ -19,11 +19,34 @@ from StudentPerformancePrediction import models as spp
 from StudentPerformancePrediction.MachineLearningModels import KNNmdl
 from StudentPerformancePrediction.MachineLearningModels import LinearRegression
 
+from aagam_packages.django.view_extensions import generic
 from aagam_packages.utils import utils
 from aagam_packages.terminal_yoda.terminal_yoda import *
 from aagam_packages.terminal_yoda import terminal_utils
 
 # Create your views here.
+
+
+class MshModelListView(generic.ModelObjectListView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['fields'] = [field for field in self.get_modelobject_fields_label()]
+        context['display_fields'] = [field.replace('_', ' ').title() for field in self.get_modelobject_fields_label()]
+        context['navbar'] = student_navbar(self.request) if self.request.user.groups.filter(name='Learner').exists() \
+            else educator_navbar(self.request) if self.request.user.groups.filter(name='Educator').exists() \
+            else principal_navbar(self.request) if self.request.user.groups.filter(name='Principal').exists() \
+            else PermissionError
+        return context
+
+
+class MshModelUpdateView(generic.ModelObjectUpdateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['navbar'] = student_navbar(self.request) if self.request.user.groups.filter(name='Learner').exists() \
+            else educator_navbar(self.request) if self.request.user.groups.filter(name='Educator').exists() \
+            else principal_navbar(self.request) if self.request.user.groups.filter(name='Principal').exists() \
+            else PermissionError
+        return context
 
 
 @login_required()
@@ -38,19 +61,10 @@ def home(request):
         return HttpResponse(status=403)
 
 
-def sitemap(request):
-    python_lines = str(utils.count_lines("*.py"))
-    html_lines = str(utils.count_lines("*.html"))
-    text_lines = str(utils.count_lines("*.txt"))
-    json_lines = str(utils.count_lines("*.json"))
-    context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines}
-    return render(request, "MySchool_site_nav.html", context)
-
-
 def student_navbar(request):
     map_id = sp.MapMySchoolUserStandardSection.objects.\
         select_related('standard_section','myschool_user__auth_user')\
-        .filter(myschool_user=83) # __auth_user=request.user)
+        .filter(myschool_user__auth_user=request.user)
     map_id = map_id.values('pk', 'standard_section__section', 'standard_section__standard', 'myschool_user__pk',
                            'myschool_user__auth_user__username', 'status')
     map_active_id = map_id.get(status=True)
@@ -63,10 +77,30 @@ def student_navbar(request):
     return context
 
 
+def educator_navbar(request):
+    map_id = sp.MapMySchoolUserSubject.objects.filter(myschool_user=msh.MySchoolUser.objects.get(auth_user=request.user))
+    standard = map_id.values('subject__standard').distinct()
+    sections = sp.StandardSection.objects.all().values('section').distinct()
+    context = {'user_subject': map_id,
+               'section': sections,
+               'standard': standard}
+    return context
+
+
+def principal_navbar(request):
+    map_id = sp.MapMySchoolUserSubject.objects.select_related('subject__subject_name')\
+        .filter(myschool_user=msh.MySchoolUser.objects.get(auth_user=request.user))
+    standard = map_id.values('standard').distinct()
+    sections = sp.StandardSection.objects.all().values('section').distinct()
+    context = {'standard_section': map_id,
+               'section': sections,
+               'standard': standard}
+    return context
+
+
 @login_required()
 def student_dashboard(request):
     context = {'page_context': {'title': "MySchool Student Dashboard", 'titleTag': 'MySchool'},
-               'search_name': '',
                'navbar': student_navbar(request)}
     return render(request, 'dashboard/student_dashboard.html', context)
 
@@ -75,27 +109,24 @@ def student_dashboard(request):
 def educator_dashboard(request):
     context = {'page_context': {'title': "MySchool Educator Dashboard",
                                 'titleTag': 'MySchool'},
-               'search_name': '',
-               'navbar': student_navbar(request)}
+               'navbar': educator_navbar(request)}
     return render(request, 'dashboard/educator_dashboard.html', context)
 
 
 @login_required()
 def principal_dashboard(request):
     context = {'page_context': {'title': "MySchool Principal Dashboard",
-                                'titleTag': 'MySchool'},
-               'search_name': 'disabled'}
+                                'titleTag': 'MySchool'}}
     return render(request, 'dashboard/principal_dashboard.html', context)
 
 
-def test(request):
-    LinearRegression.train_linear_regression_model()
-    c = ""
-    for i in spp.StudentEfficacy.objects.all().order_by('pk'):
-        # a, b = LinearRegression.fetch_prediction_data(msh.MySchoolUser.objects.get(auth_user=i.student.auth_user))
-        a, b = LinearRegression.fetch_prediction_data(i.pk)
-        c += f'<h2>predicted: {a} : {b}</h2><br />'
-    return HttpResponse(f'<h1>{c}</h1>')
+def sitemap(request):
+    python_lines = str(utils.count_lines("*.py"))
+    html_lines = str(utils.count_lines("*.html"))
+    text_lines = str(utils.count_lines("*.txt"))
+    json_lines = str(utils.count_lines("*.json"))
+    context = {'py': python_lines, 'html': html_lines, 'txt': text_lines, 'json': json_lines}
+    return render(request, "MySchool_site_nav.html", context)
 
 
 def load_database(request):
