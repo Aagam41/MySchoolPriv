@@ -1,32 +1,49 @@
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render
-from django.views.generic import ListView, UpdateView
+import json
+import random
 
-from .forms import *
+from django.apps import apps
+from django.conf import settings
+from django.contrib.auth.decorators import login_required, permission_required
+from django.shortcuts import render, redirect
+from django.http.response import HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User, Group
+from django.contrib.auth.forms import UserCreationForm
+from MySchoolHome import forms
+from django.core import serializers
+
+from MySchoolHome import models as msh
+from StudentPerformance import models as sp
+from StudentPerformancePrediction import models as spp
+
+from MySchoolHome import views as mshv
+
+from StudentPerformancePrediction.MachineLearningModels import KNNmdl
+from StudentPerformancePrediction.MachineLearningModels import LinearRegression
 
 from aagam_packages.django.view_extensions import generic
+from aagam_packages.utils import utils
+from aagam_packages.terminal_yoda.terminal_yoda import *
+from aagam_packages.terminal_yoda import terminal_utils
 
 
 # Create your views here.
 
 
-def paper_entry_create(request):
-    form = PaperEntryForm(request.POST or None)
-    if form.is_valid():
-        instance = form.save()
-        return HttpResponseRedirect("/")
-    return render(request, "test/test.html", {'form': form})
-
-
-
-def paper_pattern_entry_create_popup(request):
-    form = PaperPatternEntryForm(request.POST or None)
-    if form.is_valid():
-        instance = form.save()
-
-        ## Change the value of the "#id_author". This is the element id in the form
-
-        return HttpResponse(
-            '<script>opener.closePopup(window, "%s", "%s", "#id_author");</script>' % (instance.pk, instance))
-
-    return render(request, "author_form.html", {"form": form})
+def performance_panel(request, **kwargs):
+    if request.user.groups.filter(name='Learner').exists():
+        return HttpResponse("<h1>Student</h1>")
+    elif request.user.groups.filter(name='Educator').exists():
+        educator_context = mshv.educator_navbar(request)
+        standard = request.GET.get('standard', educator_context['standard'].first()['subject__standard'])
+        section = request.GET.get('section', educator_context['section'].first()['section'])
+        learner = sp.MapMySchoolUserStandardSection.objects\
+            .filter(standard_section__standard=standard, standard_section__section=section, status=True)\
+            .values_list("myschool_user__pk")
+        learner_detail = msh.MySchoolUser.objects.filter(myschool_user_id__in=learner)
+        context = {
+            'learners': learner_detail,
+            'performance_type': kwargs.get('performance_type'),
+            'navbar': educator_context,
+        }
+        return render(request, 'StudentPerformance/educator_panel_student_list.html', context)
