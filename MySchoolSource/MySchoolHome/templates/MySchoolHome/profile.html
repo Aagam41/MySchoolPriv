@@ -1,0 +1,78 @@
+{% extends "masterHTML/master.html" %}
+
+{% load aagam_form_widgets_tweaks %}
+
+{% block content %}
+   <div class="container h-100">
+      <div style="text-align: center"><h1><i><b>{{ page_context.title }}</b></i></h1></div>
+      <div class="row justify-content-center">
+        <div class="card mx-auto" style="margin-top:10%;width:48rem;border-radius: 20px !important;box-shadow:10px 10px 10px #f0f0f0,-10px -10px 10px #fff">
+          <div style="padding: 0px;" class="card-body">
+            <div style="text-align: center;border-radius: 20px 20px 0px 0px !important;
+            background-color: #3F0F3E; color: white; padding: 20px;">
+              <h2>{{ page_context.title }}</h2>
+            </div>
+
+            <form style="padding: 20px;" method="POST">
+                {% csrf_token %}
+
+                  {% if form.errors %}
+                    {% for field in form %}
+                      {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                      {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                  {% endif %}
+<br />
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend w-15">
+                      <span class="input-group-text w-100" id="{{ form.username.id_for_label }}"><i>{{ form.username.label }}</i></span>
+                    </div>
+                    {{ form.username|add_class:'form-control'|attr:"aria-describedby:form.username.id_for_label"|attr:"type:text"|attr:"placeholder:Enter your username" }}
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend w-15">
+                      <span class="input-group-text w-100" id="{{ form.first_name.id_for_label }}"><i>{{ form.first_name.label }}</i></span>
+                    </div>
+                    {{ form.first_name|add_class:'form-control'|attr:"aria-describedby:form.first_name.id_for_label"|attr:"type:text"|attr:"placeholder:Enter your first name" }}
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend w-15">
+                      <span class="input-group-text w-100" id="{{ form.last_name.id_for_label }}"><i>{{ form.last_name.label }}</i></span>
+                    </div>
+                    {{ form.last_name|add_class:'form-control'|attr:"aria-describedby:form.first_name.id_for_label"|attr:"type:text"|attr:"placeholder:Enter your first name" }}
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend w-15">
+                      <span class="input-group-text w-100" id="{{ form.email.id_for_label }}"><i>{{ form.email.label }}</i></span>
+                    </div>
+                    {{ form.email|add_class:'form-control'|attr:"aria-describedby:form.first_name.id_for_label"|attr:"type:text"|attr:"placeholder:Enter your first name" }}
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend w-15">
+                      <span class="input-group-text w-100" id="{{ form.password.id_for_label }}"><i>{{ form.password.label }}</i></span>
+                    </div>
+                    <label class="form-control" aria-describedby="{{ form.password.id_for_label }}"><a href="{% url 'MySchoolHome:change_password' %}">Change Your Password</a></label>
+                </div>
+
+                <div class="input-group">
+                    {{ form.password|attr:"hidden" }}
+                </div>
+                <div class="input-group">
+                    {{ form.date_joined|attr:"hidden" }}
+                </div>
+
+                <button style="width: 100%;margin: 20px auto;border-radius: 10px;" type="submit" class="btn  btn-outline-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
