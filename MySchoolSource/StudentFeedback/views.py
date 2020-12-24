@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 
 
 
+def login(request):
+    return render(request, 'login.html')
 
 def class_detail(request):
     data = models.StandardSection.objects.all()
@@ -24,7 +26,8 @@ def edit_class(request, standard_section_id):
     standard_sec = models.StandardSection.objects.get(pk=standard_section_id)
     return render(request, 'edit_class.html', {'st_se': standard_sec, 'st': std, 'se': sec})
 
-
+def edit_user(request):
+    return render(request, 'edit_user.html')
 
 def add_class(request):
     if request.method == 'POST':
@@ -37,6 +40,8 @@ def add_class(request):
     else:
         return render(request, 'add_class.html')
 
+def add_chapter(request):
+    return render(request, 'add_chapter.html')
 
 def delete_class(request, standard_section_id):
     if request.method == "POST":
@@ -54,6 +59,8 @@ def get_teacher_prediction(request):
         sub = models.TblSubject.objects.filter(standard=std)
         return render(request, 'teac_prediction.html', {'st': stand, 'se': sec, 'su': sub})
 
+def add_topic(request):
+    return render(request, 'add_topic.html')
 
 def get_prediction_data(request):
     std = 1
@@ -77,3 +84,18 @@ def get_prediction_principle(request):
     pre_data = models.StudentEfficacy.objects.select_related('student_id__auth_user')
     prediction = pre_data.values('student_id__auth_user__username', 'predictions','student_id__auth_user__first_name', 'student_id__auth_user__last_name')
     return render(request, 'prin_prediction.html', {'pm': prediction})
+
+def stu_feedback(request):
+    return render(request, 'stu_feedback.html')
+
+def prin_dashboard(request):
+    return render(request, 'prin_dashboard.html')
+
+def prin_feedback(request):
+    return render(request, 'prin_feedback.html')
+
+def prin_prediction(request):
+    return render(request, 'prin_prediction.html')
+
+def prediction_data(request):
+    return render(request, 'prediction_data.html')

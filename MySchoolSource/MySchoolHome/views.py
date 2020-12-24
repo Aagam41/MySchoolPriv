@@ -14,12 +14,39 @@ from django.core import serializers
 
 from MySchoolHome import models as msh
 from StudentPerformance import models as sp
+from StudentPerformancePrediction import models as spp
 
+from StudentPerformancePrediction.MachineLearningModels import KNNmdl
+from StudentPerformancePrediction.MachineLearningModels import LinearRegression
+
+from aagam_packages.django.view_extensions import generic
 from aagam_packages.utils import utils
 from aagam_packages.terminal_yoda.terminal_yoda import *
 from aagam_packages.terminal_yoda import terminal_utils
 
 # Create your views here.
+
+
+class MshModelListView(generic.ModelObjectListView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['fields'] = [field for field in self.get_modelobject_fields_label()]
+        context['display_fields'] = [field.replace('_', ' ').title() for field in self.get_modelobject_fields_label()]
+        context['navbar'] = student_navbar(self.request) if self.request.user.groups.filter(name='Learner').exists() \
+            else educator_navbar(self.request) if self.request.user.groups.filter(name='Educator').exists() \
+            else principal_navbar(self.request) if self.request.user.groups.filter(name='Principal').exists() \
+            else PermissionError
+        return context
+
+
+class MshModelUpdateView(generic.ModelObjectUpdateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['navbar'] = student_navbar(self.request) if self.request.user.groups.filter(name='Learner').exists() \
+            else educator_navbar(self.request) if self.request.user.groups.filter(name='Educator').exists() \
+            else principal_navbar(self.request) if self.request.user.groups.filter(name='Principal').exists() \
+            else PermissionError
+        return context
 
 
 @login_required()
@@ -29,9 +56,68 @@ def home(request):
     elif Group.objects.get(name='Educator') in request.user.groups.all():
         return redirect("MySchoolHome:educator_dashboard")
     elif Group.objects.get(name='Principal') in request.user.groups.all():
-        return redirect("MySchoolHome:principal_dashboard")
+        return HttpResponse("MySchoolHome:principal_dashboard")
     else:
         return HttpResponse(status=403)
+
+
+def student_navbar(request):
+    map_id = sp.MapMySchoolUserStandardSection.objects.\
+        select_related('standard_section','myschool_user__auth_user')\
+        .filter(myschool_user__auth_user=request.user)
+    map_id = map_id.values('pk', 'standard_section__section', 'standard_section__standard', 'myschool_user__pk',
+                           'myschool_user__auth_user__username', 'status')
+    map_active_id = map_id.get(status=True)
+    sections = sp.StandardSection.objects.all().values('section').distinct()
+    subject = sp.TblSubject.objects.filter(standard__lte=map_active_id['standard_section__standard'])
+    context = {'standard_section': map_id,
+               'section': sections,
+               'standard_section_current': map_active_id,
+               'subject': subject}
+    return context
+
+
+def educator_navbar(request):
+    map_id = sp.MapMySchoolUserSubject.objects.filter(myschool_user=msh.MySchoolUser.objects.get(auth_user=request.user))
+    standard = map_id.values('subject__standard').distinct()
+    sections = sp.StandardSection.objects.all().values('section').distinct()
+    context = {'user_subject': map_id,
+               'section': sections,
+               'standard': standard}
+    return context
+
+
+def principal_navbar(request):
+    map_id = sp.MapMySchoolUserSubject.objects.select_related('subject__subject_name')\
+        .filter(myschool_user=msh.MySchoolUser.objects.get(auth_user=request.user))
+    standard = map_id.values('standard').distinct()
+    sections = sp.StandardSection.objects.all().values('section').distinct()
+    context = {'standard_section': map_id,
+               'section': sections,
+               'standard': standard}
+    return context
+
+
+@login_required()
+def student_dashboard(request):
+    context = {'page_context': {'title': "MySchool Student Dashboard", 'titleTag': 'MySchool'},
+               'navbar': student_navbar(request)}
+    return render(request, 'dashboard/student_dashboard.html', context)
+
+
+@login_required()
+def educator_dashboard(request):
+    context = {'page_context': {'title': "MySchool Educator Dashboard",
+                                'titleTag': 'MySchool'},
+               'navbar': educator_navbar(request)}
+    return render(request, 'dashboard/educator_dashboard.html', context)
+
+
+@login_required()
+def principal_dashboard(request):
+    context = {'page_context': {'title': "MySchool Principal Dashboard",
+                                'titleTag': 'MySchool'}}
+    return render(request, 'dashboard/principal_dashboard.html', context)
 
 
 def sitemap(request):
@@ -43,48 +129,7 @@ def sitemap(request):
     return render(request, "MySchool_site_nav.html", context)
 
 
-def student_navbar(request):
-   # first() of queryset
-    map_id = sp.MapMySchoolUserStandardSection.objects.select_related('standard_section',
-                                                                      'myschool_user__auth_user').filter(
-        myschool_user__auth_user=request.user)
-    map_id = map_id.values('pk', 'standard_section__section', 'standard_section__standard', 'myschool_user__pk',
-                           'myschool_user__auth_user__username', 'status')
-    map_active_id = map_id.get(standard_section__standard=request.GET.get('standard')) if request.GET.get(
-        'standard') else map_id.get(status=True)
-    subject = sp.TblSubject.objects.filter(standard=map_active_id['standard_section__standard'])
-    context = {'search_name': '',
-               'standard_section': map_id,
-               'standard_section_current': map_active_id,
-               'subject': subject}
-    return context
-
-
-@login_required()
-def student_dashboard(request):
-    context = {'page_context': {'title': "MySchool Student Dashboard",
-                     'titleTag': 'MySchool'}, 'navbar': student_navbar(request)}
-    return render(request, 'dashboard/student_dashboard.html', context)
-
-
-@login_required()
-def educator_dashboard(request):
-    context = {'page_context': {'title': "MySchool Educator Dashboard",
-                                'titleTag': 'MySchool'},
-               'search_name': 'disabled'}
-    return render(request, 'dashboard/educator_dashboard.html', context)
-
-
-@login_required()
-def principal_dashboard(request):
-    context = {'page_context': {'title': "MySchool Principal Dashboard",
-                                'titleTag': 'MySchool'},
-               'search_name': 'disabled'}
-    return render(request, 'dashboard/principal_dashboard.html', context)
-
-
-@login_required()
-def test(request):
+def load_database(request):
     # # Auth.User
     # p = User.objects.create_superuser(username='Aagam41', password='MySchool@123', first_name='Aagam',
     #                                   last_name='Sheth', email='aagam.h.sheth@icloud.com')
@@ -109,8 +154,8 @@ def test(request):
     # g1.save()
     #
     #
-    # # Auth.User
-    # with open('JsonData\\Latest\\user.json') as f:
+    # Auth.User
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = User(username=p['username'], password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
@@ -119,8 +164,62 @@ def test(request):
     #     group1 = Group.objects.get(id=1)
     #     group1.user_set.add(p)
     #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'12we3', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='12we3' + p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'12w113', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='12we3'+p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'12weasc', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='12we3'+p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'12wqwe3', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='12wesds3' + p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'sbf12w113', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='12swe3'+p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'b12weasc', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='1ert2htwe3'+p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
     #     # Auth.User for teacher
-    # with open('JsonData\\Latest\\teacher.json') as f:
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\teacher.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = User(username=p['username'], password=p['password'], first_name=p['first_name'],
@@ -132,14 +231,14 @@ def test(request):
     #
     # # Standard
     # for i in range(1,13):
-    #     s = sp.Standard.objects.create(standard=i)
+    #     s = sp.TblStandard.objects.create(standard=i)
     #     s.save()
     #
     # # TblSubject
-    # with open('JsonData\\Latest\\subject.json') as f:
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\subject.json') as f:
     #     user = json.load(f)
     # for p in user:
-    #     p = sp.TblSubject(subject_name=p['subject_name'], standard=sp.Standard.objects.get(standard=p['standard']),
+    #     p = sp.TblSubject(subject_name=p['subject_name'], standard=sp.TblStandard.objects.get(standard=p['standard']),
     #                       remembrance_credit=p['remembrance_credit'],
     #                       applied_knowledge_credit=p['applied_knowledge_credit'],
     #                       understanding_credit=p['understanding_credit'], subject_credit=p['subject_credit'])
@@ -147,7 +246,7 @@ def test(request):
     #
     #
     # # SubjectChapter
-    # with open('JsonData\\Latest\\subjectchapter.json') as f:
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\subjectchapter.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = sp.SubjectChapter(subject=sp.TblSubject.objects.get(subject_name=p['subject']),
@@ -159,7 +258,7 @@ def test(request):
     #
     # # ChapterTopic
     # with open(
-    #         'JsonData\\Latest\\chaptertopic2.json') as f:
+    #         'D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\chaptertopic2.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     subject1 = sp.TblSubject.objects.get(subject_name=p['subject'])
@@ -170,7 +269,7 @@ def test(request):
     #
     # # MySchoolUser  Educator
     # with open(
-    #        'JsonData\\Latest\\teacher.json') as f:
+    #        'D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\teacher.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = msh.MySchoolUser(auth_user=User.objects.get(username=p['username']))
@@ -179,25 +278,24 @@ def test(request):
     # # StandardSection
     # for i in range(1, 13):  # for 1 to 12, default starts for 0 and ends before stop value
     #     for j in ['A', 'B']:
-    #         p = sp.StandardSection(standard=sp.Standard.objects.get(standard=i), section=j)
+    #         p = sp.StandardSection(standard=sp.TblStandard.objects.get(standard=i), section=j)
     #         p.save()
     #     rand = random.randint(0, 1)
     #     if 1 == rand:
-    #         p = sp.StandardSection(standard=sp.Standard.objects.get(standard=i), section="C")
+    #         p = sp.StandardSection(standard=sp.TblStandard.objects.get(standard=i), section="C")
     #         p.save()
-    #         p = sp.StandardSection(standard=sp.Standard.objects.get(standard=i), section="D")
+    #         p = sp.StandardSection(standard=sp.TblStandard.objects.get(standard=i), section="D")
     #         p.save()
     #     else:
-    #         p = sp.StandardSection(standard=sp.Standard.objects.get(standard=i), section="C")
+    #         p = sp.StandardSection(standard=sp.TblStandard.objects.get(standard=i), section="C")
     #         p.save()
     #
     #
     # # MySchoolUser
-    # with open(
-    #        'JsonData\\Latest\\user.json') as f:
-    #     user = json.load(f)
+    # user = User.objects.all()
+    #
     # for p in user:
-    #     p = msh.MySchoolUser(auth_user=User.objects.get(username=p['username']))
+    #     p = msh.MySchoolUser(auth_user=p)
     #     p.save()
     #
     # # MapMySchoolUserStandardSection
@@ -207,10 +305,10 @@ def test(request):
     #     stan = random.randint(1, 12)
     #     sec = random.choice(sp.StandardSection.objects.filter(standard=stan))
     #     stss = sp.MapMySchoolUserStandardSection(myschool_user=stud[0],
-    #                                              standard_section=sec)
+    #                                              standard_section=sec, status=True)
     #     stss.save()
-    #
-    # # Serialize tables
+
+    # Serialize tables
     # a = sp.PaperQuestion.objects.all()
     # serialized = serializers.serialize('json', a)
     # yoda_saberize_print(serialized, YodaSaberColor.BLACK, YodaSaberColor.CORNFLOWERBLUE)
