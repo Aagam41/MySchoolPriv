@@ -69,7 +69,7 @@ LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates', 'aagam_packages/django/templates'],
+        'DIRS': ['templates', 'aagam_templates', 'aagam_packages/django/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -138,4 +138,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [f'{BASE_DIR}/static/']
+STATICFILES_DIRS = [f'{BASE_DIR}/static/', f'{BASE_DIR}/aagam_static/']

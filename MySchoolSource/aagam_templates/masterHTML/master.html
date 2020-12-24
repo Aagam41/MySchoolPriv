@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+{% load static %}
+{% load aagam_form_widgets_tweaks %}
+
+<html dir="ltr" lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MySchool">
+    <meta name="author" content="Aagam Sheth">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon.png' %}">
+    <title>{{ page_context.titleTag }}</title>
+
+    <!-- Custom CSS -->
+    <link href="{% static 'assets/extra-libs/c3/c3.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ============================================================== -->
+    <!-- Preloader -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- Main wrapper -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+
+        <!-- ============================================================== -->
+        <!-- Topbar header -->
+        <!-- ============================================================== -->
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href=""><i
+                            class="ti-menu ti-close"></i></a>
+
+{#                    <!-- ============================================================== -->#}
+{#                    <!-- Logo -->#}
+{#                    <!-- ============================================================== -->#}
+{#                    <div class="navbar-brand">#}
+{#                        <!-- Logo icon -->#}
+{#                        <b class="logo-icon">#}
+{#                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="324" height="223" viewBox="40 0 384 223">#}
+{#                            <defs>#}
+{#                              <filter id="Rectangle_32" x="0" y="0" width="324" height="223" filterUnits="userSpaceOnUse">#}
+{#                                    <feOffset input="SourceAlpha"/>#}
+{#                                    <feGaussianBlur stdDeviation="25" result="blur"/>#}
+{#                                    <feFlood flood-opacity="0.161"/>#}
+{#                                    <feComposite operator="in" in2="blur"/>#}
+{#                                    <feComposite in="SourceGraphic"/>#}
+{#                                  </filter>#}
+{#                              <filter id="MySchool" x="78" y="64" width="169" height="95" filterUnits="userSpaceOnUse">#}
+{#                                <feOffset input="SourceAlpha"/>#}
+{#                                <feGaussianBlur stdDeviation="10" result="blur-2"/>#}
+{#                                <feFlood flood-opacity="0.161"/>#}
+{#                                <feComposite operator="in" in2="blur-2"/>#}
+{#                                <feComposite in="SourceGraphic"/>#}
+{#                              </filter>#}
+{#                            </defs>#}
+{#                            <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle_32)">#}
+{#                              <rect id="Rectangle_32-2" data-name="Rectangle 32" width="174" height="73" rx="20" transform="translate(75 75)" fill="#fff"/>#}
+{#                            </g>#}
+{#                            <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#MySchool)">#}
+{#                              <text id="MySchool-2" data-name="MySchool" transform="translate(108 120)" fill="#433fb2" font-size="35" font-family="BurbankBigCondensed-Bold, Burbank Big" font-weight="700"><tspan x="0" y="0">MySchool</tspan></text>#}
+{#                            </g>#}
+{#                          </svg>#}
+{#                        </b>#}
+{#                    </div>#}
+{#                    <!-- ============================================================== -->#}
+{#                    <!-- End Logo -->#}
+{#                    <!-- ============================================================== -->#}
+                    <!-- ============================================================== -->
+                    <!-- Toggle visible on mobile only -->
+                    <!-- ============================================================== -->
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                        data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+                            class="ti-more"></i></a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
+                    {% if not request.user|has_group:"Staff" %}
+                        <form class="form-inline" method="GET">
+                            <!-- Dropdown Selection -->
+                            <li class="nav-item d-none d-md-block">
+                                <a class="nav-link" href="javascript:void(0)">
+                                    <div class="customize-input">
+                                        <select name="standard"
+                                            class="custom-select form-control bg-white custom-radius custom-shadow border-0">
+                                            {% if request.user|has_group:"Learner" %}
+                                                    <option selected>{{ request.GET.standard|default:navbar.standard_section_current.standard_section__standard }}</option>
+                                                    {% for std in navbar.standard_section %}
+                                                        <option value="{{ std.standard_section__standard }}">{{ std.standard_section__standard }}</option>
+                                                    {% endfor %}
+                                            {% elif request.user|has_group:"Educator" %}
+                                                    <option selected>{{ request.GET.standard|default:navbar.standard.first.subject__standard }}</option>
+                                                    {% for std in navbar.standard %}
+                                                        <option value="{{ std.subject__standard }}">{{ std.subject__standard }}</option>
+                                                    {% endfor %}
+                                            {% elif not request.user|has_group:"Principal" %}
+                                                    <option selected>{{ request.GET.standard|default:navbar.standard_section_current.standard_section__standard }}</option>
+                                                    {% for std in navbar.standard_section %}
+                                                        <option value="{{ std.standard_section__standard }}">{{ std.standard_section__standard }}</option>
+                                                    {% endfor %}
+                                            {% endif %}
+                                        </select>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Dropdown Selection -->
+                            <li class="nav-item d-none d-md-block">
+                                <a class="nav-link" href="javascript:void(0)">
+                                    <div class="customize-input">
+                                        {% if not request.user|has_group:"Learner" %}
+                                            <select name="section"
+                                                class="custom-select form-control bg-white custom-radius custom-shadow border-0">
+                                                <option selected>{{ request.GET.section|default:navbar.section.first.section }}</option>
+                                                {% for std in navbar.section %}
+                                                        <option value="{{ std.section }}">{{ std.section }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Dropdown Selection -->
+                            <li class="nav-item d-none d-md-block">
+                                <a class="nav-link" href="javascript:void(0)">
+                                    <div class="customize-input">
+                                        <select name="tblsubject"
+                                            class="custom-select form-control bg-white custom-radius custom-shadow border-0">
+                                            {% if request.user|has_group:"Learner" %}
+                                                <option selected>{{ request.GET.tblsubject|default:navbar.subject.first.subject_name }}</option>
+                                                {% for sub in navbar.subject %}
+                                                        <option value="{{ sub.subject_name }}">{{ sub.subject_name }}</option>
+                                                {% endfor %}
+                                            {% elif request.user|has_group:"Educator" %}
+                                                <option selected>{{ request.GET.tblsubject|default:navbar.user_subject.first.subject.subject_name }}</option>
+                                                {% for sub in navbar.user_subject %}
+                                                        <option value="{{ sub.subject.subject_name }}">{{ sub.subject.subject_name }}</option>
+                                                {% endfor %}
+                                            {% elif request.user|has_group:"Principal" %}
+                                                <option selected>{{ request.GET.tblsubject|default:navbar.subject.first.subject_name }}</option>
+                                                {% for sub in navbar.subject %}
+                                                        <option value="{{ sub.subject_name }}">{{ sub.subject_name }}</option>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </select>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- ============================================================== -->
+                            <!-- Search -->
+                            <!-- ============================================================== -->
+{#                            <li class="nav-item d-none d-md-block">#}
+{#                                <a class="nav-link" href="javascript:void(0)">#}
+{#                                    <div class="customize-input">#}
+{#                                        <input name="{{ search_name }}" class="form-control custom-shadow custom-radius border-0 bg-white"#}
+{#                                            type="search" placeholder="{{ request.GET|get_dic_item:search_name|default:"Search"}}" aria-label="Search">#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </li>#}
+
+                            <!-- Submit button for above dropdowns -->
+                            <li class="nav-item d-none d-md-block">
+                                <a class="nav-link" href="javascript:void(0)">
+                                    <div class="customize-input">
+                                        <button type="submit" class="btn btn-rounded waves-effect waves-light btn-outline-dark"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fetch Data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button>
+                                    </div>
+                                </a>
+                            </li>
+                        </form>
+                    {% else %}
+                        <h1>MySchool Administration</h1>
+                    {% endif %}
+                    </ul>
+
+                    <!-- ============================================================== -->
+                    <!-- Right side toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-right">
+                        <!-- ============================================================== -->
+                        <!-- User profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+{#                                <img src="{% aagam_static 'assets/images/users/profile-pic.jpg' %}" alt="user" class="rounded-circle"#}
+{#                                    width="40">#}
+                                <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
+                                        class="text-dark">{{ request.user }}</span> <i data-feather="chevron-down"
+                                        class="svg-icon"></i></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                                <a class="dropdown-item" href="{% url 'MySchoolHome:modelobject_update_view' 'auth' 'User' request.user.pk 'MySchoolHome-profile' %}"><i data-feather="user"
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    My Profile</a>
+                                <a class="dropdown-item" href="{% url 'MySchoolHome:settings' %}"><i data-feather="settings"
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    Setting</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'MySchoolHome:logout' %}"><i data-feather="power"
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    Logout</a>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End User profile -->
+                        <!-- ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+
+            <!-- ============================================================== -->
+        <!-- Left Sidebar -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar" data-sidebarbg="skin6">
+
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{% url 'MySchoolHome:home' %}"
+                                aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
+                                    class="hide-menu">Dashboard</span></a></li>
+                        <li class="list-divider"></li>
+
+                        <li class="nav-small-cap"><span class="hide-menu">Student</span></li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i class="feather-icon icon-graduation"></i><span
+                                    class="hide-menu"> Performance </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                <li class="sidebar-item"><a href="{% url 'StudentPerformance:student_performance' 'formative' %}" class="sidebar-link"><span
+                                            class="hide-menu"> Formative
+                                        </span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="{% url 'StudentPerformance:student_performance' 'summative' %}" class="sidebar-link"><span
+                                            class="hide-menu"> Summative
+                                        </span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link"
+                                {% if request.user|has_group:"Learner" %}
+                                    href="{% url 'StudentPerformancePrediction:student_prediction' request.user.pk %}"
+                                {% elif request.user|has_group:"Educator" or request.user|has_group:"Principal" %}
+                                    href="{% url 'StudentPerformance:student_performance' 'prediction' %}"
+                                {% endif %}
+                                aria-expanded="false"><i class="feather-icon icon-calender"></i><span
+                                    class="hide-menu">Prediction</span></a></li>
+
+                        <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Educator</span></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{% url 'StudentFeedback:student_feedback_home' %}"
+                                aria-expanded="false"><i class="feather-icon icon-note"></i><span
+                                    class="hide-menu">Feedback</span></a></li>
+
+                        <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Profile</span></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{% url 'MySchoolHome:modelobject_update_view' 'auth' 'User' request.user.pk 'MySchoolHome-profile' %}"
+                                aria-expanded="false"><i data-feather="user" class="feather-icon"></i><span
+                                    class="hide-menu">My Profile</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{% url 'MySchoolHome:settings' %}"
+                                aria-expanded="false"><i data-feather="settings" class="feather-icon"></i><span
+                                    class="hide-menu">Settings</span></a></li>
+
+                        <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Other</span></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="../../docs/docs.html"
+                                aria-expanded="false"><i class="feather-icon icon-notebook"></i><span
+                                    class="hide-menu">Documentation</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{% url 'MySchoolHome:logout' %}"
+                                aria-expanded="false"><i data-feather="power" class="feather-icon"></i><span
+                                    class="hide-menu">Logout</span></a></li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                {% if not request.user|has_group:"Staff" %}
+                    <div class="row">
+                        <div class="col-7 align-self-center">
+                            <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Good Morning {{ request.user }}!</h3>
+                            <div class="d-flex align-items-center">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb m-0 p-0">
+                                        <li class="breadcrumb-item"><a href="#">{{ page_context.title }}</a>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+
+
+        {% block content %}{% endblock content %}
+
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center text-muted">
+                Crafted with ❤ by <a href="https://aagamsheth.com" target="_blank">Aagam Sheth.</a>
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+    <!-- apps -->
+    <script src="{% static 'dist/js/app-style-switcher.js' %}"></script>
+    <script src="{% static 'dist/js/feather.min.js' %}"></script>
+    <script src="{% static 'assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js' %}"></script>
+    <script src="{% static 'dist/js/sidebarmenu.js' %}"></script>
+
+    <!--This page JavaScript -->
+    <script src="{% static 'assets/extra-libs/c3/d3.min.js' %}"></script>
+    <script src="{% static 'assets/extra-libs/c3/c3.min.js' %}"></script>
+    <script src="{% static 'assets/libs/chartist/dist/chartist.min.js' %}"></script>
+    <script src="{% static 'assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js' %}"></script>
+    <script src="{% static 'assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js' %}"></script>
+    <script src="{% static 'assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js' %}"></script>
+    <script src="{% static 'dist/js/pages/dashboards/dashboard1.min.js' %}"></script>
+
+    <!--Custom JavaScript -->
+    <script src="{% static 'dist/js/custom.min.js' %}"></script>
+    <script src="{% static 'assets/extra-libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'dist/js/pages/datatable/datatable-basic.init.js' %}"></script>
+
+    <!-- Chart JS -->
+    <script src="{% static 'assets/libs/chart.js/dist/Chart.min.js' %}"></script>
+    <script src="{% static 'dist/js/pages/chartjs/chartjs.init.js' %}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+{% extends "masterHTML/master.html" %}
+
+{% block content %}
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+
+                <!-- *************************************************************** -->
+                <!-- Start Sales Charts Section -->
+                <!-- *************************************************************** -->
+                <div class="row">
+
+                    <!-- column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Formative Assessment</h4>
+                                <div>
+                                    <canvas id="bar-chart" height="100"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+
+                    <!-- column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Overall Class Performance</h4>
+                                <div>
+                                    <canvas id="radar-chart" height="100"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+
+                    <!-- column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Subject Performance based on Blooms Taxonomy</h4>
+                                <div>
+                                    <canvas id="bubble-chart" height="100"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+
+                    <!-- column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Subject Performance based on Blooms Taxonomy</h4>
+                                <div>
+                                    <canvas id="bar-chart1" height="650"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+                </div>
+                <!-- *************************************************************** -->
+                <!-- End Sales Charts Section -->
+                <!-- *************************************************************** -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+{% endblock content %}

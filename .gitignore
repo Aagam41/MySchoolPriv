@@ -136,7 +136,5 @@ env.json
 # added by brijesh
 misc.xml
 MySchool.iml
-/MySchoolSource/static/
-/MySchoolSource/templates/
 /MySchoolSource/xxxbrijstatic/
 /MySchoolSource/zzzbrijtemplates/

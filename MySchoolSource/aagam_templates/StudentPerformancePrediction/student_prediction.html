@@ -1,0 +1,102 @@
+{% extends "masterHTML/master.html" %}
+
+{% block content %}
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+
+                <!-- *************************************************************** -->
+                <!-- Start Sales Charts Section -->
+                <!-- *************************************************************** -->
+                <div class="row">
+
+                    <!-- column -->
+                  <div class="col-md-12">
+                      <div class="card text-white bg-dark">
+                          <div class="card-body">
+                              <h1 class="card-title text-center font-weight-bold text-white">Learner ID : {{ learner_data.pk }} <br /> Learner Name : {{ learner_data.auth_user.first_name }} {{ learner_data.auth_user.last_name }}</h1>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- column -->
+
+                  <!-- column -->
+                  <div class="col-md-12">
+                      <div class="card text-white bg-info">
+                          <div class="card-body">
+                              <h1 class="card-title text-center font-weight-bold text-white">Group : {{ prediction.group }}</h1>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- column -->
+
+                    <!-- column -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Last Standard Score</h4>
+                                <h2>400 / 500</h2>
+                                <div>
+                                  <div class="progress">
+                                    <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
+                                    role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                    aria-valuemax="100" style="width: 75%"></div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+
+                    <!-- column -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Predicted Score</h4>
+                                <h2>{{ prediction.predicted_marks }} / {{ prediction.total_marks }}</h2>
+                                <div>
+                                  <div class="progress">
+                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+                                    role="progressbar" aria-valuenow="{{ prediction.percentage }}" aria-valuemin="0"
+                                    aria-valuemax="100" style="width: {{ prediction.percentage }}%"></div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+
+                    <!-- column -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Student Efficacy Data</h4>
+                                <div>
+                                  <ul class="list-group">
+                                    <li class="list-group-item text-dark"><strong>Father Education : </strong>{{ prediction.father_education }}</li>
+                                    <li class="list-group-item text-dark"><strong>Internet Facility : </strong>{{ prediction.internet_facility }}</li>
+                                    <li class="list-group-item text-dark"><strong>Study Time (in Hours) : </strong>{{ prediction.study_time}}</li>
+                                    <li class="list-group-item text-dark"><strong>Paid Tution : </strong>{{ prediction.paid_tuition }}</li>
+                                    <li class="list-group-item text-dark"><strong>Past Failures : </strong>{{ prediction.past_failures }}</li>
+                                    <li class="list-group-item text-dark"><strong>Free Time (in Hours) : </strong>{{ prediction.free_time }}</li>
+                                    <li class="list-group-item text-dark"><strong>Extra Curricular Activities : </strong>{{ prediction.extra_curricular_activities }}</li>
+                                    <li class="list-group-item text-dark"><strong>Absences : </strong>{{ prediction.absences }}</li>
+                                    <li class="list-group-item text-dark"><strong>Class Engagement : </strong>{{ prediction.class_engagement }}</li>
+                                    <li class="list-group-item text-dark"><strong>Health : </strong>{{ prediction.health }}</li>
+                                  </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+
+                </div>
+                <!-- *************************************************************** -->
+                <!-- End Sales Charts Section -->
+                <!-- *************************************************************** -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+{% endblock content %}
