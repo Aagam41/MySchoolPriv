@@ -23,15 +23,15 @@ def get_dataset_for_linear():
     efficacy_data = models.StudentEfficacy.objects.all()
 
     features = efficacy_data.values_list('father_education', 'internet_facility', 'study_time',
-                                                 'paid_tuition', 'past_failures', 'free_time',
-                                                 'extra_curricular_activities',
-                                                 'absences', 'past_marks', 'past_marks1', 'class_engagement', 'health')
-    labels = efficacy_data.values_list('predictions')
+                                         'paid_tuition', 'past_failures', 'free_time',
+                                         'extra_curricular_activities',
+                                         'absences', 'past_marks', 'past_marks1', 'class_engagement', 'health')
+    labels = efficacy_data.values_list('predictons')
 
-    np_features_avg = np.array(features)
-    np_labels_avg = np.array(labels)
+    np_features = np.array(features)
+    np_labels = np.array(labels)
 
-    return np_features_avg, np_labels_avg
+    return np_features, np_labels
 
 
 def train_linear_regression_model():
@@ -43,7 +43,7 @@ def train_linear_regression_model():
     best_accuracy = 0
     for i in range(10000):
         train_features, test_features, train_labels, test_labels = \
-            sklearn.model_selection.train_test_split(feature_dataset, label_dataset, test_size=0.9)
+            sklearn.model_selection.train_test_split(feature_dataset, label_dataset, test_size=0.9, shuffle=False)
 
         mdl_linear_regression = linear_model.LinearRegression()
 
@@ -83,23 +83,18 @@ def train_linear_regression_model():
 
 
 def fetch_prediction_data(user):
-    efficacy_data = models.StudentEfficacy.objects.get(student_efficacy_id=user)
+    efficacy_data = models.StudentEfficacy.objects.filter(student=user)
 
-    features = list(model_to_dict(efficacy_data, fields=['father_education', 'internet_facility', 'study_time',
-                                                 'paid_tuition', 'past_failures', 'free_time',
-                                                 'extra_curricular_activities',
-                                                 'absences', 'past_marks', 'past_marks1', 'class_engagement', 'health'])
-                    .values())
-    labels = list(model_to_dict(efficacy_data, fields=["predictions"]).values())
+    features = efficacy_data.values_list('father_education', 'internet_facility', 'study_time',
+                                         'paid_tuition', 'past_failures', 'free_time',
+                                         'extra_curricular_activities',
+                                         'absences', 'past_marks', 'past_marks1', 'class_engagement', 'health')
 
     feature_dataset = np.array(features)
-    label_dataset = np.array(labels)
-    feature_dataset = feature_dataset.reshape(1, -1)
-    label_dataset = label_dataset.reshape(1, -1)
 
     pickled_model = open("StudentPerformancePrediction/MachineLearningModels/mdl_linear_regression.pickle", "rb")
     mdl_linear_regression = pickle.load(pickled_model)
 
     predicted = mdl_linear_regression.predict(feature_dataset)
 
-    return predicted, label_dataset, efficacy_data.student
+    return int(round(predicted[0][0]))

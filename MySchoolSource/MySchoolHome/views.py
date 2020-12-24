@@ -93,8 +93,8 @@ def test(request):
     c = ""
     for i in spp.StudentEfficacy.objects.all().order_by('pk'):
         # a, b = LinearRegression.fetch_prediction_data(msh.MySchoolUser.objects.get(auth_user=i.student.auth_user))
-        a, b, d = LinearRegression.fetch_prediction_data(i.pk)
-        c += f'<h2>predicted: {a} : {b} : {d}</h2><br />'
+        a, b = LinearRegression.fetch_prediction_data(i.pk)
+        c += f'<h2>predicted: {a} : {b}</h2><br />'
     return HttpResponse(f'<h1>{c}</h1>')
 
 
@@ -123,12 +123,66 @@ def load_database(request):
     # g1.save()
     #
     #
-    # # Auth.User
+    # Auth.User
     # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
     #     user = json.load(f)
     # for p in user:
     #     p = User(username=p['username'], password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
     #              email=p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'12we3', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='12we3' + p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'12w113', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='12we3'+p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'12weasc', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='12we3'+p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'12wqwe3', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='12wesds3' + p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'sbf12w113', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='12swe3'+p['email'])
+    #     p.save()
+    #     group1 = Group.objects.get(id=1)
+    #     group1.user_set.add(p)
+    #
+    # with open('D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
+    #     user = json.load(f)
+    # for p in user:
+    #     p = User(username=p['username']+'b12weasc', password=p['password'], first_name=p['first_name'], last_name=p['last_name'],
+    #              email='1ert2htwe3'+p['email'])
     #     p.save()
     #     group1 = Group.objects.get(id=1)
     #     group1.user_set.add(p)
@@ -207,11 +261,10 @@ def load_database(request):
     #
     #
     # # MySchoolUser
-    # with open(
-    #        'D:\\Aagam Projects\\Python\\Django\\MySchool\\MySchoolSource\\JsonData\\Latest\\user.json') as f:
-    #     user = json.load(f)
+    # user = User.objects.all()
+    #
     # for p in user:
-    #     p = msh.MySchoolUser(auth_user=User.objects.get(username=p['username']))
+    #     p = msh.MySchoolUser(auth_user=p)
     #     p.save()
     #
     # # MapMySchoolUserStandardSection
