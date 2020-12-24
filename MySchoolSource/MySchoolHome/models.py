@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 from aagam_packages.django.model_extensions import models as amdl
 
-
 # Create your models here.
 
 

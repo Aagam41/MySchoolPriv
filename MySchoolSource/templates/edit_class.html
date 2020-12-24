@@ -15,8 +15,12 @@
   <h4 class="text-center alert alert-info">Edit Class Info</h4>
     <form  method="POST">
     {% csrf_token %}
-        <INPUT TYPE="number" class="form-control" placeholder="Class" value="{{i.standard_id}}"><br>
-        <INPUT TYPE="text" class="form-control" placeholder="Division" value="{{i.section}}"><br>
+        {% for i in st %}
+        <INPUT TYPE="number" class="form-control" placeholder="Class" value="{{i.std}}"><br>
+        {% endfor %}
+        {% for i in se %}
+        <INPUT TYPE="text" class="form-control" placeholder="Division" value="{{i.sec}}"><br>
+        {% endfor %}
         <a href="#" class="btn btn-primary" data-toggle="button" aria-pressed="false">
             Save
         </a>

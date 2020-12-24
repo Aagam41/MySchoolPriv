@@ -19,8 +19,10 @@ def edit_class(request, standard_section_id):
         sec = request.POST["Section"]
         data = models.StandardSection(section=sec, standard_id=std, instance=standard_section_id)
         data.save()'''
+    std = [1]
+    sec = ['A']
     standard_sec = models.StandardSection.objects.get(pk=standard_section_id)
-    return render(request, 'edit_class.html', {'st_se': standard_sec})
+    return render(request, 'edit_class.html', {'st_se': standard_sec, 'st': std, 'se': sec})
 
 
 
@@ -53,9 +55,12 @@ def get_teacher_prediction(request):
         return render(request, 'teac_prediction.html', {'st': stand, 'se': sec, 'su': sub})
 
 
-def get_prediction_data(request): 
+def get_prediction_data(request):
+    std = 1
+    sec = 'A'
+
     pre_data = models.StudentEfficacy.objects.select_related('student_id__auth_user')
-    prediction = pre_data.values('student_id__auth_user__username', 'predictions','student_id__auth_user__first_name','student_id__auth_user__last_name')
+    prediction = pre_data.values('student_id__auth_user__username', 'predictions', 'student_id__auth_user__first_name','student_id__auth_user__last_name')
     return render(request, 'teac_prediction.html', {'pm': prediction})
 
     '''predicted_marks = models.StudentEfficacy.objects.select_related('student_id__auth_user', 'predictions')
