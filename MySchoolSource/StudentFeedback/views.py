@@ -1,18 +1,16 @@
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse
-from StudentPerformance import models
+from StudentPerformance import models as sp
 from MySchoolHome import views
-#from StudentFeedback import models
-#from StudentPerformancePrediction import models
+from StudentFeedback import models
+from StudentPerformancePrediction import models as spp
 from django.contrib.auth.models import User
-
-
-
-def login(request):
-    return render(request, 'login.html')
+from django.http import JsonResponse
+from django.db.models import Avg
 
 def class_detail(request):
-    data = models.StandardSection.objects.all()
+    data = sp.StandardSection.objects.all()
     return render(request, 'class_detail.html', {"da": data})
+
 
 def edit_class(request, standard_section_id):
     '''if request.method == 'POST':
@@ -23,79 +21,90 @@ def edit_class(request, standard_section_id):
         data.save()'''
     std = [1]
     sec = ['A']
-    standard_sec = models.StandardSection.objects.get(pk=standard_section_id)
+    standard_sec = sp.StandardSection.objects.get(pk=standard_section_id)
     return render(request, 'edit_class.html', {'st_se': standard_sec, 'st': std, 'se': sec})
 
-def edit_user(request):
-    return render(request, 'edit_user.html')
 
 def add_class(request):
     if request.method == 'POST':
         std = request.POST["Standard"]
         sec = request.POST["Section"]
-        data = models.StandardSection(section=sec, standard_id=std)
+        data = sp.StandardSection(section=sec, standard_id=std)
         data.save()
-        #return HttpResponseRedirect('/class_detail')
+        # return HttpResponseRedirect('/class_detail')
         return render(request, 'add_class.html')
     else:
         return render(request, 'add_class.html')
 
-def add_chapter(request):
-    return render(request, 'add_chapter.html')
 
 def delete_class(request, standard_section_id):
     if request.method == "POST":
-        pi = models.StandardSection.objects.get(standard_section_id=standard_section_id)
+        pi = sp.StandardSection.objects.get(standard_section_id=standard_section_id)
         pi.delete()
         return HttpResponseRedirect('/class_detail.html')
-        #return render(request, 'class_detail.html')
-
-def get_teacher_prediction(request):
-    stand = models.Standard.objects.all()
-    if request.method == "GET":
-        std = request.GET.get('Standard')
-        # std = 12
-        sec = models.StandardSection.objects.filter(standard=std)
-        sub = models.TblSubject.objects.filter(standard=std)
-        return render(request, 'teac_prediction.html', {'st': stand, 'se': sec, 'su': sub})
-
-def add_topic(request):
-    return render(request, 'add_topic.html')
+        # return render(request, 'class_detail.html')
 
 def get_prediction_data(request):
-    std = 1
-    sec = 'A'
-
     pre_data = models.StudentEfficacy.objects.select_related('student_id__auth_user')
     prediction = pre_data.values('student_id__auth_user__username', 'predictions', 'student_id__auth_user__first_name','student_id__auth_user__last_name')
-    return render(request, 'teac_prediction.html', {'pm': prediction})
+    marks = pre_data.filter(predictions__gt=75).values('predictions').count()
+    pmarks = pre_data.filter(predictions__gt=45, predictions__lt=75).values('predictions').count()
+    lmarks = pre_data.filter(predictions__gt=23, predictions__lt=45).values('predictions').count()
+    fail = pre_data.filter(predictions__lt=23).values('predictions').count()
+    d = [marks, pmarks, lmarks, fail]
+    return render(request, 'teac_prediction.html', {'pm': prediction, 'd': d})
 
-    '''predicted_marks = models.StudentEfficacy.objects.select_related('student_id__auth_user', 'predictions')
-#   data = models.MapMySchoolUserStandardSection.objects.filter()
-    return render(request, 'teac_prediction.html', {'pm': predicted_marks})'''
 
-'''def get_teacher_dashboard(request):
-    a = views.student_navbar(request)
-    return render(request, 'teac_dashboard.html', {'a': a})
+def get_teacher_dashboard(request):
+   data = sp.MapStudentPaperPatternEntry.objects.select_related('myschool_user_id__auth_user')
+   tp = data.filter(marks_obtained__gt=21).values('myschool_user_id__auth_user__username')
+   pp = data.filter(marks_obtained__gt=15).values('myschool_user_id__auth_user__username')
+   lp = data.filter(marks_obtained__lte=15).values('myschool_user_id__auth_user__username')
+   da = sp.MapStudentPaperPatternEntry.objects.select_related('myschool_user_id__auth_user')
+   marks = da.values('marks_obtained', 'myschool_user_id__auth_user__username').order_by('marks_obtained')
+   mid_sem = sp.MapStudentPaperPatternEntry.objects.aggregate(Avg('marks_obtained'))
+   #assignmnet = sp.MapStudentPaperPatternEntry.objects.select_related('paper_entry_id___paper_pattern_entry')
+   #an = assignmnet.select_related('paper_entry_id__paper_entry')
+   #r = an.filter(paper_type_id=1).values('paper_entry_name')
+   all_data = sp.MapStudentPaperPatternEntry.objects.select_related(' paper_pattern_entry__p')
+   assignment_marks = []
+   practical_marks = []
+   unit_test_marks = [] # filter used by 
+   return render(request, 'teac_dashboard.html', {'t': tp, 'p': pp, 'l': lp, 'marks': marks, 'b': mid_sem})
 
-def get_sub(request):'''
+def test(request):
+    da = sp.MapStudentPaperPatternEntry.objects.select_related('myschool_user_id__auth_user')
+    marks = da.values('marks_obtained', 'myschool_user_id__auth_user__username')
+    return render(request, 'test.html', {'marks': marks})
 
-def get_prediction_principle(request):
-    pre_data = models.StudentEfficacy.objects.select_related('student_id__auth_user')
-    prediction = pre_data.values('student_id__auth_user__username', 'predictions','student_id__auth_user__first_name', 'student_id__auth_user__last_name')
-    return render(request, 'prin_prediction.html', {'pm': prediction})
+def student_prediction(request):
+    return render(request, 'stu_prediction.html')
 
-def stu_feedback(request):
-    return render(request, 'stu_feedback.html')
+def pr_dashboard(request):
+    return render(request, 'prin_performance.html')
 
-def prin_dashboard(request):
-    return render(request, 'prin_dashboard.html')
+def student_data_prediction(request):
+    if request.method == 'POST':
+        father_education = request.POST["Father education :"]
+        internet_facility = request.POSt["Internet Facility :"]
+        study_time = request.POST[" Study Time "]
+        paid_tuition = request.POST["Paid Tution :"]
+        past_failures = request.POST["Past Failures :"]
+        free_time = request.POST["Free Time :"]
+        extra_curricular_activities = request.POST["Number of Extra Curricular Activites : "]
+        health = request.POST["Health Issues :"]
+        data = spp.StudentEfficacy(father_education=father_education,
+                                   internet_facility=internet_facility,
+                                   study_time=study_time,
+                                   paid_tuition=paid_tuition,
+                                   past_failures=past_failures,
+                                   free_time=free_time,
+                                   extra_curricular_activities=extra_curricular_activities,
+                                   health=health)
+        data.save()
+        print("data is gone to database")
+        # return HttpResponseRedirect('/class_detail')
+        return render(request, 'add_class.html')
+    else:
+        return render(request, 'prediction_data.html')
 
-def prin_feedback(request):
-    return render(request, 'prin_feedback.html')
-
-def prin_prediction(request):
-    return render(request, 'prin_prediction.html')
-
-def prediction_data(request):
-    return render(request, 'prediction_data.html')

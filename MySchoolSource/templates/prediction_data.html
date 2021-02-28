@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Prediction Data</title>
+        {% load static %}
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+
+    <body>
+        <center>
+            <div class="col-sm-4">
+                <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                    <div class="card-body" >
+                          <h4 class="text-center alert alert-info">Add Prediction Data</h4>
+                            <form  method="POST" action="/data/">
+                                {% csrf_token %}
+                                Father education :
+                                <select class="custom-select" id="Father_education">
+                                    <option selected>--select--</option>
+                                    <option value="1">10th pass</option>
+                                    <option value="2">12th pass</option>
+                                    <option value="3">Graduate</option>
+                                    <option value="4">Post Graduate</option>
+                                    <option value="5">PHD</option>
+                                </select>
+                                Mother education :
+                                <select class="custom-select" id="Mother_education">
+                                    <option selected>--select--</option>
+                                    <option value="1">10th pass</option>
+                                    <option value="2">12th pass</option>
+                                    <option value="3">Graduate</option>
+                                    <option value="4">Post Graduate</option>
+                                    <option value="5">PHD</option>
+                                </select>
+                                Internet Facility :
+                                <select class="custom-select" id="Internet_facility">
+                                    <option selected>--select--</option>
+                                    <option value="1">0 GB</option>
+                                    <option value="2">1 GB</option>
+                                    <option value="3">2 GB</option>
+                                    <option value="4">3 GB</option>
+                                    <option value="5">4 GB</option>
+                                    <option value="6">5 GB or more</option>
+                                </select>
+                                Study Time :
+                                <INPUT TYPE="time" class="form-control" id="Study_time"><br>
+                                Paid Tution :
+                                <select class="custom-select" id="Paid_tution">
+                                    <option selected>--select--</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                </select>
+                                Past Failures :
+                                <select class="custom-select" id="Past_failures">
+                                    <option selected>--select--</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                </select>
+                                Free Time :
+                                <INPUT TYPE="time" class="form-control" id="Free_time"><br>
+                                Number of Extra Curricular Activites :
+                                <select class="custom-select" id="Extra_curricular_activites">
+                                    <option selected>--select--</option>
+                                    <option value="1">0</option>
+                                    <option value="2">1</option>
+                                    <option value="3">2</option>
+                                    <option value="4">3</option>
+                                    <option value="5">4</option>
+                                    <option value="6">5 or more</option>
+                                </select>
+                                Health Issues :
+                                <select class="custom-select" id="Health">
+                                    <option selected>--select--</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                </select>
+                                <a href="#" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+                                    Add Data
+                                </a>
+                            </form>
+
+                        <!-- if condition -->
+                         <h4 class="text-center alert alert-info">Edit Prediction Data</h4>
+                            <form  method="POST" action="/data/">
+                                {% csrf_token %}
+                                Father education :
+                                <select class="custom-select" id="edit_Father_education">
+                                    <option selected>--select--</option>
+                                    <option value="1">10th pass</option>
+                                    <option value="2">12th pass</option>
+                                    <option value="3">Graduate</option>
+                                    <option value="4">Post Graduate</option>
+                                    <option value="5">PHD</option>
+                                </select>
+                                Mother education :
+                                <select class="custom-select" id="edit_Mother_education">
+                                    <option selected>--select--</option>
+                                    <option value="1">10th pass</option>
+                                    <option value="2">12th pass</option>
+                                    <option value="3">Graduate</option>
+                                    <option value="4">Post Graduate</option>
+                                    <option value="5">PHD</option>
+                                </select>
+                                Internet Facility :
+                                <select class="custom-select" id="edit_Internet_facility">
+                                    <option selected>--select--</option>
+                                    <option value="1">0 GB</option>
+                                    <option value="2">1 GB</option>
+                                    <option value="3">2 GB</option>
+                                    <option value="4">3 GB</option>
+                                    <option value="5">4 GB</option>
+                                    <option value="6">5 GB or more</option>
+                                </select>
+                                Study Time :
+                                <INPUT TYPE="time" class="form-control" id="edit_Study_time"><br>
+                                Paid Tution :
+                                <select class="custom-select" id="edit_Paid_tution">
+                                    <option selected>--select--</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                </select>
+                                Past Failures :
+                                <select class="custom-select" id="edit_Past_failures">
+                                    <option selected>--select--</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                </select>
+                                Free Time :
+                                <INPUT TYPE="time" class="form-control" id="edit_Free_time"><br>
+                                Number of Extra Curricular Activites :
+                                <select class="custom-select" id="edit_Extra_curricular_activites">
+                                    <option selected>--select--</option>
+                                    <option value="1">0</option>
+                                    <option value="2">1</option>
+                                    <option value="3">2</option>
+                                    <option value="4">3</option>
+                                    <option value="5">4</option>
+                                    <option value="6">5 or more</option>
+                                </select>
+                                Health Issues :
+                                <select class="custom-select" id="edit_Health">
+                                    <option selected>--select--</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                </select>
+                                <a href="#" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+                                    Edit Data
+                                </a>
+                            </form>
+
+                    </div>
+                </div>
+             </div>
+            </center>
+
+        <!--   Core JS Files   -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script>
+          window.TrackJS &&
+            TrackJS.install({
+              token: "ee6fab19c5a04ac1a32a645abde4613a",
+              application: "black-dashboard-free"
+            });
+        </script>
+    </body>
+</html>

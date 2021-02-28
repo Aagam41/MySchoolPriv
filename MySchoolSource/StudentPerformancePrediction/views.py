@@ -15,7 +15,7 @@ from .MachineLearningModels import LinearRegression
 def student_prediction(request, **kwargs):
     learner_data = MySchoolUser.objects.get(auth_user=kwargs.get("id"))
 
-    prediction_data = StudentEfficacy.objects.get(student=MySchoolUser.objects.get(auth_user=kwargs.get("id")))
+    prediction_data = StudentEfficacy.objects.get(student=learner_data)
 
     father_education = ""
     internet_facility = ""

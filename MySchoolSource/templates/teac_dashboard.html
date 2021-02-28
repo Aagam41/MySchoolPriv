@@ -8,15 +8,16 @@
 	<div class="card-body">
         <h6>Lowest Performance Based On<br>Formative Assessment</h6>
 	<canvas id="bar" arial-label="chart" role="img" width="500" height="150"></canvas>
+
         <script>var ctx = document.getElementById("bar").getContext("2d")
 		var bar=new Chart(ctx, {
 			type: "bar",
 			data: {
-			labels: ["student1","student2","student3","student4","student5","student6","student7","student8","student9","student10"],
+            labels: [{% for i in marks %} "{{i.myschool_user_id__auth_user__username}}", {% endfor %}],
 			datasets: [
 			{
 			label :"Lowest Performance",
-			data:[45,97,67,23,65,45,45,87,67,23],
+			data: [{% for i in marks %} "{{i.marks_obtained}}", {% endfor %}],
 			backgroundColor:["#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF"],
 			},
 		],
@@ -53,7 +54,7 @@
 			datasets: [
 			{
 			label :"Class Overall Performance",
-			data: [70,70,70,70],
+			data: [70,70,70,{{b.marks_obtained__avg}}],
 			backgroundColor:["#FF0000"],
 			borderColor: ["black"],
 			},
@@ -96,7 +97,12 @@
                 <th scope="col">Top Performers</th>
             </thead>
             <tbody>
+            {% for i in t %}
             <tr>
+                <td scope="row">{{i.myschool_user_id__auth_user__username}}</td>
+            </tr>
+            {% endfor %}
+           <!-- <tr>
                 <td scope="row">shah Nishil</td>
             </tr>
             <tr>
@@ -107,10 +113,7 @@
             </tr>
             <tr>
                 <td scope="row">shah Nishil</td>
-            </tr>
-            <tr>
-                <td scope="row">shah Nishil</td>
-            </tr>
+            </tr>-->
             </tbody>
         </table>
     </div>
@@ -126,8 +129,12 @@
                 <th scope="col">Potential Performers</th>
             </thead>
             <tbody>
-
+            {% for i in p %}
             <tr>
+                <td scope="row">{{i.myschool_user_id__auth_user__username}}</td>
+            </tr>
+            {% endfor %}
+            <!--<tr>
                 <td scope="row">shah Nishil</td>
             </tr>
             <tr>
@@ -138,10 +145,7 @@
             </tr>
             <tr>
                 <td scope="row">shah Nishil</td>
-            </tr>
-            <tr>
-                <td scope="row">shah Nishil</td>
-            </tr>
+            </tr>-->
             </tbody>
         </table>
     </div>
@@ -157,7 +161,12 @@
                 <th scope="col">Lowest Performers</th>
             </thead>
             <tbody>
+             {% for i in l %}
             <tr>
+                <td scope="row">{{i.myschool_user_id__auth_user__username}}</td>
+            </tr>
+             {% endfor %}
+            <!--<tr>
                 <td scope="row">shah Nishil</td>
             </tr>
             <tr>
@@ -168,10 +177,7 @@
             </tr>
             <tr>
                 <td scope="row">shah Nishil</td>
-            </tr>
-            <tr>
-                <td scope="row">shah Nishil</td>
-            </tr>
+            </tr>-->
             </tbody>
         </table>
     </div>

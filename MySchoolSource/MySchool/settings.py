@@ -138,4 +138,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [f'{BASE_DIR}/static/', f'{BASE_DIR}/aagam_static/']
+STATICFILES_DIRS = [f'{BASE_DIR}/aagam_static/']
