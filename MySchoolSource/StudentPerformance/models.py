@@ -176,6 +176,7 @@ class MapStudentPaperPatternEntry(amdl.AagamBaseModel):
     standard_section = models.ForeignKey('StandardSection', models.DO_NOTHING)
     paper_pattern_entry = models.ForeignKey('PaperPatternEntry', models.DO_NOTHING)
     marks_obtained = models.IntegerField()  # TODO: Validation PaperQuestion totalmarks <= this
+   # subject_id = models.ForeignKey('TblSubject', models.DO_NOTHING)
 
     class Meta:
         db_table = "map_myschool_user_paper_pattern_entry"

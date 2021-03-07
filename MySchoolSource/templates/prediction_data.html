@@ -14,10 +14,10 @@
                 <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
                     <div class="card-body" >
                           <h4 class="text-center alert alert-info">Add Prediction Data</h4>
-                            <form  method="POST" action="/data/">
+                            <form  method="POST">
                                 {% csrf_token %}
                                 Father education :
-                                <select class="custom-select" id="Father_education">
+                                <select class="custom-select" name="Father_education">
                                     <option selected>--select--</option>
                                     <option value="1">10th pass</option>
                                     <option value="2">12th pass</option>
@@ -26,7 +26,7 @@
                                     <option value="5">PHD</option>
                                 </select>
                                 Mother education :
-                                <select class="custom-select" id="Mother_education">
+                                <select class="custom-select" name="Mother_education">
                                     <option selected>--select--</option>
                                     <option value="1">10th pass</option>
                                     <option value="2">12th pass</option>
@@ -35,7 +35,7 @@
                                     <option value="5">PHD</option>
                                 </select>
                                 Internet Facility :
-                                <select class="custom-select" id="Internet_facility">
+                                <select class="custom-select" name="Internet_facility">
                                     <option selected>--select--</option>
                                     <option value="1">0 GB</option>
                                     <option value="2">1 GB</option>
@@ -45,23 +45,23 @@
                                     <option value="6">5 GB or more</option>
                                 </select>
                                 Study Time :
-                                <INPUT TYPE="time" class="form-control" id="Study_time"><br>
+                                <INPUT TYPE="time" class="form-control" name="Study_time"><br>
                                 Paid Tution :
-                                <select class="custom-select" id="Paid_tution">
+                                <select class="custom-select" name="Paid_tution">
                                     <option selected>--select--</option>
                                     <option value="1">Yes</option>
                                     <option value="2">No</option>
                                 </select>
                                 Past Failures :
-                                <select class="custom-select" id="Past_failures">
+                                <select class="custom-select" name="Past_failures">
                                     <option selected>--select--</option>
                                     <option value="1">Yes</option>
                                     <option value="2">No</option>
                                 </select>
                                 Free Time :
-                                <INPUT TYPE="time" class="form-control" id="Free_time"><br>
+                                <INPUT TYPE="time" class="form-control" name="Free_time"><br>
                                 Number of Extra Curricular Activites :
-                                <select class="custom-select" id="Extra_curricular_activites">
+                                <select class="custom-select" name="Extra_curricular_activites">
                                     <option selected>--select--</option>
                                     <option value="1">0</option>
                                     <option value="2">1</option>
@@ -71,7 +71,7 @@
                                     <option value="6">5 or more</option>
                                 </select>
                                 Health Issues :
-                                <select class="custom-select" id="Health">
+                                <select class="custom-select" name="Health">
                                     <option selected>--select--</option>
                                     <option value="1">Yes</option>
                                     <option value="2">No</option>
@@ -86,7 +86,7 @@
                             <form  method="POST" action="/data/">
                                 {% csrf_token %}
                                 Father education :
-                                <select class="custom-select" id="edit_Father_education">
+                                <select class="custom-select" name="edit_Father_education">
                                     <option selected>--select--</option>
                                     <option value="1">10th pass</option>
                                     <option value="2">12th pass</option>
@@ -95,7 +95,7 @@
                                     <option value="5">PHD</option>
                                 </select>
                                 Mother education :
-                                <select class="custom-select" id="edit_Mother_education">
+                                <select class="custom-select" name="edit_Mother_education">
                                     <option selected>--select--</option>
                                     <option value="1">10th pass</option>
                                     <option value="2">12th pass</option>
@@ -104,7 +104,7 @@
                                     <option value="5">PHD</option>
                                 </select>
                                 Internet Facility :
-                                <select class="custom-select" id="edit_Internet_facility">
+                                <select class="custom-select" name="edit_Internet_facility">
                                     <option selected>--select--</option>
                                     <option value="1">0 GB</option>
                                     <option value="2">1 GB</option>
@@ -114,23 +114,23 @@
                                     <option value="6">5 GB or more</option>
                                 </select>
                                 Study Time :
-                                <INPUT TYPE="time" class="form-control" id="edit_Study_time"><br>
+                                <INPUT TYPE="time" class="form-control" name="edit_Study_time"><br>
                                 Paid Tution :
-                                <select class="custom-select" id="edit_Paid_tution">
+                                <select class="custom-select" name="edit_Paid_tution">
                                     <option selected>--select--</option>
                                     <option value="1">Yes</option>
                                     <option value="2">No</option>
                                 </select>
                                 Past Failures :
-                                <select class="custom-select" id="edit_Past_failures">
+                                <select class="custom-select" name="edit_Past_failures">
                                     <option selected>--select--</option>
                                     <option value="1">Yes</option>
                                     <option value="2">No</option>
                                 </select>
                                 Free Time :
-                                <INPUT TYPE="time" class="form-control" id="edit_Free_time"><br>
+                                <INPUT TYPE="time" class="form-control" name="edit_Free_time"><br>
                                 Number of Extra Curricular Activites :
-                                <select class="custom-select" id="edit_Extra_curricular_activites">
+                                <select class="custom-select" name="edit_Extra_curricular_activites">
                                     <option selected>--select--</option>
                                     <option value="1">0</option>
                                     <option value="2">1</option>
@@ -140,7 +140,7 @@
                                     <option value="6">5 or more</option>
                                 </select>
                                 Health Issues :
-                                <select class="custom-select" id="edit_Health">
+                                <select class="custom-select" name="edit_Health">
                                     <option selected>--select--</option>
                                     <option value="1">Yes</option>
                                     <option value="2">No</option>

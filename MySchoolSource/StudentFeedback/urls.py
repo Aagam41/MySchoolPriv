@@ -22,5 +22,7 @@ urlpatterns += [
     path('student_prediction/',views.student_prediction, name='student_prediction'),
     path('test/', views.test, name='test'),
     path('pr_dashboard', views.pr_dashboard, name='pr_dashboard'),
-    path('student_data_prediction' , views.student_data_prediction , name='student_data_prediction')
+    path('student_data_prediction' , views.student_data_prediction , name='student_data_prediction'),
+    path('stu_dashboard', views.stu_dashboard, name='stu_dashboard'),
+    path('graph_teacher_dashboard', views.graph_teacher_dashboard, name='graph_teacher_dashboard')
 ]

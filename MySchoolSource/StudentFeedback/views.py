@@ -5,8 +5,10 @@ from StudentFeedback import models
 from StudentPerformancePrediction import models as spp
 from django.contrib.auth.models import User
 from django.http import JsonResponse
-from django.db.models import Avg
-
+from django.db.models import Sum, Avg
+import collections
+import operator
+import itertools
 def class_detail(request):
     data = sp.StandardSection.objects.all()
     return render(request, 'class_detail.html', {"da": data})
@@ -45,7 +47,7 @@ def delete_class(request, standard_section_id):
         # return render(request, 'class_detail.html')
 
 def get_prediction_data(request):
-    pre_data = models.StudentEfficacy.objects.select_related('student_id__auth_user')
+    pre_data = spp.StudentEfficacy.objects.select_related('student_id__auth_user')
     prediction = pre_data.values('student_id__auth_user__username', 'predictions', 'student_id__auth_user__first_name','student_id__auth_user__last_name')
     marks = pre_data.filter(predictions__gt=75).values('predictions').count()
     pmarks = pre_data.filter(predictions__gt=45, predictions__lt=75).values('predictions').count()
@@ -55,22 +57,55 @@ def get_prediction_data(request):
     return render(request, 'teac_prediction.html', {'pm': prediction, 'd': d})
 
 
+
+
+
+def graph_teacher_dashboard(user_id):
+    sub = "Mathematics 9709"
+    data = sp.MapStudentPaperPatternEntry.objects.select_related('paper_pattern_entry').\
+        filter(myschool_user=user_id,
+               paper_pattern_entry__paper_entry__paper_type__paper_type__contains="Assignment")
+    marks = data.filter(
+        paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=sub)
+    am = list(marks.values_list('marks_obtained', flat=True))
+    actual_marks = sum(am)
+    dic = {
+        user_id: actual_marks,
+    }
+    return dic
+
+
+
+
 def get_teacher_dashboard(request):
    data = sp.MapStudentPaperPatternEntry.objects.select_related('myschool_user_id__auth_user')
    tp = data.filter(marks_obtained__gt=21).values('myschool_user_id__auth_user__username')
    pp = data.filter(marks_obtained__gt=15).values('myschool_user_id__auth_user__username')
    lp = data.filter(marks_obtained__lte=15).values('myschool_user_id__auth_user__username')
-   da = sp.MapStudentPaperPatternEntry.objects.select_related('myschool_user_id__auth_user')
-   marks = da.values('marks_obtained', 'myschool_user_id__auth_user__username').order_by('marks_obtained')
-   mid_sem = sp.MapStudentPaperPatternEntry.objects.aggregate(Avg('marks_obtained'))
-   #assignmnet = sp.MapStudentPaperPatternEntry.objects.select_related('paper_entry_id___paper_pattern_entry')
-   #an = assignmnet.select_related('paper_entry_id__paper_entry')
-   #r = an.filter(paper_type_id=1).values('paper_entry_name')
-   all_data = sp.MapStudentPaperPatternEntry.objects.select_related(' paper_pattern_entry__p')
-   assignment_marks = []
-   practical_marks = []
-   unit_test_marks = [] # filter used by 
-   return render(request, 'teac_dashboard.html', {'t': tp, 'p': pp, 'l': lp, 'marks': marks, 'b': mid_sem})
+   userId=list(sp.MapStudentPaperPatternEntry.objects.values_list('myschool_user_id', flat=True).distinct())
+   minMarks={}
+   for i in userId:
+        minMarks.update(graph_teacher_dashboard(i))
+   minMarks_values = sorted(minMarks.values())  # Sort the values
+   sorted_minMarks = {}
+
+   for i in minMarks_values:
+       for k in minMarks.keys():
+           if minMarks[k] == i:
+               sorted_minMarks[k] = minMarks[k]
+               break
+   sorted_Keys=(list(sorted_minMarks.keys()))
+   uname= sp.MySchoolUser.objects.select_related('auth_user').values('auth_user__username')
+   actual_user = []
+   for i in sorted_Keys:
+        actual_user.append(list(uname.values_list('auth_user__username', flat=True).filter(myschool_user_id=i)))
+   sorted_user= list(itertools.chain.from_iterable(actual_user))
+   sorted_values= (list(sorted_minMarks.values()))
+   return render(request, 'teac_dashboard.html', {'t': tp, 'p': pp, 'l': lp, 'user': sorted_user,
+                                                  'values': sorted_values})
+
+def stu_dashboard(request):
+    return render(request,'stu_dashboard.html')
 
 def test(request):
     da = sp.MapStudentPaperPatternEntry.objects.select_related('myschool_user_id__auth_user')
@@ -85,14 +120,14 @@ def pr_dashboard(request):
 
 def student_data_prediction(request):
     if request.method == 'POST':
-        father_education = request.POST["Father education :"]
-        internet_facility = request.POSt["Internet Facility :"]
-        study_time = request.POST[" Study Time "]
-        paid_tuition = request.POST["Paid Tution :"]
-        past_failures = request.POST["Past Failures :"]
-        free_time = request.POST["Free Time :"]
-        extra_curricular_activities = request.POST["Number of Extra Curricular Activites : "]
-        health = request.POST["Health Issues :"]
+        father_education = request.POST["Father_education"]
+        internet_facility = request.POSt["Internet_Facility"]
+        study_time = request.POST["Study_Time"]
+        paid_tuition = request.POST["Paid_Tution"]
+        past_failures = request.POST["Past_Failures"]
+        free_time = request.POST["Free_Time"]
+        extra_curricular_activities = request.POST["Extra_Curricular_activites"]
+        health = request.POST["Health"]
         data = spp.StudentEfficacy(father_education=father_education,
                                    internet_facility=internet_facility,
                                    study_time=study_time,

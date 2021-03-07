@@ -13,11 +13,11 @@
 		var bar=new Chart(ctx, {
 			type: "bar",
 			data: {
-            labels: [{% for i in marks %} "{{i.myschool_user_id__auth_user__username}}", {% endfor %}],
+            labels: [{% for i in user %} "{{i}}", {% endfor %}],
 			datasets: [
 			{
 			label :"Lowest Performance",
-			data: [{% for i in marks %} "{{i.marks_obtained}}", {% endfor %}],
+			data: [{% for i in values %} "{{i}}", {% endfor %}],
 			backgroundColor:["#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF"],
 			},
 		],
