@@ -15,12 +15,6 @@ def class_detail(request):
 
 
 def edit_class(request, standard_section_id):
-    '''if request.method == 'POST':
-        standard_section_id = models.StandardSection.objects.get(pk=standard_section_id)
-        std = request.POST["Standard"]
-        sec = request.POST["Section"]
-        data = models.StandardSection(section=sec, standard_id=std, instance=standard_section_id)
-        data.save()'''
     std = [1]
     sec = ['A']
     standard_sec = sp.StandardSection.objects.get(pk=standard_section_id)
@@ -62,6 +56,7 @@ def get_prediction_data(request):
 
 def graph_teacher_dashboard(user_id):
     sub = "Mathematics 9709"
+
     data = sp.MapStudentPaperPatternEntry.objects.select_related('paper_pattern_entry').\
         filter(myschool_user=user_id,
                paper_pattern_entry__paper_entry__paper_type__paper_type__contains="Assignment")
@@ -74,7 +69,14 @@ def graph_teacher_dashboard(user_id):
     }
     return dic
 
-
+def Overall_class_performance(paperType):
+    sub = "Mathematics 9709"
+    data = sp.MapStudentPaperPatternEntry.objects.select_related('paper_pattern_entry').\
+        filter(paper_pattern_entry__paper_entry__paper_type__paper_type__contains=paperType)
+    marks = data.filter(
+        paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=sub)
+    actual_marks = marks.aggregate(Avg('marks_obtained'))
+    return actual_marks
 
 
 def get_teacher_dashboard(request):
@@ -99,13 +101,22 @@ def get_teacher_dashboard(request):
    actual_user = []
    for i in sorted_Keys:
         actual_user.append(list(uname.values_list('auth_user__username', flat=True).filter(myschool_user_id=i)))
-   sorted_user= list(itertools.chain.from_iterable(actual_user))
-   sorted_values= (list(sorted_minMarks.values()))
-   return render(request, 'teac_dashboard.html', {'t': tp, 'p': pp, 'l': lp, 'user': sorted_user,
-                                                  'values': sorted_values})
+   sorted_user= list(itertools.chain.from_iterable(actual_user))[:10]
+   sorted_values= (list(sorted_minMarks.values()))[:10]
+   unit_Marks = Overall_class_performance("Unit Test")
+   mid_sem = Overall_class_performance("Mid Sem")
+   assignments = Overall_class_performance("Assignment")
+   practical = Overall_class_performance("Practical")
+   return render(request, 'teac_dashboard.html', {'t': tp, 'p': pp, 'l': lp,
+                                                  'user': sorted_user,
+                                                  'values': sorted_values,
+                                                  'Unit_Marks': unit_Marks,
+                                                  'Mid_Marks': mid_sem,
+                                                  'Assignment': assignments,
+                                                  'Practical': practical, })
 
 def stu_dashboard(request):
-    return render(request,'stu_dashboard.html')
+    return render(request, 'stu_dashboard.html')
 
 def test(request):
     da = sp.MapStudentPaperPatternEntry.objects.select_related('myschool_user_id__auth_user')
