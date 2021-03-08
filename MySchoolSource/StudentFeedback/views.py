@@ -41,6 +41,8 @@ def delete_class(request, standard_section_id):
         # return render(request, 'class_detail.html')
 
 def get_prediction_data(request):
+    std = 9
+    sec ='C'
     pre_data = spp.StudentEfficacy.objects.select_related('student_id__auth_user')
     prediction = pre_data.values('student_id__auth_user__username', 'predictions', 'student_id__auth_user__first_name','student_id__auth_user__last_name')
     marks = pre_data.filter(predictions__gt=75).values('predictions').count()
@@ -56,7 +58,8 @@ def get_prediction_data(request):
 
 def graph_teacher_dashboard(user_id):
     sub = "Mathematics 9709"
-
+    std = 9
+    sec = 'C'
     data = sp.MapStudentPaperPatternEntry.objects.select_related('paper_pattern_entry').\
         filter(myschool_user=user_id,
                paper_pattern_entry__paper_entry__paper_type__paper_type__contains="Assignment")
@@ -80,6 +83,8 @@ def Overall_class_performance(paperType):
 
 
 def get_teacher_dashboard(request):
+   std= 9
+   sec = 'C'
    data = sp.MapStudentPaperPatternEntry.objects.select_related('myschool_user_id__auth_user')
    tp = data.filter(marks_obtained__gt=21).values('myschool_user_id__auth_user__username')
    pp = data.filter(marks_obtained__gt=15).values('myschool_user_id__auth_user__username')
@@ -118,10 +123,12 @@ def get_teacher_dashboard(request):
 def stu_dashboard(request):
     return render(request, 'stu_dashboard.html')
 
-def test(request):
+'''def test(request):
+    std = 10
+    sec = 'C'
     da = sp.MapStudentPaperPatternEntry.objects.select_related('myschool_user_id__auth_user')
     marks = da.values('marks_obtained', 'myschool_user_id__auth_user__username')
-    return render(request, 'test.html', {'marks': marks})
+    return render(request, 'test.html', {'marks': marks})'''
 
 def student_prediction(request):
     return render(request, 'stu_prediction.html')
