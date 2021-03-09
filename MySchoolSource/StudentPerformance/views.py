@@ -231,11 +231,14 @@ def student_dashboard(request):
 def performance_formative(request, **kwargs):
     if request.user.groups.filter(name='Learner').exists():
         a = sp.MapStudentPaperPatternEntry.objects.select_related('paper_pattern_entry') \
-            .filter(myschool_user=13).exclude(Q(paper_pattern_entry__paper_entry__paper_type__paper_type__icontains='mid')
-                                              & Q(paper_pattern_entry__paper_entry__paper_type__paper_type__icontains='final'))
+            .filter(myschool_user=13)\
+            .exclude(Q(paper_pattern_entry__paper_entry__paper_type__paper_type__icontains='mid')
+                     & Q(paper_pattern_entry__paper_entry__paper_type__paper_type__icontains='final'))
         subjects = a.values_list(
             'paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name',
             flat=True).distinct()
+        # for i in range(len(subjects)):
+        #     a = subjects
         ass = a.filter(paper_pattern_entry__paper_entry__paper_type__paper_type='assignment')
         assign = ass.aggregate(Avg('marks_obtained'))
         pra = a.filter(paper_pattern_entry__paper_entry__paper_type__paper_type='practical')
@@ -247,9 +250,16 @@ def performance_formative(request, **kwargs):
 
         #############################   R A U Graph    ###################################################################
 
-        chapter = subjects.values_list('paper_pattern_entry__paper_question__chapter_topic__subject_chapter__chapter_name', flat=True).distinct()
+        c = subjects.values_list('paper_pattern_entry__paper_question__chapter_topic__subject_chapter__chapter_name', flat=True).distinct()
 
         for i in range(len(subjects)):
+            student_navbar = mshv.student_navbar(request)
+            sub = request.GET.get('subject', student_navbar['subject'].first()['subject'])
+            chapter = subjects.filter(
+                paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name='Mathematics 9709') \
+                .values_list('paper_pattern_entry__paper_question__chapter_topic__subject_chapter__chapter_name',
+                             flat=True) \
+                .distinct()
             rm = chapter.filter(
                 paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subjects[i],
                 paper_pattern_entry__paper_question__rau_type='R')
@@ -262,7 +272,6 @@ def performance_formative(request, **kwargs):
                 paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subjects[i],
                 paper_pattern_entry__paper_question__rau_type='R')
             u = um.aggregate(Avg('marks_obtained'))
-
         pass
     else:
         pass
@@ -271,7 +280,7 @@ def performance_formative(request, **kwargs):
 def performance_mid(request, **kwargs):
     if request.user.groups.filter(name='Learner').exists():
         student_navbar = mshv.student_navbar(request)
-        stud_id = sp.MapStudentPaperPatternEntry.objects. \
+        user_name = sp.MapStudentPaperPatternEntry.objects. \
             select_related('myschool_user', 'auth_user') \
             .filter(myschool_user_id=13).values('myschool_user__auth_user__username')
         standard = request.GET.get('standard', student_navbar['standard'].first()['subject__standard'])
@@ -288,9 +297,9 @@ def performance_mid(request, **kwargs):
 
         #############################   MID Performance Graph    ######################################
 
-        # subjects = a.values_list(
-        # 'paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name',
-        # flat=True).distinct()
+        subjects = a.values_list(
+        'paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name'
+        , flat=True).distinct()
 
         # for i in range(len(subjects)):
         # ...     print(subjects[i])
