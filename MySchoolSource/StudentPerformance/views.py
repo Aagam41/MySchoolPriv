@@ -240,38 +240,57 @@ def performance_formative(request, **kwargs):
         # for i in range(len(subjects)):
         #     a = subjects
         ass = a.filter(paper_pattern_entry__paper_entry__paper_type__paper_type='assignment')
-        assign = ass.aggregate(Avg('marks_obtained'))
+        #   assign = ass.aggregate(Avg('marks_obtained'))
         pra = a.filter(paper_pattern_entry__paper_entry__paper_type__paper_type='practical')
-        prac = pra.aggregate(Avg('marks_obtained'))
+        #   prac = pra.aggregate(Avg('marks_obtained'))
         un = a.filter(paper_pattern_entry__paper_entry__paper_type__paper_type='unit')
-        uni = un.aggregate(Avg('marks_obtained'))
+        #   uni = un.aggregate(Avg('marks_obtained'))
 
         ##################################################################################################################
 
         #############################   R A U Graph    ###################################################################
 
-        c = subjects.values_list('paper_pattern_entry__paper_question__chapter_topic__subject_chapter__chapter_name', flat=True).distinct()
-
+        c = a.values_list('paper_pattern_entry__paper_question__chapter_topic__subject_chapter__chapter_name', flat=True).distinct()
+        student_navbar = mshv.student_navbar(request)
+        sub = request.GET.get('subject', student_navbar['subject'].first()['subject'])
+        chapter = subjects.filter(
+            paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name='Mathematics 9709') \
+            .values_list('paper_pattern_entry__paper_question__chapter_topic__subject_chapter__chapter_name',
+                         flat=True) \
+            .distinct()
         for i in range(len(subjects)):
-            student_navbar = mshv.student_navbar(request)
-            sub = request.GET.get('subject', student_navbar['subject'].first()['subject'])
-            chapter = subjects.filter(
-                paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name='Mathematics 9709') \
-                .values_list('paper_pattern_entry__paper_question__chapter_topic__subject_chapter__chapter_name',
-                             flat=True) \
-                .distinct()
             rm = chapter.filter(
-                paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subjects[i],
                 paper_pattern_entry__paper_question__rau_type='R')
             r = rm.aggregate(Avg('marks_obtained'))
             am = chapter.filter(
                 paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subjects[i],
-                paper_pattern_entry__paper_question__rau_type='R')
+                paper_pattern_entry__paper_question__rau_type='A')
             aa = am.aggregate(Avg('marks_obtained'))
             um = chapter.filter(
                 paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subjects[i],
-                paper_pattern_entry__paper_question__rau_type='R')
+                paper_pattern_entry__paper_question__rau_type='U')
             u = um.aggregate(Avg('marks_obtained'))
+
+        #   for i in range(len(subjects)):
+        #       assignment=assign.filter(paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subject[i]).aggregate(Avg('marks_obtained'))
+        #       practical=prac.filter(paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subject[i]).aggregate(Avg('marks_obtained'))
+        #       unit=uni.filter(paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subject[i]).aggregate(Avg('marks_obtained'))
+        context = {
+            'subjects': subjects,
+            'assign': ass,
+            'prac': pra,
+            'uni': un,
+            'sub': sub,
+            'chapter': chapter
+
+        }
+        #   for i in range(len(chapter)):
+        #       rm = chapter.filter(
+        #                 paper_pattern_entry__paper_question__rau_type='R').aggregate(Avg('marks_obtained'))
+        #       am = chapter.filter(
+        #                 paper_pattern_entry__paper_question__rau_type='A').aggregate(Avg('marks_obtained'))
+        #       um = chapter.filter(
+        #                 paper_pattern_entry__paper_question__rau_type='U').aggregate(Avg('marks_obtained'))
         pass
     else:
         pass
@@ -287,6 +306,9 @@ def performance_mid(request, **kwargs):
         section = request.GET.get('section', student_navbar['section'].first()['section'])
         subject = request.GET.get('subject', student_navbar['subject'].first()['subject'])
 
+        # b = sp.MapMySchoolUserStandardSection.objects.select_related('standard_section').filter(standard_section__standard__standard=3, standard_section__section='A')
+
+
         a = sp.MapStudentPaperPatternEntry.objects.select_related('paper_pattern_entry') \
             .filter(myschool_user=13, paper_pattern_entry__paper_entry__paper_type__paper_type__contains="mid")
 
@@ -297,9 +319,9 @@ def performance_mid(request, **kwargs):
 
         #############################   MID Performance Graph    ######################################
 
-        subjects = a.values_list(
-        'paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name'
-        , flat=True).distinct()
+        # subjects = a.values_list(
+        # 'paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name'
+        # , flat=True).distinct()
 
         # for i in range(len(subjects)):
         # ...     print(subjects[i])
@@ -309,11 +331,8 @@ def performance_mid(request, **kwargs):
         #     k = sum(a)
         #     print(k)
 
-        s = sp.MapStudentPaperPatternEntry.objects.select_related('paper_pattern_entry') \
-            .filter(paper_pattern_entry__paper_entry__paper_type__paper_type__contains="mid")
-
-        ma = s.aggregate(Max('marks_obtained'))
-        mi = s.aggregate(Min('marks_obtained'))
+        # ma = s.aggregate(Max('marks_obtained'))
+        # mi = s.aggregate(Min('marks_obtained'))
 
         ######################################################################################################################
 
@@ -327,13 +346,14 @@ def performance_mid(request, **kwargs):
         # ...     print(subjects[i])
 
         for i in range(len(subjects)):
-            r = subjects.filter(paper_pattern_entry__paper_question__rau_type='R')
+            s = subjects.filter(paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subjects[i])
+            r = s.filter(paper_pattern_entry__paper_question__rau_type='R')
             rm = list(r.values_list('marks_obtained', flat=True))
             rk = sum(rm)
-            a = subjects.filter(paper_pattern_entry__paper_question__rau_type='A')
+            a = s.filter(paper_pattern_entry__paper_question__rau_type='A')
             am = list(a.values_list('marks_obtained', flat=True))
             ak = sum(am)
-            u = subjects.filter(paper_pattern_entry__paper_question__rau_type='U')
+            u = s.filter(paper_pattern_entry__paper_question__rau_type='U')
             um = list(u.values_list('marks_obtained', flat=True))
             uk = sum(um)
             print(subjects[i])
@@ -346,7 +366,7 @@ def performance_mid(request, **kwargs):
         #############################   MID MARKS TABLE    ###################################################################
 
         ab = a.filter(
-            paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name="Mathematics 9709")
+            paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subject)
 
         sub = ab.values_list(
             'paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name',
@@ -367,6 +387,40 @@ def performance_mid(request, **kwargs):
         total_mid = ab.aggregate(Sum('paper_pattern_entry__paper_question__total_marks'))
 
         obtained_mid = ab.aggregate(Sum('marks_obtained'))
+
+
+        #   for i in range(len(subjects)):
+        #       s = subjects.filter(paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subjects[i])
+        #       print(subjects[i])
+        #       r = s.filter(paper_pattern_entry__paper_question__rau_type='R').
+        #       rm = list(r.values_list('marks_obtained', flat=True))
+        #       rk = sum(rm)
+        #       print(rk)
+        #       a = s.filter(paper_pattern_entry__paper_question__rau_type='A').
+        #       am = list(a.values_list('marks_obtained', flat=True))
+        #       ak = sum(am)
+        #       print(ak)
+        #       u = s.filter(paper_pattern_entry__paper_question__rau_type='U').
+        #       um = list(u.values_list('marks_obtained', flat=True))
+        #       uk = sum(um)
+        #       print(uk)
+
+        # for i in range(len(subjects)):
+        #     a = list(subjects.values_list('marks_obtained', flat=True))
+        #     k = sum(a)
+        #     print(k)
+
+        #   tot = list(a.values_list('marks_obtained', flat=True))
+        context = {
+            'sub': sub,
+            'r_mark': r_mark,
+            'a_mark': a_mark,
+            'u_mark': u_mark,
+            'total_mid': total_mid,
+            'obtained_mid': obtained_mid,
+
+            'subjects': subjects,
+        }
 
         ######################################################################################################################
 
