@@ -198,17 +198,18 @@ def rau_mid(request):
 
 def student_dashboard(request):
     student_navbar = mshv.student_navbar(request)
-    user_name = sp.MapStudentPaperPatternEntry.objects. \
-        select_related('myschool_user', 'auth_user') \
-        .filter(myschool_user_id=13).values('myschool_user__auth_user__username')
+    user_id = MySchoolUser.objects.get(request.user).values('myschool_user_id')
+            # select_related('myschool_user', 'auth_user') \
+            # .filter(myschool_user_id=13).values('myschool_user__auth_user__username')
     standard = request.GET.get('standard', student_navbar['standard'].first()['subject__standard'])
     section = request.GET.get('section', student_navbar['section'].first()['section'])
     subject = request.GET.get('subject', student_navbar['subject'].first()['subject'])
     if request.user.groups.filter(name='Learner').exists():
 
-        stud = sp.MapStudentPaperPatternEntry.objects.all().filter(map_myschool_user_standard_section__myschool_user=13,
+        stud = sp.MapStudentPaperPatternEntry.objects.all().filter(map_myschool_user_standard_section__myschool_user=user_id,
                                                                    map_myschool_user_standard_section__standard__standard=standard,
-                                                                   map_myschool_user_standard_section__section=section).select_related('paper_pattern_entry')
+                                                                   map_myschool_user_standard_section__section=section)\
+                                                            .select_related('paper_pattern_entry')
 
         r_s = stud.filter(paper_pattern_entry__paper_question__rau_type='R').aggregate(Avg('marks_obtained'))
         a_s = stud.filter(paper_pattern_entry__paper_question__rau_type='A').aggregate(Avg('marks_obtained'))

@@ -4,6 +4,7 @@ from MySchoolHome.models import *
 from StudentPerformance.models import *
 # Create your views here.
 
+
 def form_list(request):
     if request.method == "POST":
         data = FeedbackFormQuestion.yash_objects.retrive_feedback_forms()
@@ -44,7 +45,6 @@ def form_list(request):
 for x in t:
 ...     print(x.feedback_form_question.feedback_form.subject_teacher.subject.subject_name)
 '''
-
 
 def teacher_feedback(request):
     user_id = 27

@@ -18,14 +18,14 @@ from aagam_packages.terminal_yoda import terminal_utils
 # Create your views here.
 
 def student_navbar(request):
-    map_id = sp.MapMySchoolUserStandardSection.objects.\
-        select_related('myschool_user__auth_user')\
+    map_id = sp.MapMySchoolUserStandardSection.objects. \
+        select_related('standard_section', 'myschool_user__auth_user') \
         .filter(myschool_user__auth_user=request.user)
-    map_id = map_id.values('pk', 'section', 'standard', 'myschool_user__pk',
+    map_id = map_id.values('pk', 'standard_section__section', 'standard_section__standard', 'myschool_user__pk',
                            'myschool_user__auth_user__username', 'status')
     map_active_id = map_id.get(status=True)
-    sections = map_id.values('section').distinct()
-    subject = sp.TblSubject.objects.filter(standard__lte=map_active_id['standard'])
+    sections = sp.StandardSection.objects.all().values('section').distinct()
+    subject = sp.TblSubject.objects.filter(standard__lte=map_active_id['standard_section__standard'])
     context = {'standard_section': map_id,
                'section': sections,
                'standard_section_current': map_active_id,
