@@ -197,9 +197,18 @@ def rau_mid(request):
     return mid_rau
 
 def student_dashboard(request):
+    student_navbar = mshv.student_navbar(request)
+    user_name = sp.MapStudentPaperPatternEntry.objects. \
+        select_related('myschool_user', 'auth_user') \
+        .filter(myschool_user_id=13).values('myschool_user__auth_user__username')
+    standard = request.GET.get('standard', student_navbar['standard'].first()['subject__standard'])
+    section = request.GET.get('section', student_navbar['section'].first()['section'])
+    subject = request.GET.get('subject', student_navbar['subject'].first()['subject'])
     if request.user.groups.filter(name='Learner').exists():
 
-        stud = sp.MapStudentPaperPatternEntry.objects.all().filter(myschool_user=13).select_related('paper_pattern_entry')
+        stud = sp.MapStudentPaperPatternEntry.objects.all().filter(map_myschool_user_standard_section__myschool_user=13,
+                                                                   map_myschool_user_standard_section__standard__standard=standard,
+                                                                   map_myschool_user_standard_section__section=section).select_related('paper_pattern_entry')
 
         r_s = stud.filter(paper_pattern_entry__paper_question__rau_type='R').aggregate(Avg('marks_obtained'))
         a_s = stud.filter(paper_pattern_entry__paper_question__rau_type='A').aggregate(Avg('marks_obtained'))
@@ -209,10 +218,7 @@ def student_dashboard(request):
             'paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name',
             flat=True).distinct()
 
-        for i in range(len(subjects)):
-            marks = (subjects.filter(
-                paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subjects[i]))\
-            .aggregate(Avg('marks_obtained'))
+
 
         ass = stud.filter(
             paper_pattern_entry__paper_entry__paper_type__paper_type='Assignment').aggregate(Avg('marks_obtained'))
@@ -224,14 +230,38 @@ def student_dashboard(request):
             paper_pattern_entry__paper_entry__paper_type__paper_type='Mid').aggregate(Avg('marks_obtained'))
         fin = stud.filter(
             paper_pattern_entry__paper_entry__paper_type__paper_type='Final').aggregate(Avg('marks_obtained'))
-        pass
-    else:
+
+        # for i in range(len(subjects)):
+        #     marks = (subjects.filter(
+        #         paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name=subjects[i]))\
+        #     .aggregate(Avg('marks_obtained'))
+
+        context = {
+            'r_s': r_s,
+            'a_s': a_s,
+            'u_s': u_s,
+            'ass': ass,
+            'pra': pra,
+            'uni': uni,
+            'mid': mid,
+            'fin': fin,
+            'subjects': subjects
+        }
         pass
 
 def performance_formative(request, **kwargs):
+    student_navbar = mshv.student_navbar(request)
+    user_name = sp.MapStudentPaperPatternEntry.objects. \
+        select_related('myschool_user', 'auth_user') \
+        .filter(myschool_user_id=13).values('myschool_user__auth_user__username')
+    standard = request.GET.get('standard', student_navbar['standard'].first()['subject__standard'])
+    section = request.GET.get('section', student_navbar['section'].first()['section'])
+    subject = request.GET.get('subject', student_navbar['subject'].first()['subject'])
     if request.user.groups.filter(name='Learner').exists():
         a = sp.MapStudentPaperPatternEntry.objects.select_related('paper_pattern_entry') \
-            .filter(myschool_user=13)\
+            .filter(map_myschool_user_standard_section__myschool_user=13,
+                    map_myschool_user_standard_section__standard__standard=standard,
+                    map_myschool_user_standard_section__section=section)\
             .exclude(Q(paper_pattern_entry__paper_entry__paper_type__paper_type__icontains='mid')
                      & Q(paper_pattern_entry__paper_entry__paper_type__paper_type__icontains='final'))
         subjects = a.values_list(
@@ -310,7 +340,10 @@ def performance_mid(request, **kwargs):
 
 
         a = sp.MapStudentPaperPatternEntry.objects.select_related('paper_pattern_entry') \
-            .filter(myschool_user=13, paper_pattern_entry__paper_entry__paper_type__paper_type__contains="mid")
+            .filter(map_myschool_user_standard_section__myschool_user=13,
+                    map_myschool_user_standard_section__standard__standard=standard,
+                    map_myschool_user_standard_section__section=section,
+                    paper_pattern_entry__paper_entry__paper_type__paper_type__contains="mid")
 
         # .values('marks_obtained',
         # 'paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name',
@@ -438,13 +471,16 @@ def performance_final(request, **kwargs):
         student_navbar = mshv.student_navbar(request)
         stud_id = sp.MapStudentPaperPatternEntry.objects. \
             select_related('myschool_user', 'auth_user') \
-            .filter(myschool_user_id=18).values('myschool_user__auth_user__username')
+            .filter(myschool_user_id=13).values('myschool_user__auth_user__username')
         standard = request.GET.get('standard', student_navbar['standard'].first()['subject__standard'])
         section = request.GET.get('section', student_navbar['section'].first()['section'])
         subject = request.GET.get('subject', student_navbar['subject'].first()['subject'])
 
         a = sp.MapStudentPaperPatternEntry.objects.select_related('paper_pattern_entry') \
-            .filter(myschool_user=13, paper_pattern_entry__paper_entry__paper_type__paper_type__contains="final")
+            .filter(map_myschool_user_standard_section__myschool_user=13,
+                    map_myschool_user_standard_section__standard__standard=standard,
+                    map_myschool_user_standard_section__section=section,
+                    paper_pattern_entry__paper_entry__paper_type__paper_type__contains="final")
 
         # .values('marks_obtained', 'paper_pattern_entry__paper_question__chapter_topic__subject_chapter__subject__subject_name', \
         # 'paper_pattern_entry__paper_entry__paper_type__paper_type', 'paper_pattern_entry__paper_question__paper_question_text')
