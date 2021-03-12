@@ -1,0 +1,223 @@
+{% extends 'masterHTML/master.html' %}
+
+{% block Formative %} active {% endblock %}
+
+{% block body %}
+
+    <center>
+        {% if user_group == "learner" %}
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Overall Performance Based On Formative Assessment</h6>
+                    <canvas id="bar" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("bar").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "line",
+                            data: {
+                                labels: ["subject1","subject2","subject3","subject4","subject5","subject6","subject7","subject8","subject9","subject10"],
+                                datasets: [
+                                {
+                                    label :"Unit Test Marks",
+                                    data:[45,80,67,78,65,45,50,87,67,23],
+                                    backgroundColor:['rgba(0, 153, 255, 0.2)','rgba(0, 153, 255, 0.2)','rgba(0, 153, 255, 0.2)','rgba(0, 153, 255, 0.2)','rgba(0, 153, 255, 0.2)','rgba(0, 153, 255, 0.2)','rgba(0, 153, 255, 0.2)','rgba(0, 153, 255, 0.2)','rgba(0, 153, 255, 0.2)','rgba(0, 153, 255, 0.2)'],
+                                    borderColor:['rgba(0, 153, 255, 1)','rgba(0, 153, 255, 1)','rgba(0, 153, 255, 1)','rgba(0, 153, 255, 1)','rgba(0, 153, 255, 1)','rgba(0, 153, 255, 1)','rgba(0, 153, 255, 1)','rgba(0, 153, 255, 1)','rgba(0, 153, 255, 1)','rgba(0, 153, 255, 1)'],
+                                    borderWidth: 1
+                                },
+                                {
+                                    label :"Assignment Marks",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:['rgba(153, 51, 255, 0.2)','rgba(153, 51, 255, 0.2)','rgba(153, 51, 255, 0.2)','rgba(153, 51, 255, 0.2)','rgba(153, 51, 255, 0.2)','rgba(153, 51, 255, 0.2)','rgba(153, 51, 255, 0.2)','rgba(153, 51, 255, 0.2)','rgba(153, 51, 255, 0.2)','rgba(153, 51, 255, 0.2)'],
+                                    borderColor:['rgba(153, 51, 255, 1)','rgba(153, 51, 255, 1)','rgba(153, 51, 255, 1)','rgba(153, 51, 255, 1)','rgba(153, 51, 255, 1)','rgba(153, 51, 255, 1)','rgba(153, 51, 255, 1)','rgba(153, 51, 255, 1)','rgba(153, 51, 255, 1)','rgba(153, 51, 255, 1)'],
+                                    borderWidth: 1
+                                },
+                                {
+                                    label :"Practicals Marks",
+                                    data:[40,56,45,23,46,34,67,48,40,23],
+                                    backgroundColor:['rgba(255, 153, 255, 0.2)','rgba(255, 153, 255, 0.2)','rgba(255, 153, 255, 0.2)','rgba(255, 153, 255, 0.2)','rgba(255, 153, 255, 0.2)','rgba(255, 153, 255, 0.2)','rgba(255, 153, 255, 0.2)','rgba(255, 153, 255, 0.2)','rgba(255, 153, 255, 0.2)','rgba(255, 153, 255, 0.2)'],
+                                    borderColor:['rgba(255, 153, 255, 1)','rgba(255, 153, 255, 1)','rgba(255, 153, 255, 1)','rgba(255, 153, 255, 1)','rgba(255, 153, 255, 1)','rgba(255, 153, 255, 1)','rgba(255, 153, 255, 1)','rgba(255, 153, 255, 1)','rgba(255, 153, 255, 1)','rgba(255, 153, 255, 1)'],
+                                    borderWidth: 1
+                                },
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Chapter Vise Subject Performance</h6>
+                    <canvas id="barchart" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("barchart").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                                labels: ["chapter1","chapter2","chapter3","chapter4","chapter5","chapter6","chapter7","chapter8","chapter9","chapter10"],
+                                datasets: [
+                                {
+                                    label :"Reading Performance",
+                                    data:[45,80,67,78,65,45,45,87,67,23],
+                                    backgroundColor:["#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF"],
+                                },
+                                {
+                                    label :"Application Performance",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:["#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF"],
+                                },
+                                {
+                                    label :"Understanding Performance",
+                                    data:[40,56,45,23,46,34,44,48,40,23],
+                                    backgroundColor:["#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF"],
+                                },
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        {% elif user_group == "educator" or user_group == "principal" %}
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+            <div class="card-body">
+                <h4>Group Of Students On Basic Of Unit Test </h4>
+                <canvas id="myChart" arial-label="chart" role="img" width="400" height="150"></canvas>
+            <script>var ctx = document.getElementById("myChart").getContext("2d")
+                var myChart=new Chart(ctx, {
+                    type: "pie",
+                    data: {
+                    labels: ["Greater Than 25","Greater Than 15 But Less Than 25","Greater Than 7 But Less Than 15"],
+                    datasets: [
+                    {
+                    data: [20,25,15],
+                    backgroundColor:["#FF99FF","#0099FF","#9933FF"],
+                    borderColor: ["black","black","black"],
+                    },
+                ],
+                },
+            });
+            </script>
+            </div>
+            </div>
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+            <div class="card-body">
+                <h4>Group Of Students On Basic Of Assignment </h4>
+                <canvas id="myChart1" arial-label="chart" role="img" width="400" height="150"></canvas>
+            <script>var ctx = document.getElementById("myChart1").getContext("2d")
+                var myChart=new Chart(ctx, {
+                    type: "pie",
+                    data: {
+                    labels: ["Greater Than 25","Greater Than 15 But Less Than 25","Greater Than 7 But Less Than 15"],
+                    datasets: [
+                    {
+                    data: [20,25,15],
+                    backgroundColor:["#FF99FF","#0099FF","#9933FF"],
+                    borderColor: ["black","black","black"],
+                    },
+                ],
+                },
+            });
+            </script>
+            </div>
+            </div>
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+            <div class="card-body">
+                <h4>Group Of Students On Basic Of Practicals </h4>
+                <canvas id="myChart2" arial-label="chart" role="img" width="400" height="150"></canvas>
+            <script>var ctx = document.getElementById("myChart2").getContext("2d")
+                var myChart=new Chart(ctx, {
+                    type: "pie",
+                    data: {
+                    labels: ["Greater Than 25","Greater Than 15 But Less Than 25","Greater Than 7 But Less Than 15"],
+                    datasets: [
+                    {
+                    data: [20,25,15],
+                    backgroundColor:["#FF99FF","#0099FF","#9933FF"],
+                    borderColor: ["black","black","black"],
+                    },
+                ],
+                },
+            });
+            </script>
+            </div>
+            </div>
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Chapter Vise Subject Performance</h6>
+                    <canvas id="barchart2" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("barchart2").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                                labels: ["chapter1","chapter2","chapter3","chapter4","chapter5","chapter6","chapter7","chapter8","chapter9","chapter10"],
+                                datasets: [
+                                {
+                                    label :"Reading Performance",
+                                    data:[45,80,67,78,65,45,45,87,67,23],
+                                    backgroundColor:["#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF"]
+                                    },
+                                {
+                                    label :"Application Performance",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:["#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF"]
+                                    },
+                                {
+                                    label :"Understanding Performance",
+                                    data:[40,56,45,23,46,34,44,48,40,23],
+                                    backgroundColor:["#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF"]
+                                    },
+
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        {% endif %}
+
+    </center>
+
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends 'masterHTML/master.html' %}
+
+{% block prediction %} active {% endblock %}
+
+{% block body %}
+<center>
+
+    {% if user_group == "learner" %}
+
+        <div class="row">
+            <div class="col-sm-2 offset-9" >
+                <a href="/prediction_data" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+                    Prediction Data
+                </a>
+            </div>
+        </div><br>
+
+        <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+        <div class="card-body">
+            <h4> Predicted Marks<br>
+                <div class="circle">
+                  <div class="bar"></div>
+                  <div class="box"><span></span></div>
+                </div></h4>
+            <script>
+              let options = {
+                startAngle: -1.55,
+                size: 150,
+                value: 0.70,
+                fill: {gradient: ['#2A2A72', '#009FFD']}
+              }
+              $(".circle .bar").circleProgress(options).on('circle-animation-progress',
+              function(event, progress, stepValue){
+                $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2)) + "%");
+              });
+            </script>
+        </div>
+        </div>
+
+        <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+        <div class="card-body">
+            <h1> Group : Average</h1>
+        </div>
+        </div>
+
+    {% elif user_group == "educator" %}
+
+        <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+        <div class="card-body">
+            <h4>Group Of Students On Basic Of Prediction </h4>
+            <canvas id="myChart" arial-label="chart" role="img" width="400" height="150"></canvas>
+        <script>var ctx = document.getElementById("myChart").getContext("2d")
+            var myChart=new Chart(ctx, {
+                type: "pie",
+                data: {
+                labels: ["Greater Than 75","Greater Than 45 But Less Than 75","Greater Than 23 But Less Than 45"],
+                datasets: [
+                {
+                data: [20,25,15],
+                backgroundColor:["#0000FF","#00FF00","#FF0000"],
+                borderColor: ["black","black","black"],
+                },
+            ],
+            },
+        });
+        </script>
+        </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-sm-10 offset-1" >
+                <h4 class="text-center alert alert-info">Prediction Data</h4>
+                <table class="table table-hover">
+                    <thead>
+                        <th scope="col">User Name</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Predicted Mark</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td scope="row">ShahNishil</td>
+                        <td scope="row">Nishil</td>
+                        <td scope="row">Shah</td>
+                        <td scope="row">12A</td>
+                        <td scope="row">70</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    {% elif user_group == "principal" %}
+
+        <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+        <div class="card-body">
+             <h4>Group Of Students On Basic Of Prediction </h4>
+            <canvas id="myChart1" arial-label="chart" role="img" width="400" height="150"></canvas>
+        <script>var ctx = document.getElementById("myChart1").getContext("2d")
+            var myChart=new Chart(ctx, {
+                type: "pie",
+                data: {
+                labels: ["Greater Than 75","Greater Than 45 But Less Than 75","Greater Than 23 But Less Than 45"],
+                datasets: [
+                {
+                data: [20,25,15],
+                backgroundColor:["#0000FF","#00FF00","#FF0000"],
+                borderColor: ["black","black","black"],
+                },
+            ],
+            },
+        });
+        </script>
+        </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-sm-10 offset-1" >
+                <h4 class="text-center alert alert-info">Prediction Data</h4>
+                <table class="table table-hover">
+                    <thead>
+                        <th scope="col">User Name</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Predicted Mark</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td scope="row">ShahNishil</td>
+                        <td scope="row">Nishil</td>
+                        <td scope="row">Shah</td>
+                        <td scope="row">12A</td>
+                        <td scope="row">70</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    {% endif %}
+
+</center>
+{% endblock %}

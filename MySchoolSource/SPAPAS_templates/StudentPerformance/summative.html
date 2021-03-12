@@ -1,0 +1,531 @@
+{% extends 'masterHTML/master.html' %}
+
+{% block Summative %} active {% endblock %}
+
+{% block body %}
+
+     <center>
+        {% if user_group == "learner" %}
+             <h1 class="text-center alert alert-info">Mid Sem</h1>
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h4> Marks Obtained In Mid-Sem </h4>
+                    <canvas id="myChart11" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("myChart11").getContext("2d")
+                        var myChart=new Chart(ctx, {
+                            type: "doughnut",
+                            data: {
+                                labels: ["Marks Obtained","Total"],
+                                datasets: [
+                                {
+                                    data: [450,50],
+                                    backgroundColor:["#0099FF"],
+                                    borderColor: ["black","black"],
+                                },
+                                ],
+                            },
+                        });
+                    </script>
+                    <br><h4><b>450</b></h4>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Overall Performance</h6>
+                    <canvas id="bar1" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("bar1").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                                labels: ["subject1","subject2","subject3","subject4","subject5","subject6","subject7","subject8","subject9","subject10"],
+                                datasets: [
+                                {
+                                    label :"Your Performance",
+                                    data:[45,80,67,78,65,45,45,87,67,23],
+                                    backgroundColor:["#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF"],
+                                },
+                                {
+                                    label :"Highest Performance",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:["#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF"],
+                                },
+                                {
+                                    label :"Lowest Performance",
+                                    data:[40,56,45,23,46,34,44,48,40,23],
+                                    backgroundColor:["#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF"],
+                                },
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Performance Based On Reading, Application & Understanding</h6>
+                    <canvas id="barchart1" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("barchart1").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                                labels: ["subject1","subject2","subject3","subject4","subject5","subject6","subject7","subject8","subject9","subject10"],
+                                datasets: [
+                                {
+                                    label :"Reading Performance",
+                                    data:[45,80,67,78,65,45,45,87,67,23],
+                                    backgroundColor:["#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF"],
+                                },
+                                {
+                                    label :"Application Performance",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:["#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF"],
+                                },
+                                {
+                                    label :"Understanding Performance",
+                                    data:[40,56,45,23,46,34,44,48,40,23],
+                                    backgroundColor:["#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF"],
+                                },
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-sm-10 offset-1" >
+                    <h4 class="text-center alert alert-info">Overall Marks</h4>
+                    <table class="table table-hover">
+                        <thead>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Reading Marks</th>
+                            <th scope="col">Application Marks</th>
+                            <th scope="col">Understanding Marks</th>
+                            <th scope="col">Marks Obtained</th>
+                            <th scope="col">Total Marks</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td scope="row">Maths</td>
+                            <td scope="row">30</td>
+                            <td scope="row">30</td>
+                            <td scope="row">30</td>
+                            <td scope="row">90</td>
+                            <td scope="row">100</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h1 class="text-center alert alert-info">Final Exam</h1>
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h4> Marks Obtained In Mid-Sem </h4>
+                    <canvas id="myChart21" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("myChart21").getContext("2d")
+                        var myChart=new Chart(ctx, {
+                            type: "doughnut",
+                            data: {
+                                labels: ["Marks Obtained","Total"],
+                                datasets: [
+                                {
+                                    data: [450,50],
+                                    backgroundColor:["#0099FF"],
+                                    borderColor: ["black","black"],
+                                },
+                                ],
+                            },
+                        });
+                    </script>
+                    <br><h4><b>450</b></h4>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Overall Performance</h6>
+                    <canvas id="bar2" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("bar2").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                                labels: ["subject1","subject2","subject3","subject4","subject5","subject6","subject7","subject8","subject9","subject10"],
+                                datasets: [
+                                {
+                                    label :"Your Performance",
+                                    data:[45,80,67,78,65,45,45,87,67,23],
+                                    backgroundColor:["#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF"],
+                                },
+                                {
+                                    label :"Highest Performance",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:["#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF"],
+                                },
+                                {
+                                    label :"Lowest Performance",
+                                    data:[40,56,45,23,46,34,44,48,40,23],
+                                    backgroundColor:["#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF"],
+                                },
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Performance Based On Reading, Application & Understanding</h6>
+                    <canvas id="barchart21" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("barchart21").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                                labels: ["subject1","subject2","subject3","subject4","subject5","subject6","subject7","subject8","subject9","subject10"],
+                                datasets: [
+                                {
+                                    label :"Reading Performance",
+                                    data:[45,80,67,78,65,45,45,87,67,23],
+                                    backgroundColor:["#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF"],
+                                },
+                                {
+                                    label :"Application Performance",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:["#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF"],
+                                },
+                                {
+                                    label :"Understanding Performance",
+                                    data:[40,56,45,23,46,34,44,48,40,23],
+                                    backgroundColor:["#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF"],
+                                },
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-sm-10 offset-1" >
+                    <h4 class="text-center alert alert-info">Overall Marks</h4>
+                    <table class="table table-hover">
+                        <thead>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Reading Marks</th>
+                            <th scope="col">Application Marks</th>
+                            <th scope="col">Understanding Marks</th>
+                            <th scope="col">Marks Obtained</th>
+                            <th scope="col">Total Marks</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td scope="row">Maths</td>
+                            <td scope="row">30</td>
+                            <td scope="row">30</td>
+                            <td scope="row">30</td>
+                            <td scope="row">90</td>
+                            <td scope="row">100</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        {% elif user_group == "educator" or user_group == "principal" %}
+
+            <h1 class="text-center alert alert-info">Mid Sem</h1>
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h4> Number Of Students Passed In Mid-Sem </h4>
+                    <canvas id="myChart3" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("myChart3").getContext("2d")
+                        var myChart=new Chart(ctx, {
+                            type: "doughnut",
+                            data: {
+                                labels: ["Student Passed","Student Failed"],
+                                datasets: [
+                                {
+                                    data: [450,50],
+                                    backgroundColor:["#0099FF","#FF99FF"],
+                                    borderColor: ["black","black"],
+                                },
+                                ],
+                            },
+                        });
+                    </script>
+                    <br><h4><b>450</b></h4>
+                </div>
+            </div>
+
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Chapter Vise Subject Performance</h6>
+                    <canvas id="barchart3" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("barchart3").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                               labels: ["subject1","subject2","subject3","subject4","subject5","subject6","subject7","subject8","subject9","subject10"],
+                                datasets: [
+                                {
+                                    label :"Number Of Students Passed",
+                                    data:[45,80,67,78,65,45,45,87,67,23],
+                                    backgroundColor:["#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF"]
+                                    },
+                                {
+                                    label :"Number Of Students Failed",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:["#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF"]
+                                    },
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Chapter Vise Students Performance</h6>
+                    <canvas id="barchart4" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("barchart4").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                                labels: ["chapter1","chapter2","chapter3","chapter4","chapter5","chapter6","chapter7","chapter8","chapter9","chapter10"],
+                                datasets: [
+                                {
+                                    label :"Reading Performance",
+                                    data:[45,80,67,78,65,45,45,87,67,23],
+                                    backgroundColor:["#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF"]
+                                    },
+                                {
+                                    label :"Application Performance",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:["#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF"]
+                                    },
+                                {
+                                    label :"Understanding Performance",
+                                    data:[40,56,45,23,46,34,44,48,40,23],
+                                    backgroundColor:["#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF"]
+                                    },
+
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+
+            <h1 class="text-center alert alert-info">Final Exam</h1>
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h4> Number Of Students Passed In Final Exam </h4>
+                    <canvas id="myChart4" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("myChart4").getContext("2d")
+                        var myChart=new Chart(ctx, {
+                            type: "doughnut",
+                            data: {
+                                labels: ["Student Passed","Student Failed"],
+                                datasets: [
+                                {
+                                    data: [450,50],
+                                    backgroundColor:["#0099FF","#FF99FF"],
+                                    borderColor: ["black","black"],
+                                },
+                                ],
+                            },
+                        });
+                    </script>
+                    <br><h4><b>450</b></h4>
+                </div>
+            </div>
+
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Chapter Vise Subject Performance</h6>
+                    <canvas id="barchart5" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("barchart5").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                               labels: ["subject1","subject2","subject3","subject4","subject5","subject6","subject7","subject8","subject9","subject10"],
+                                datasets: [
+                                {
+                                    label :"Number Of Students Passed",
+                                    data:[45,80,67,78,65,45,45,87,67,23],
+                                    backgroundColor:["#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF"]
+                                    },
+                                {
+                                    label :"Number Of Students Failed",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:["#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF"]
+                                    },
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+
+            <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                <div class="card-body">
+                    <h6>Chapter Vise Students Performance</h6>
+                    <canvas id="barchart6" arial-label="chart" role="img" width="500" height="150"></canvas>
+                    <script>var ctx = document.getElementById("barchart6").getContext("2d")
+                        var bar=new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                                labels: ["chapter1","chapter2","chapter3","chapter4","chapter5","chapter6","chapter7","chapter8","chapter9","chapter10"],
+                                datasets: [
+                                {
+                                    label :"Reading Performance",
+                                    data:[45,80,67,78,65,45,45,87,67,23],
+                                    backgroundColor:["#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF","#0099FF"]
+                                    },
+                                {
+                                    label :"Application Performance",
+                                    data:[50,97,80,84,70,67,45,87,90,70],
+                                    backgroundColor:["#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF","#9933FF"]
+                                    },
+                                {
+                                    label :"Understanding Performance",
+                                    data:[40,56,45,23,46,34,44,48,40,23],
+                                    backgroundColor:["#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF","#FF99FF"]
+                                    },
+
+                                ],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        {% endif %}
+
+    </center>
+
+{% endblock %}

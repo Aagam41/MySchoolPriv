@@ -1,0 +1,151 @@
+{% extends 'masterHTML/master.html' %}
+
+{% block dashboard %} active {% endblock %}
+
+{% block body %}
+<center>
+	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+	<div class="card-body">
+        <h6>Lowest Performance Based On<br>Formative Assessment</h6>
+	<canvas id="bar" arial-label="chart" role="img" width="500" height="150"></canvas>
+        <script>var ctx = document.getElementById("bar").getContext("2d")
+		var bar=new Chart(ctx, {
+			type: "bar",
+			data: {
+			labels: [{% for i in graph_data.user %} "{{i}}", {% endfor %}],
+			datasets: [
+			{
+			label :"Lowest Performance",
+			data:[{% for i in graph_data.values %} "{{i}}", {% endfor %}],
+			backgroundColor:["#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF","#0000FF"],
+			},
+		],
+		},
+		options: {
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                }
+        }
+	});
+	</script>
+	</div>
+	</div>
+
+	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+	<div class="card-body">
+        <h4>Overall Class Performance</h4>
+        <h6>Based on Formative Assesment Data Collected</h6>
+	<canvas id="line" arial-label="chart" role="img" width="400" height="150"></canvas>
+    <script>var ctx = document.getElementById("line").getContext("2d")
+		var radar=new Chart(ctx, {
+			type: "radar",
+			data: {
+			labels: ["Unit tests","Assignments","Mid Sem"],
+			datasets: [
+			{
+			label :"Class Overall Performance",
+			data: [{{graph_data.Unit_Marks.marks_obtained__avg}},{{graph_data.Mid_Marks.marks_obtained__avg}},{{graph_data.Assignment.marks_obtained__avg}}],
+			backgroundColor:["#FF0000"],
+			borderColor: ["black"],
+			},
+		],
+		},
+	});
+	</script>
+	</div>
+	</div>
+
+	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+	<div class="card-body">
+        <b><h4>Educator Performance </h4>
+            <h6>Based On Feedback Gathered And Performances Of Students</h6></b><br>
+        <canvas id="myChart" arial-label="chart" role="img" width="400" height="150"></canvas>
+    <script>var ctx = document.getElementById("myChart").getContext("2d")
+		var myChart=new Chart(ctx, {
+			type: "doughnut",
+			data: {
+			labels: ["Communication Skill","Teaching Skill","Subject Understanding"],
+			datasets: [
+			{
+			data: [20,25,15],
+			backgroundColor:["#0099FF","#9933FF","#FF99FF"],
+			borderColor: ["black","black","black"],
+			},
+		],
+		},
+	});
+	</script>
+	</div>
+	</div>
+
+<div class="row">
+<div class="col-sm-4">
+	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+	<div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <th scope="col">Top Performers</th>
+            </thead>
+            <tbody>
+            {% for i in graph_data.t %}
+            <tr>
+                <td scope="row">{{i.myschool_user_id__auth_user__username}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+
+<div class="col-sm-4">
+	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+	<div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <th scope="col">Potential Performers</th>
+            </thead>
+            <tbody>
+            {% for i in graph_data.p %}
+            <tr>
+                <td scope="row">{{i.myschool_user_id__auth_user__username}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+
+<div class="col-sm-4">
+	<div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+	<div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <th scope="col">Lowest Performers</th>
+            </thead>
+            <tbody>
+            {% for i in graph_data.l %}
+            <tr>
+                <td scope="row">{{i.myschool_user_id__auth_user__username}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+</div>
+</center>
+{% endblock %}

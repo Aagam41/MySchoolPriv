@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+{% load aagam_form_widgets_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_context.titleTag }}</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    {% load static %}
+
+
+    <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/Chart.js' %}"></script>
+</head>
+
+<!-- Navbar --->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+  <a class="navbar-brand" href="#">SPAPAS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+ {% if not request.user|has_group:"Staff" %}
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form method="GET" style=" width: 75%">
+          <div class="row">
+              <div class="col-1"><!-- Spacing --></div>
+              <div class="col-1">
+                 <div class="input-group" >
+                    <select class="custom-select" name="standard">
+                        {% if request.user|has_group:"Learner" %}
+                            <option selected>{{ request.GET.standard|default:navbar.standard_section_current.standard }}</option>
+                                {% for std in navbar.standard_section %}
+                                    <option value="{{ std.standard }}">{{ std.standard }}</option>
+                                {% endfor %}
+                        {% elif request.user|has_group:"Educator" %}
+                            <option selected>{{ request.GET.standard|default:navbar.standard.first.subject__standard }}</option>
+                                {% for std in navbar.standard %}
+                                    <option value="{{ std.subject__standard }}">{{ std.subject__standard }}</option>
+                                {% endfor %}
+                        {% elif request.user|has_group:"Principal" %}
+                            <option selected>{{ request.GET.standard|default:navbar.standard.first.standard }}</option>
+                                {% for std in navbar.standard %}
+                                    <option value="{{ std.standard }}">{{ std.standard }}</option>
+                                {% endfor %}
+                        {% endif %}
+                    </select>
+                 </div>
+              </div>
+              <div class="col-1">
+                 <div class="input-group">
+                     {% if not request.user|has_group:"Learner" %}
+                        <select class="custom-select" name="section">
+                            <option selected>{{ request.GET.section|default:navbar.section.first.section }}</option>
+                                {% for sec in navbar.section %}
+                                        <option value="{{ sec.section }}">{{ sec.section }}</option>
+                                {% endfor %}
+                        </select>
+                     {% endif %}
+                 </div>
+              </div>
+              <div class="col-2">
+                 <div class="input-group">
+                    <select class="custom-select" name="tblsubject">
+                        {% if request.user|has_group:"Learner" %}
+                            <option selected>{{ request.GET.tblsubject|default:navbar.subject.first.subject_name }}</option>
+                            {% for sub in navbar.subject %}
+                                    <option value="{{ sub.subject_name }}">{{ sub.subject_name }}</option>
+                            {% endfor %}
+                        {% elif request.user|has_group:"Educator" %}
+                            <option selected>{{ request.GET.tblsubject|default:navbar.user_subject.first.subject.subject_name }}</option>
+                            {% for sub in navbar.user_subject %}
+                                    <option value="{{ sub.subject.subject_name }}">{{ sub.subject.subject_name }}</option>
+                            {% endfor %}
+                        {% elif request.user|has_group:"Principal" %}
+                            <option selected> --select-- </option>
+                            <option value=1>All Subjects of selected standard</option>
+                        {% endif %}
+                    </select>
+                 </div>
+              </div>
+
+            {#             <li class="nav-item d-none d-md-block">#}
+            {#                     <a class="nav-link" href="javascript:void(0)">#}
+            {#                            <div class="customize-input">#}
+            {#                                 <input name="{{ search_name }}" class="form-control custom-shadow custom-radius border-0 bg-white"#}
+            {#                                            type="search" placeholder="{{ request.GET|get_dic_item:search_name|default:"Search"}}" aria-label="Search">#}
+            {#                            </div>#}
+            {#                     </a>#}
+            {#             </li>#}
+                            <!-- Submit button for above dropdowns -->
+              <div class = "col-2">
+              <li class="nav-item d-none d-md-block">
+                  <a class="nav-link" href="javascript:void(0)">
+                      <div class="customize-input">
+                          <button type="submit" class="btn btn-rounded waves-effect waves-light btn-outline-dark pl-4 pr-4 pb-2 pt-2"> Fetch Data </button>
+                      </div>
+                  </a>
+              </li>
+              </div>
+          </div>
+      </form>
+      {% else %}
+            <h1>MySchool Administration</h1>
+      {% endif %}
+
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="Profile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                    <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                </svg>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                <a class="dropdown-item" href="{% url 'MySchoolHome:modelobject_update_view' 'auth' 'User' request.user.pk 'MySchoolHome-profile' %}">Edit Profile</a>
+            </div>
+        </li>
+    </ul>
+  </div>
+</nav>
+
+<body id="body-pd">
+        <div class="l-navbar" id="navbar">
+            <nav class="nav">
+                <div>
+                    <br><br><br>
+                    <div class="nav__brand">
+                        <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                        <div class="col-1">
+                        <a href="#" class="nav__logo"> Hello, {{ request.user }}</a>
+                        </div>
+                    </div>
+                    {% if not request.user|has_group:"Staff" %}
+                        <div class="nav__list">
+                            <a href="{% url 'MySchoolHome:home' %}" class="nav__link {% block dashboard %} {% endblock %}}">
+                                <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                                <span class="nav__name">Dashboard</span>
+                            </a>
+
+
+                            {% if request.user|has_group:"Educator" or request.user|has_group:"Principal" %}
+                                <a class="nav__link {% block performance %} {% endblock %}"
+                                href="{% url 'StudentPerformance:stu_performance' 'Formative' %}">
+                                    <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                                    <span class="nav__name">Student Performance</span>
+                                </a>
+                            {% endif %}
+
+
+                            <a href="{% url 'StudentPerformance:student_performance' 'Formative' %}" class="nav__link {% block Formative %} {% endblock %}">
+                                <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                                <span class="nav__name">Formative</span>
+                            </a>
+                            <a href="{% url 'StudentPerformance:student_performance' 'Summative' %}" class="nav__link {% block Summative %} {% endblock %}">
+                                <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                                <span class="nav__name">Summative</span>
+                            </a>
+                            <a href="{% url 'StudentFeedback:student_feedback_home' %}" class="nav__link {% block feedback %} {% endblock %}">
+                                <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+                                {% if request.user|has_group:"Learner" %}
+                                        <span class="nav__name">Feedback</span>
+                                {% elif request.user|has_group:"Educator" or request.user|has_group:"Principal" %}
+                                        <span class="nav__name">Show Feedback</span>
+                                {% endif %}
+                            </a>
+
+                            <div  class="nav__link collapse">
+                                <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+                                <span class="nav__name">Projects</span>
+
+                                <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                                <ul class="collapse__menu">
+                                    <a href="#" class="collapse__sublink">Data</a>
+                                    <a href="#" class="collapse__sublink">Group</a>
+                                    <a href="#" class="collapse__sublink">Members</a>
+                                </ul>
+                            </div>
+
+                            <a class="nav__link {% block prediction %} {% endblock %} "
+                             {% if request.user|has_group:"Learner" %}
+                                        href="{% url 'StudentPerformancePrediction:student_prediction' %}"
+                                    {% elif request.user|has_group:"Educator" or request.user|has_group:"Principal" %}
+                                        href="{% url 'StudentPerformance:student_performance' 'Prediction'  %}"
+                                    {% endif %}>
+                                <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Prediction Details</span>
+                            </a>
+                            <div class="nav__link collapse">
+                                <ion-icon name="people-outline" class="nav__icon"></ion-icon>
+                                <span class="nav__name">Team</span>
+
+                                <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                                <ul class="collapse__menu">
+                                    <a href="#" class="collapse__sublink">Data</a>
+                                    <a href="#" class="collapse__sublink">Group</a>
+                                    <a href="#" class="collapse__sublink">Members</a>
+                                </ul>
+                            </div>
+                            <a href="#" class="nav__link">
+                                <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                                <span class="nav__name">Add Assignment</span>
+                            </a>
+                        </div>
+
+                    {% else %}
+
+                        <div class="nav__list">
+                        <a href="/user_detail" class="nav__link {% block user %} {% endblock %}">
+                            <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">User Details</span>
+                        </a>
+                        <a href="/add_assignment" class="nav__link {% block assignment %} {% endblock %}">
+                            <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Add Assignment</span>
+                        </a>
+                        <a href="/add_attendence" class="nav__link {% block attendence %} {% endblock %}">
+                            <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Add Attendence</span>
+                        </a>
+
+                        <div  class="nav__link collapse">
+                            <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Projects</span>
+
+                            <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                            <ul class="collapse__menu">
+                                <a href="#" class="collapse__sublink">Data</a>
+                                <a href="#" class="collapse__sublink">Group</a>
+                                <a href="#" class="collapse__sublink">Members</a>
+                            </ul>
+                        </div>
+
+                        <a href="/subject_detail" class="nav__link {% block subject %} {% endblock %}">
+                            <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Subject Details</span>
+                        </a>
+                        <div class="nav__link collapse">
+                            <ion-icon name="people-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Team</span>
+
+                            <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                            <ul class="collapse__menu">
+                                <a href="#" class="collapse__sublink">Data</a>
+                                <a href="#" class="collapse__sublink">Group</a>
+                                <a href="#" class="collapse__sublink">Members</a>
+                            </ul>
+                        </div>
+                        <a href="/class_detail" class="nav__link {% block class %} {% endblock %}">
+                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Class Details</span>
+                        </a>
+                    </div>
+
+                    {% endif %}
+                </div>
+
+                <a href="{% url 'MySchoolHome:logout' %}" class="nav__link">
+                    <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+                    <span class="nav__name">Log Out</span>
+                </a>
+            </nav>
+        </div>
+        <br><br><br>
+        <!-- body -->
+        {% block body %} {% endblock %}
+
+        <!-- ===== IONICONS ===== -->
+        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
+        <!-- ===== MAIN JS ===== -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <!--   Core JS Files   -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

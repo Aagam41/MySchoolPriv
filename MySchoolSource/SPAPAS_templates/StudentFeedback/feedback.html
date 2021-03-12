@@ -1,0 +1,122 @@
+{% extends 'masterHTML/master.html' %}
+
+{% block feedback %} active {% endblock %}
+
+{% block body %}
+
+<center>
+    {% if user_group == "learner" %}
+
+        <h1 class="text-center alert alert-info" >Select Subject To Give Feedback</h1>
+        <form method="POST" action="{% url 'StudentFeedback:add_feedback' %}">  <!-- Action will not come it is for testing perpose-->
+            {% csrf_token %}
+            <div class="row">
+                <!-- For loop will come here to show all the subject -->
+                <div class="col-sm-4">
+                    <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+                        <button type="submit" style="max-width: 840px; border-radius: 25px; border : 0px"> <!-- need to add path of button click event-->
+                            <div class="card-body" >
+                                <h2>Subject Name</h2>
+                                <br>
+                                <h2>Teacher Name</h2>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    {% elif user_group == "educator" and user_group == "principal"  %}
+
+        <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+        <div class="card-body">
+            <b><h4>Educator Performance </h4>
+                <h6>Based On Feedback Gathered And Performances Of Students</h6></b><br>
+            <canvas id="myChart" arial-label="chart" role="img" width="400" height="150"></canvas>
+        <script>var ctx = document.getElementById("myChart").getContext("2d")
+            var myChart=new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                labels: ["Communication Skill","Teaching Skill","Subject Understanding"],
+                datasets: [
+                {
+                data: [20,25,15],
+                backgroundColor:["#0099FF","#9933FF","#FF99FF"],
+                borderColor: ["black","black","black"],
+                },
+            ],
+            },
+        });
+        </script>
+        </div>
+        </div>
+        <br>
+        <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">
+        <div class="card-body">
+
+        <div class="row">
+                <div class="col-sm-6 offset-1">
+            <table class="table table-hover">
+                <thead>
+                <th scope="col"><h4><b>Educator Feedback </b></h4><br></th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td scope="row" colspan="2">Shah Nishil</td>
+                </tr>
+                </tbody>
+            </table>
+                </div>
+            </div>
+        </div>
+        </div>
+
+{#    {% elif user_group == "principal" %}#}
+{##}
+{#        <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">#}
+{#        <div class="card-body">#}
+{#                    <b><h4>Educator Performance </h4>#}
+{#                <h6>Based On Feedback Gathered And Performances Of Students</h6></b><br>#}
+{#            <canvas id="myChart1" arial-label="chart" role="img" width="400" height="150"></canvas>#}
+{#        <script>var ctx = document.getElementById("myChart1").getContext("2d")#}
+{#            var myChart=new Chart(ctx, {#}
+{#                type: "doughnut",#}
+{#                data: {#}
+{#                labels: ["Communication Skill","Teaching Skill","Subject Understanding"],#}
+{#                datasets: [#}
+{#                {#}
+{#                data: [20,25,15],#}
+{#                backgroundColor:["#0099FF","#9933FF","#FF99FF"],#}
+{#                borderColor: ["black","black","black"],#}
+{#                },#}
+{#            ],#}
+{#            },#}
+{#        });#}
+{#        </script>#}
+{#        </div>#}
+{#        </div>#}
+{#        <br>#}
+{##}
+{#        <div class="card bg-light mb-3 shadow " style="max-width: 840px; border-radius: 25px;">#}
+{#        <div class="card-body">#}
+{#            <div class="row">#}
+{#                <div class="col-sm-6 offset-1">#}
+{#            <table class="table table-hover">#}
+{#                <thead>#}
+{#                <th scope="col"><h4><b> Educator Feedback </b></h4><br></th>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                <tr>#}
+{#                    <td scope="row" colspan="2">Shah Nishil</td>#}
+{#                </tr>#}
+{#                </tbody>#}
+{#            </table>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        </div>#}
+
+    {% endif %}
+</center>
+
+{% endblock %}

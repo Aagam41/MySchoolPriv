@@ -1,0 +1,56 @@
+<!doctype html>
+
+{% load aagam_form_widgets_tweaks %}
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet" />
+    <title>Login</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form class="sign-in-form" method="POST">
+            {% csrf_token %}
+            <h2 class="title">Login</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              {{ form.username|add_class:'form-control'|attr:"aria-describedby:basic-addon3"|attr:"type:text"|attr:"placeholder:Enter your username" }}
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              {{ form.password|add_class:'form-control'|attr:"aria-describedby:basic-addon4"|attr:"type:password"|attr:"placeholder:Enter your passowrd" }}
+            </div>
+            <input type="submit" value="Login" class="btn solid" />
+                    {% if form.errors %}
+                    {% for field in form %}
+                      {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                      {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                  {% endif %}
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <img src="{% static 'img/register.svg' %}" class="image" alt="" />
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>

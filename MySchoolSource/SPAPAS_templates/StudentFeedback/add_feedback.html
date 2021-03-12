@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Feedback</title>
+        {% load static %}
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <center>
+                <div class="card bg-light mb-3 shadow " style="width: 840px; border-radius: 25px;">
+                    <div class="card-body">
+                          <h4 class="text-center alert alert-info">
+                              Feedback of Subject_name
+                          </h4>
+                            <form  method="POST">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <th scope="col">Questions</th>
+                                        <th scope="col">Ratings</th>
+                                        <th scope="col">Comments</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td scope="row">Rate Teaching Skills </td>
+                                        <td scope="row">
+                                            <fieldset class="rating">
+                                                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+                                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                                            </fieldset>
+                                        </td>
+                                        <td scope="row">
+                                            <div class="md-form">
+                                                <textarea class="md-textarea form-control" placeholder="Give Comments"></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <a href="#" class="btn btn-primary" data-toggle="button" aria-pressed="false" style="align-items: left;">
+                                    Submit
+                                </a>
+                            </form>
+                    </div>
+                </div>
+        </center>
+
+          <!--   Core JS Files   -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script>
+          window.TrackJS &&
+            TrackJS.install({
+              token: "ee6fab19c5a04ac1a32a645abde4613a",
+              application: "black-dashboard-free"
+            });
+        </script>
+    </body>
+</html>
